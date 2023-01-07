@@ -1,0 +1,132 @@
+/*
+|| CSS
+
+	|| Especificidad e important!
+		
+
+	
+	|| Herencia (inheritance): 
+        A los elementos que estén dentro de otro se le aplicarán
+        las mismas propiedades, pero a otros no. No se heredaran
+        propiedades si el elemento hijo tiene las suyas.
+		
+		Ej: La propiedad de color es una propiedad heredada. 
+		Por lo tanto, el valor de la propiedad de color se aplica
+		a los <em>hijos directos</em> y también a los hijos indirectos:
+		los <em>hijos inmediatos</em> li y los que están dentro de la
+		primera lista anidada.
+
+		En la especificación de las propiedades se ve cual tiene herencia. 
+		En el inspector de código podemos ver las propiedades heredadas
+		en cada elemento.
+
+		Valores:
+		    inherit
+            Permitido en todas las propiedades CSS. 
+            Hace que el elemento al cual se aplica tome el valor
+            calculado de la propiedad de su elemento padre 
+            Si hay un elemento hijo con la misma especificidad 
+            se aplicará las que tenga definida y en orden a la 
+            cascada.
+
+            initial
+            Se puede aplicar a un elemento seleccionado tenga 
+            el mismo valor que esté establecido para esa
+            propiedad en la hoja de estilo por defecto del 
+            navegador. Fuerza la utilización del valor inicial 
+            de la propiedad para el elemento seleccionado.
+
+            unset
+            Este valor restablece la propiedad a su condición
+             natural, si no es heredable, será inicial.
+
+            revert
+            Este valor actuá como el valor unset (restablece valor natural) 
+            en muchos casos. También puede establecer los valores de 
+            estilo del navegador.
+
+            all
+            Es una propiedad que puede tomar los valores anteriores 
+            para restablecer el estilo que tenia el elemento antes
+            de hacer cambios (funciona para casi todos las propiedades
+            de estilo que se tenían aplicados).
+
+            body {
+                color: green;
+            }
+                              
+            .my-class-1 a {
+                color: inherit; hereda color green de su padre
+            }
+                              
+            .my-class-2 a {
+                color: initial; hereda su color inicial del navegador
+            }
+                              
+            .my-class-3 a {
+                color: unset; hereda color del elemento principal
+            }
+            
+            .fix-this {
+                all: unset; resetea las propiedades 
+                			a su valor original 
+            }					
+			
+	
+	|| Links:
+
+
+	|| Selectores:
+
+		Selector hermano adyacente:
+    	párrafo después de titulo: en un mismo nivel de jerarquía
+
+        h1 + p {
+          font-size: 200%;
+        }
+		
+		Selectores y combinación:
+		
+		adyacente (+) e hijo (espacio):
+
+		Selecciona cualquier elemento span que se encuentre dentro 
+		de un párrafo, que esté dentro de un articulo:
+		se invoca al elemento padre espacio hijo; p span
+
+        article p span {
+       		background-color: green;
+        }
+
+		Selecciona cualquier p que se encuentre directamente
+		después de ul, que va directamente después de h1:
+		tiene que estar en la misma jerarquía
+
+        h1 + ul + p {
+        	color: blue;
+        }
+
+    	Combinación de estas dos técnicas: clase dentro de p que 
+    	venga después de h1 que se encuentre dentro de body
+
+        body h1 + p .special {
+          color: yellow;
+          background-color: black;
+          padding: 5px;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
