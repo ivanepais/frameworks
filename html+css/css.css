@@ -1,11 +1,87 @@
 /*
 || CSS
 
-	|| Especificidad e important!
+	|| Cascada, Especificidad, Important! y Layers (capas de CSS):
 		
+		En la cascada, las reglas más especificas se sobreponen a las
+		menos especificas sin importar el orden en la hoja de estilo.
+		Puede haber reglas que compiten por dar estilo a un 
+		mismo elemento con algunas propiedades. 
+		La única forma de anular una declaración !important 
+		es incluir otra declaración !important.
 
-	
+		    <p class="better">This is a paragraph.</p>
+            <p class="better" id="winning">One selector to rule them all!</p>
+                
+             #winning {
+                background-color: red;
+                border: 1px solid black;
+            }
+                    
+            .better {
+                background-color: gray;
+                border: none !important;
+            }
+                    
+            p {
+              	background-color: blue;
+                color: white;
+                padding: 5px;
+            } 
+
+		Las capas de cascada funcionan con at-rule <em>@layer</em>.	
+		Cuando declaramos CSS en capas en cascada, 
+		el orden de precedencia (importancia al aplicar estilo)
+		está determinado por el orden en que se declaran las capas. 
+		Los estilos CSS declarados fuera de cualquier capa 
+		se combinan, en el orden en que se declaran esos estilos, 
+		en una capa sin nombre, como si fuera la última capa declarada.
+
+		Los estilos con capas !important tienen 
+		prioridad sobre los estilos !important declarados en capas
+		posteriores, nuevamente, sin importar la especificidad.
+		
+		La especificidad entre capas no importa, pero la especificidad 
+		entro de una sola capa sí lo es.
+
+
+		    <p id="addSpecificity">
+            A paragraph with a border and background
+            </p>    
+
+            @layer firstLayer, secondLayer;
+
+            p {  0-0-1 
+                background-color: red;
+                color: grey !important;
+                border: 5px inset purple;
+            }
+          	
+          	p#addSpecificity {  1-0-1 
+                border-style: solid !important;
+            }
+
+           	@layer firstLayer {
+            	#addSpecificity {  1-0-0 
+                    background-color: blue;
+                    color: white !important;
+                    border-width: 5px;
+                    border-style: dashed !important;
+                }
+            }
+
+            @layer secondLayer {
+                p#addSpecificity { 1-0-1 
+                    background-color: green;
+                   	color: orange !important;
+                    border-width: 10px;
+                   	border-style: dotted !important;
+                }
+            } 
+
+
 	|| Herencia (inheritance): 
+       
         A los elementos que estén dentro de otro se le aplicarán
         las mismas propiedades, pero a otros no. No se heredaran
         propiedades si el elemento hijo tiene las suyas.
@@ -21,6 +97,7 @@
 		en cada elemento.
 
 		Valores:
+		    
 		    inherit
             Permitido en todas las propiedades CSS. 
             Hace que el elemento al cual se aplica tome el valor
