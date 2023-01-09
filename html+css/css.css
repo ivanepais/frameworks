@@ -40,7 +40,7 @@
 		Los estilos con capas !important tienen 
 		prioridad sobre los estilos !important declarados en capas
 		posteriores, nuevamente, sin importar la especificidad.
-		
+
 		La especificidad entre capas no importa, pero la especificidad 
 		entro de una sola capa sí lo es.
 
@@ -155,13 +155,47 @@
 
 	|| Selectores:
 
+		Lista de selectores:
+			h1, .special {
+			  color: blue;
+			}
+
+			h1,
+			.special {
+			  color: blue;
+			}
+		
+		Tipos de selectores:
+		De tipo/etiqueta: h1
+		De clase: .clase
+		De id: #id;
+
+		Selector de atributo
+            a[title] {
+            }
+			
+			a[href="https://example.com"]{}			
+			
+		Selectores de (:)Pseudoclases y (::)pseudoelementos
+        La pseudoclase aplican estilo a ciertos estados de un 
+        elemento según qué valor tenga la propiedad.
+        El pseudoelemento selecciona cierta parte de un elemento
+        en vez de darle estilo a todo en conjunto.
+
+            a:hover {
+            }
+
+            p::first-line {
+            }
+
 		Selector hermano adyacente:
     	párrafo después de titulo: en un mismo nivel de jerarquía
 
-        h1 + p {
-          font-size: 200%;
-        }
+        	h1 + p {
+          	font-size: 200%;
+        	}
 		
+
 		Selectores y combinación:
 		
 		adyacente (+) e hijo (espacio):
@@ -170,40 +204,153 @@
 		de un párrafo, que esté dentro de un articulo:
 		se invoca al elemento padre espacio hijo; p span
 
-        article p span {
-       		background-color: green;
-        }
+        	article p span {
+       			background-color: green;
+        	}
 
 		Selecciona cualquier p que se encuentre directamente
 		después de ul, que va directamente después de h1:
 		tiene que estar en la misma jerarquía
 
-        h1 + ul + p {
-        	color: blue;
-        }
+        	h1 + ul + p {
+        		color: blue;
+        	}
 
     	Combinación de estas dos técnicas: clase dentro de p que 
     	venga después de h1 que se encuentre dentro de body
 
-        body h1 + p .special {
-          color: yellow;
-          background-color: black;
-          padding: 5px;
-        }
+        	body h1 + p .special {
+          		color: yellow;
+          		background-color: black;
+          		padding: 5px;
+        	}
+		
+		Seleciona hijos directos:
+
+            article > p {
+            }
+        
+        Selector universal (*):
+			*h1 {
+				}
+		
+		Selectores de atributo:
+        Los elementos/etiquetas del HTML pueden tener atributos, proporcionan 
+        un nivel de profundidad mayor para aplicar estilo.
+            
+        a (link) con el atributo title:
+
+            a[title] {
+               color: purple;
+            }
+
+        a con atributo href tiene que coincidir con 
+        el valor: "https://example.org":
+
+            a[href="https://example.org"]{
+                  color: green;
+                }
+
+        Link con href tienen que tener la palabra  "example": 
+           
+            a[href*="example"] {
+                font-size: 2em;
+            }
+
+        a con href tiene que terminar con la palabra ".org": 
+               
+         	a[href$=".org"] {
+                font-style: italic;
+            }
+
+        a con la clase que contenga "logo":
+            a[class~="logo"] {
+                padding: 2px;
+          	}
 
 
+		Selector descendiente (un espacio):
+        selecciona nodos que son descendientes (directos y no directos) del primer elemento.
+
+            li descendientes de la clase "my-things" list 
+                
+                ul.my-things li {
+                margin: 2em;
+                }
+
+   		Selector hijos directo (>):
+        selecciona nodos que son hijos directos del primer elemento
+            
+            li que son hijos de la clase "my-things" list
+
+                ul.my-things > li {
+                   margin: 2em;
+                }
+		
+		
+		Minúscula y mayúscula:
+
+        Con el carácter i después del valor del atributo
+        (ejemplo, atributo="x" i), le decimos al navegador 
+        que tome los valores escritos en mayus y minus.
+
+            a[href*="insensitive" i] {
+                color: cyan;
+            }
+
+		Que coincida/respete tal cual las mayus y minus:
+
+            a[href*="cAsE" s] {
+                color: pink;
+            }
+
+        Selector de atributos con valores de inicio y fin:
+        Por ejemplo, cuando inicia con numeral
+            
+            a[href^="#"] {
+                background-color: gold;
+            }
+
+        Cuando termina, por ejemplo; con la palabra .org, usamos:
+               
+            a[href$=".org"] {
+                color: red;
+            }
+	
+
+	|| Pseudoclase(:):
+		
+		Para Display:
 
 
+			:
+			
+			
+			:
 
 
+			:
 
 
+			:
 
 
+		Para Input:
 
 
+			:
+			
+
+			:
+
+		
+		Para lingüística:
+
+			:
 
 
+			:
 
+	|| Pseudoelementos (::):
 
 */
