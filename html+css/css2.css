@@ -327,7 +327,61 @@
 		Canal alfa:
 		RGB y HSL tiene la capacidad de admitir el canal alfa sin especificar la función para este canal y viceversa.
 
+	
+	|| Determinar el tamaño de los elementos
+		
+		Tamaño natural o intrínseco:
+		Tienen un tamaño por defecto antes de que los redefinamos. Por ejemplo: una imagen tiene un ancho y un alto cuando se crea, esto es intrínseco. Si no cambiamos esos dos valores se mostrará con su tamaño natural. 
+		Un div no tiene tamaño natural, se extenderá por todo el ancho del contenedor y no tiene altura, pero si agregamos un texto, la altura se adaptará y será su tamaño <em>intrínseco</em> pero no el ancho.
+
+		Tamaño especifico o extrínseco:
+		Cuando asignamos un tamaño a un elemento (debemos ajustar el contenido) se llama tamaño <em>extrínseco</em>.
+		Podemos usar las propiedades height (alto) y width (ancho) en un elementos, pero se recomienda dar ancho y no alto para dejar que el contenido determine la altura.
+			
+			Uso de porcentajes:
+			Es un valor de longitud, relativo al tamaño intrínseco natural del elemento o al tamaño extrínseco dado por nosotros . 
+				
+				en width:
+				Si le damos un ancho en porcentaje dependera del tamaño de su <em>contenedor padre<em>, sin ancho dado por nosotros, ocuparía el total del espacio en horizontal por tratarse de un elemento de bloque.	
+					.box {
+			 			border: 5px solid darkblue;
+			 			width: 50%;
+					}    
+
+				margin y padding:
+				Se calcula a partir del tamaño en linea (espacio horizontal) del elemento (lo determina el contenido).
+					.box {
+					  border: 5px solid darkblue;
+					  width: 300px;
+					  margin: 10%;
+					  padding: 10%;
+					}		
+
+		Tamaño mínimo y máximo:
+		Se usa para cantidades variables de contenido, puede ser algo que manipule el usuario o se vaya generando automaticamente.
+		Un tamaño minimo que funcionará como piso (a partir de ahí crecerá con el contenido) y un tamaño maximo que funcionará como un techo (el contenido tendrá un espacio máximo).
+			
+			min-height:
+			Podemos usarlo para una caja que tendrá contenido variable y necesitamos una altura predeterminada
+
+			max-width: 100%
+			Podemos usarlo para reducir el tamaño de las imagenes si no hay espacio para su tamaño intrínseco, nos aseguramos que no será mayor al ancho de la caja. 
+			No se agrandará más del 100%, lo que evita que se pixele.
+
+
+		Valores de ventana gráfica:
+		Es el area visible dentro del navegador, esta tiene un tamaño.
+			
+			vw:
+			Se usa para al ancho. 1vw es 1% del ancho visible o del área visible.
+
+			vh:
+			Se usa para la altura. 1vh es 1% de la altura del área visible.
+ 
+			Puede usarse para diseñar un elemento a pantalla completa y que se vea antes del resto del contenido
+			100vh empuja el resto del contenido por debajo de la ventana grafica.
+ 
 
 
 
- */
+*/
