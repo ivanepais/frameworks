@@ -208,5 +208,126 @@
             }
 
 		Block Formatting contentext:
-		Cuando se usa overflow, la caja se convierte en un bfc
+		Cuando se usa overflow, la caja se convierte en un bfc que es como otro html superpuesto; tiene reglas de comportamiento de diseño en bloque.
+ 
+
+	|| Valores y unidades
+		
+		Numeros:
+			integer: Es un numero entero como 1200 o -200
+			number: Representa a un numero decimal, puede tener o no, un punto para separar la parte entera de la decimal. Ej, 0.2, 100
+			percentage: Es una fracción de otro valor, ejemplo; 15%. Son relativos a otra cantidad o elemento padre.
+			
+		Longitudes:
+			length: Contiene unidadades como 10px (pixeles) o 30em. 
+			
+			Absolutas: Son valores relativos a algo más, puede ser al tamaño de letra del un elemento principal o al tamaño de la ventana gráfica del navegador. Posee la ventaja de que
+			los <em>elementos<em> con unidad relativa, <em>escalen</em> en relación a todo lo demas.
+			
+			Relativas: Siempre tienen el mismo tamaño. Pueden ser cm (centimetros), mm (milimetros), Q (Cuartos de milimetros), in (pulgadas), pc (picas), pt (puntos) y px (pixeles).
+				em: Al tamaño de letra del elemento padre (a veces estos heredan tamaño del <em>elemento html (raiz)</em>) si tiene <em>font-size</em> o el tamaño de la fuente del propio elemento, en el caso de otras propiedades, como <em>width</em>.
+				rem: Al tamaño de la letra del elemento raíz.
+				vw: 1% del ancho de la ventana grafica del navegador.</li>
+				vh: 1% del alto de la ventan grafica.
+
+				Rem vs Em:
+				rem se usa para tamaño de fuente de los elementos y em se usa para dimensionar elementos.
+					html {
+					  font-size: 16px;
+					}
+
+					.box {
+					  font-size: 1.5rem;
+					  width: 2em; 
+					}
+
+					.box2 {
+			          padding: 1em;
+					}
+
+		Porcentajes:
+		Se establecerá en relación con otro valor. Por ejemplo, si establecemos font-size en % a un elemento, será un % del font-size de un elemento padre. 
+		Si le damos un porcentaje para width, será un porcentaje del atributo width del elemento padre.
+			.wrapper {
+			  width: 400px;
+			  border: 5px solid rebeccapurple;
+			}
+
+			.percent {
+			  width: 40%;
+			}
+		
+		Palabras claves:
+		Multiples propiedades admiten estas palabras como valores, tambien llamados identificadores, con comillas (texto de contenido) y sin comillas (palabras).
+			.box {
+				background-color: blue;
+			}
+
+			.box::after {
+				content: "cadena de palabras para generar un texto"
+			}
+
+		Funciones:
+		Hay propiedades que admiten la función calc(), el resultado será el valor aplicado.
+
+		Imágen:
+		La propiedad backgroun-image admite la función url() para pasar un archivo de imagen como valor.
+		Está propiedad tambien admite las funciones linear-gradient() y radiant-gradient para crear imágenes degradadas.
+			.image {
+			  background-image: url(star.png);
+			}
+
+			.gradient {
+			  background-image: linear-gradient(90deg, rgba(119,0,255,1) 39%, rgba(0,212,255,1) 100%);
+			}
+		
+
+	|| Colores:
+		El sistema de color estadar es de 24 bits, permite 16,7 millores de colres distintos a partir de una combinacion de diferentes canales de rojo, verde y azul con 256 valores diferentes por canal.
+
+		Palabras claves:
+			.box {
+			  background-color: cornflowerblue;
+			}
+		
+		Hexadecimales RGB:
+		Empiezan con un hastag(#) seguido de seis cifras hexadecimales, cada cifra puede tomar 16 valores que se encuentran entre 0 y la f (que representa el 15). 
+		Cada <em>par</em> de cifra representa uno de los canales (rojo, verde, azul) que nos permite especificar los 256 colores por canal.
+			.box {
+			  background-color: #F2F2F2;
+			}
+
+		RGB y RGBA:
+		Un color RGB es una funcion, rgb (); tiene tres parametros que representa los colores rojo, verde y azul.
+		Cada canal se representa por un numero decimal entre 0 y 255.
+		RGBA agrega un canal alfa de color que controla la opacidad su valor se establece entre 0 y 1 (trasparente/opaco), con un punto antes del numero final.
+		Este solo aplica al elemento que especificas y no a todo el contenedor.
+			.box {
+			  background-color: rgb(2, 121, 139);
+			}
+
+			.box2 {
+			  background-color: rgba(2, 121, 139, .3);
+			}
+		
+		HSL y HSLA:
+		Es una funcion como rgb pero en lugar de los valores para rojo, verde y azul, HSL admite valores de matriz, saturacion y luminosidad.
+		Matriz: Tono base del color, su valor va de 0 y 360 que representa un angulo en torno a una rueda de colores.
+		Saturación: Es la intensidad del color, toma un valor entre 0 (tono gris) y 100% (max saturación).
+		Luminosidad: Es la claridad o brillo del color, su valor está entre 0 (negro) y 100% (blanco).
+ 		Su canal alfa con la funcion HSLA que controla la opacidad del elemento.
+			.box {
+			  background-color: hsl(188, 97%, 28%);
+			}
+
+			.box2 {
+				background-color: hsla(188, 97%, 28%, .3);
+			}  
+			
+		Canal alfa:
+		RGB y HSL tiene la capacidad de admitir el canal alfa sin especificar la función para este canal y viceversa.
+
+
+
+
  */

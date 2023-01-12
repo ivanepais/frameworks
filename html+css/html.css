@@ -241,5 +241,25 @@
 		fallback:
 		<img src="equilateral.png" alt="triangle with equal sides" 
 		srcset="equilateral.svg">
-		
+	
+
+	|| Tablas:
+	
+	Tabla con filas y columnas:
+	<table>
+        <tr> <!-- una fila-->
+            <td>musica</td> <!-- tres columnas-->
+            <td>vida</td>
+            <td>champagne</td>
+        </tr>
+    </table>
+
+    Indicar si cada columna(td) sea un titulo en la tabla. Usando la etiqueta th:
+    <table>
+        <tr> <!-- una fila-->
+            <th>musica</th> <!-- tres columnas-->
+            <th>vida</th>
+            <th>champagne</th>
+        </tr>
+    </table>
 */		
