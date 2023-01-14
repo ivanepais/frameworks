@@ -361,14 +361,61 @@
 		Se usa para cantidades variables de contenido, puede ser algo que manipule el usuario o se vaya generando automaticamente.
 		Un tamaño minimo que funcionará como piso (a partir de ahí crecerá con el contenido) y un tamaño maximo que funcionará como un techo (el contenido tendrá un espacio máximo).
 			
-			min-height:
+			min-height: altura mínima
 			Podemos usarlo para una caja que tendrá contenido variable y necesitamos una altura predeterminada
+				
+				<div class="wrapper">
+				  <div class="box"></div>
+				  <div class="box">etc.</div>
+				</div>
 
-			max-width: 100%
+				.box {
+				  border: 5px solid darkblue;
+				  min-height: 150px;  //altura max.
+				  width: 200px;
+				  padding: 5px;	//espacio para el contenido.
+				}				
+
+			max-width: 100%; ancho máximo
 			Podemos usarlo para reducir el tamaño de las imagenes si no hay espacio para su tamaño intrínseco, nos aseguramos que no será mayor al ancho de la caja. 
 			No se agrandará más del 100%, lo que evita que se pixele.
+				
+				.box {
+				  width: 200px;
+				}
+				.minibox {
+				  width: 50px;
+				}
+				.width {
+				  width: 100%;
+				}
+				.max {
+				  max-width: 100%;
+				}
+  				
+  				<div class="wrapper"> //contenedor con tres cajas.
 
+					// el ancho mínimo van hacia las img
 
+  					<div class="box"><img src="star.png" alt="star" 
+  					class="width"> 
+  					</div>
+
+  					<div class="box"><img src="star.png" alt="star" 
+  					class="max">
+  					</div>
+
+  					<div class="minibox"><img src="star.png" alt="star" 
+  					class="max">
+  					</div>
+				
+				</div>
+
+	* Se hace para que las imagenes se adapten a dispositivos pequeños.
+	Pero las imagenes deben tener el tamaño adecuado para cada situación.
+	A los dispositivos moviles les puede costar mucho dinero descargar imagenes grandes.
+	Reducir el tamaño intrínseco con CSS no evita que se descargue completamente.
+		
 		Valores de ventana gráfica:
 		Es el area visible dentro del navegador, esta tiene un tamaño.
 			
@@ -381,7 +428,37 @@
 			Puede usarse para diseñar un elemento a pantalla completa y que se vea antes del resto del contenido
 			100vh empuja el resto del contenido por debajo de la ventana grafica.
  
+	* Las cajas se adaptan si las palabras o el contenido superan el ancho intrínseco o extrínseco de un contenedor.
+
+
+	|| Imágenes, media y formularios
+		
+		Elementos de reemplazo:
+		Las imagenes, los videos y otros elementos de media () no son una caja, son elementos de reemplazo, actúan como bloque pero no se pueden aplicar otras propiedades del model box.
+		
+			imágenes:
+
+			Con la etiqueta <img> podemos poner una imagen embebida/suelta por la página.
+			De acuerdo a la situación la podemos dimensionarla con los atributos height y width, con la propiedad max-
+				<img class=""
+			     src=""
+			     alt=""
+			    >
+
+			Con la propiedad background-image: url(); podemos poner una imagen de fondo de un contenedor con 
+				<div class="box"></div> 
+				.box {
+				  height: 300px;
+				  width: 400px;
+				  background-image: url(star.png);
+				}
+
+				<div class="box image"></div>
+				.image {
+				  background-image: url(star.png);
+				}
 
 
 
-*/
+*/				
+    
