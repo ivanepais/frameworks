@@ -443,7 +443,8 @@
 		Elementos de reemplazo:
 		Las imagenes, los videos y otros elementos de media (object, elementos de formulario, audio, canvas, etc) no son una caja, son elementos de reemplazo, actúan como bloque pero no se pueden aplicar otras propiedades del model box.
 		CSS no puede afectar el diseño interno, solo su posición
-			imágenes:
+			
+			Imágenes:
 
 			Con la etiqueta <img> podemos poner una imagen embebida/suelta por la página.
 			De acuerdo a la situación la podemos dimensionarla con los atributos height y width, con la propiedad max-
@@ -485,23 +486,137 @@
   					// la subcaja contiene a cada img.
 
 
-		Object-fit:
-		Se aplica a los elementos de reemplazo (img, vid, etc).
+		object-fit:
+		La propiedad se aplica a los elementos de reemplazo (img, vid, etc).
 
 		El elemento de reemplazo se puede dimensionar para que se ajuste a una caja de varias maneras:
 		Si aplicamos  max-width: 100% a una img con un relación de aspecto muy grande, el contenedor puede cortar la imágen.
 
 		Una imágen que es más pequeña que la caja:
-		No es problema, se puede arreglar con position.
-			
+		No es problema, se puede arreglar con position.		
 
 		Puede arreglar una imagen que es más grande que la caja:
 		Podemos aplicar max-width: 100%;
 		
-		*Para evitar descargar muchos o mantener el sitio ligero siempre es mejor una adecuada relación de aspecto para las imágenes según el sitio/situación.
+		Valores: 
+			cover: 
+			Cortará la imagen sin cambiar su relación de aspecto (no se estira/deforma) para que entre en la caja sin dejar espacio sobrante. 
+			
+			contain:
+			La imagen se mostrará completa sin cambiar su relación de aspecto pero se verá un sobrante de espacio en la caja si es de distinto tamaño intrínseco.
+			
+			fill:
+			Llenará la caja pero no mantendrá la relación de aspecto, se estira o deforma.
+
+				.box {
+				  width: 200px;
+				  height: 200px;
+				}
+
+				img {
+				  height: 100%; // La imágen toma 100% de la caja contenedora "div/.box"
+				  width: 100%;
+				}
+
+				.cover {
+				  object-fit: cover;
+				}
+
+				.contain {
+				  object-fit: contain;
+				}
+
+				<div class="wrapper">
+				  <div class="box"><img src="balloons.jpg" alt="balloons" 
+				  class="cover"></div>
+
+				  <div class="box"><img src="balloons.jpg" alt="balloons" 
+				  class="contain"></div>
+				</div>
+
+	*Para evitar descargar muchos o mantener el sitio ligero siempre es mejor una adecuada relación de aspecto para las imágenes según el sitio/situación.
+	
+	
+	|| Elementos de reemplazo en metodos de diseño moderno:
+		Como puede ser flex o grid, las imágenes se ubicarán en el incio  del contenedor flex o del área de cuadrícula. 
+		En cambio, los elementos normales se rellenan el contenedor.
 		
+		Para que no se comporten de forma extraña o rompan el diseño debemos aplicar:
+			img {
+			  width: 100%;	
+			  height: 100%;
+			}
+		La imágen toma 100% de la caja/elemento flexible o de cuadrícula.
 
 
+	|| Aplicar CSS a elementos de formulario:
+		
+		input:
+		Define campos de formulario de texto, selectores de hora y tambien de colores.
+		 
+		textarea:
+		Permite un espacio para texto en multilínea.
+
+		fieldset y legend:
+		Son elementos para contener y etiquetar partes de formularios.
+		
+		Mediante un selector de atributos (elemento-html [atributo]) podemos dar algo de estilo a los formularios para que sea coherente con nuestro diseño. 
+		Le damos bordes, relleno (padding), margin, colores, tamaño, etc.
+			
+			input[type="text"],
+			input[type="email"] {
+			  border: 2px solid #000;
+			  margin: 0 0 1em 0;
+			  padding: 10px;
+			  width: 100%;
+			}
+
+			input[type="submit"] {
+			  border: 3px solid #333;
+			  background-color: #999;
+			  border-radius: 5px;
+			  padding: 10px 2em;
+			  font-weight: bold;
+			  color: #fff;
+			}
+
+			input[type="submit"]:hover {
+			  background-color: #333;
+			}
+
+			<form>
+			  <div>
+				  <label for="name">Name</label>
+				  <input type="text" id="name">
+			  </div>
+
+			  <div>
+				  <label for="email">Email</label>
+				  <input type="email" id="email">
+			  </div>
+
+			  <div class="buttons"><input type="submit" value="Submit">
+			  </div>
+			</form>
+
+
+	|| Normalizar elementos de formulario:
+		Los formularios se presentan distinto en los navegadores, para una experiencia homogénea
+			
+			button,
+			input,
+			select,
+			textarea {
+			  font-family: inherit;
+			  font-size: 100%;
+			  box-sizing: border-box;
+			  padding: 0;
+			  margin: 0;
+			}
+
+			textarea {
+			  overflow: auto;
+			}
 
 
 */				
