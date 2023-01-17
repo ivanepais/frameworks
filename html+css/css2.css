@@ -219,12 +219,16 @@
 			percentage: Es una fracción de otro valor, ejemplo; 15%. Son relativos a otra cantidad o elemento padre.
 			
 		Longitudes:
-			length: Contiene unidadades como 10px (pixeles) o 30em. 
+
+			length: 
+			Contiene unidadades como 10px (pixeles) o 30em. 
 			
-			Absolutas: Son valores relativos a algo más, puede ser al tamaño de letra del un elemento principal o al tamaño de la ventana gráfica del navegador. Posee la ventaja de que
+			Absolutas: 
+			Son valores relativos a algo más, puede ser al tamaño de letra del un elemento principal o al tamaño de la ventana gráfica del navegador. Posee la ventaja de que
 			los <em>elementos<em> con unidad relativa, <em>escalen</em> en relación a todo lo demas.
 			
-			Relativas: Siempre tienen el mismo tamaño. Pueden ser cm (centimetros), mm (milimetros), Q (Cuartos de milimetros), in (pulgadas), pc (picas), pt (puntos) y px (pixeles).
+			Relativas: 
+			Siempre tienen el mismo tamaño. Pueden ser cm (centimetros), mm (milimetros), Q (Cuartos de milimetros), in (pulgadas), pc (picas), pt (puntos) y px (pixeles).
 				em: Al tamaño de letra del elemento padre (a veces estos heredan tamaño del <em>elemento html (raiz)</em>) si tiene <em>font-size</em> o el tamaño de la fuente del propio elemento, en el caso de otras propiedades, como <em>width</em>.
 				rem: Al tamaño de la letra del elemento raíz.
 				vw: 1% del ancho de la ventana grafica del navegador.</li>
@@ -379,7 +383,7 @@
 			max-width: 100%; ancho máximo
 			Podemos usarlo para reducir el tamaño de las imagenes si no hay espacio para su tamaño intrínseco, nos aseguramos que no será mayor al ancho de la caja. 
 			No se agrandará más del 100%, lo que evita que se pixele.
-				
+			Funcionará con otros elementos reemplazados, como <video> o <iframe>.	
 				.box {
 				  width: 200px;
 				}
@@ -395,11 +399,13 @@
   				
   				<div class="wrapper"> //contenedor con tres cajas.
 
-					// el ancho mínimo van hacia las img
+					// el ancho mínimo van hacia las img.
 
   					<div class="box"><img src="star.png" alt="star" 
   					class="width"> 
   					</div>
+
+  					// la subcaja contiene a cada img.
 
   					<div class="box"><img src="star.png" alt="star" 
   					class="max">
@@ -415,7 +421,8 @@
 	Pero las imagenes deben tener el tamaño adecuado para cada situación.
 	A los dispositivos moviles les puede costar mucho dinero descargar imagenes grandes.
 	Reducir el tamaño intrínseco con CSS no evita que se descargue completamente.
-		
+	Si la img es más o menos proporcional a la caja se ajustará bien. Si se agranda más de su tamaño perderá resolución, que no es lo ideal.
+	
 		Valores de ventana gráfica:
 		Es el area visible dentro del navegador, esta tiene un tamaño.
 			
@@ -434,8 +441,8 @@
 	|| Imágenes, media y formularios
 		
 		Elementos de reemplazo:
-		Las imagenes, los videos y otros elementos de media () no son una caja, son elementos de reemplazo, actúan como bloque pero no se pueden aplicar otras propiedades del model box.
-		
+		Las imagenes, los videos y otros elementos de media (object, elementos de formulario, audio, canvas, etc) no son una caja, son elementos de reemplazo, actúan como bloque pero no se pueden aplicar otras propiedades del model box.
+		CSS no puede afectar el diseño interno, solo su posición
 			imágenes:
 
 			Con la etiqueta <img> podemos poner una imagen embebida/suelta por la página.
@@ -457,6 +464,43 @@
 				.image {
 				  background-image: url(star.png);
 				}
+
+			Imagenes con ancho max:
+				.box {
+				  width: 200px;
+				}
+
+				.max {
+				  max-width: 100%;
+				}
+  				
+  				<div class="wrapper"> //contenedor con tres cajas.
+
+					// el ancho mínimo van hacia las img.
+
+  					<div class="box"><img src="star.png" alt="star" 
+  					class="max"> 
+  					</div>
+
+  					// la subcaja contiene a cada img.
+
+
+		Object-fit:
+		Se aplica a los elementos de reemplazo (img, vid, etc).
+
+		El elemento de reemplazo se puede dimensionar para que se ajuste a una caja de varias maneras:
+		Si aplicamos  max-width: 100% a una img con un relación de aspecto muy grande, el contenedor puede cortar la imágen.
+
+		Una imágen que es más pequeña que la caja:
+		No es problema, se puede arreglar con position.
+			
+
+		Puede arreglar una imagen que es más grande que la caja:
+		Podemos aplicar max-width: 100%;
+		
+		*Para evitar descargar muchos o mantener el sitio ligero siempre es mejor una adecuada relación de aspecto para las imágenes según el sitio/situación.
+		
+
 
 
 
