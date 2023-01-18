@@ -618,6 +618,48 @@
 			  overflow: auto;
 			}
 
+	
+	|| Depurar CSS:
+
+		Problemas de especificidad:
+		En el inspector de código de los navegadores vemos las reglas en conflicto.
+		En el segundo panel vemos las reglas de CSS, debemos fijarnos cual regla más especifica se está aplicando.
+
+		Propieadades y valores incompatibles:
+		Los navegadores ignoran lo que no entienden, si la propiedad o valor no es compantible con el navegador, el CSS no se aplicará. Las DevTools tienen un icono triangular de precausion en la pestaña de las reglas y declaraciones de CSS.
+		Tambien podemos mirar las tablas de compatibilidad que cada propiedad tiene en la documentación.
+
+		Caso de prueba reducido del problema:
+		Mostrar el problema en codigo reducido lo más simple posible sin contenido y estilo complejo. Sacar el codigo problematico del diseño para que solo muestre este codigo o caracteristica.
+			
+			Copiamos el todo el HTML del codigo fuente, CSS y JS relevante
+			Si eliminar JS no soluciona el problema, no lo incluyas. Si hace desaparecer el problema, elimina la mayor cantidad de JS que puedas; deja solo las causas del problema.
+			Elimina cualquier HTML que no contribuya al problema, como elementos principales.
+			Elimina cualquier CSS que no afecte al problema.
+
+	*Alejarse del problema del problema puede ayudar a encontrar la solución que no estabamos evaluando.
+
+	
+	|| Estilo a las fuentes:
+
+
+
+
+	|| Estilo a las listas:
+
+
+
+
+	|| Estilo a los enlaces:
+
+
+
+
+	|| Fuentes web:
+
+
+
+
 
 */				
     
