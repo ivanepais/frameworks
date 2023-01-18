@@ -642,6 +642,64 @@
 	
 	|| Estilo a las fuentes:
 
+		Propiedades que afectan al estilo/aspecto de las fuentes:
+			
+			color:
+			Para la letra o el texto.
+
+			font-family:
+			Aspecto o forma de la letra para un elemento.
+			Se combinan fuentes seguras para la web: Arial, Courier New, Georgia, Times New Roman, Verdana, Trebuchet MS; con fuentes predeterminadas o genericas: serif, sans-serif, monospace, cursive, fantasy; y fuentes web o especiales
+				
+				p {
+			  	   font-family: "Trebuchet MS", Verdana, sans-serif;
+				}
+
+			font-size:
+			Tamaño de la letra. Si aplicamos un valor en rem depende del font-size prederterminado del HTML (16px).
+			Si aplicamos un valor en em dependerá del font-size de su elemento contenedor, si no tiene una definida; está heredada.
+			El valor em se usa para dimensionar elementos que necesiten variar de tamaño y el valor rem se usa para font-size de los elementos.
+				
+				*Si aplicamos 10px al font-size del documento, los calculos son más sensillos:
+
+					html {
+				  		font-size: 10px;
+					}	
+
+					h1 {
+				  		font-size: 2.6rem;
+					}		
+
+					p {
+				  		font-size: 1.4rem;
+				 		color: red;
+				  		font-family: Helvetica, Arial, sans-serif;	
+					}
+			
+			font-style:
+			Aspecto visual de la letra
+
+
+			font-weight:
+			Peso o grueso de la letra
+
+
+			text-transform:
+
+			
+			text-decoration:
+
+
+			text-shadow:
+
+
+		Propiedades que afectan a la disposición del texto en su conjunto:
+			
+
+
+		
+		Ritmos verticales:
+
 
 
 
