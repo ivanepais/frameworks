@@ -762,19 +762,48 @@
 		Un parrafo cualquiera tiene un margin superior e inferior de 16px (1em).
 		
 		Personalizar elementos li:
+		Propiedades especificas para personalizar las listas ordenadas (ol) y no ordenadas (ul).	
 
-			estilo:
+			Estilo: dibujo de las viñetas
+			Por ejemplo, podemos poner numeros romanos.
+				list-style-type: upper-roman;
 
+			Posición:
+			Puede mostrar las viñetas un poco más adentro o afuera del renglón
+				list-style-position: inside;
 
-			posición:
+			Imagen personalizada:
+				1er metodo: es limitado en cuanto al posicionamiento, tamaño, etc.
+	  				list-style-image: url(star.svg)
 
+	  			2do metodo: utilizar la propiedad background y crear espacios con las propiedades del model box.
+					ul {
+					  padding-left: 2rem;
+					  list-style-type: none;
+					}
 
-			imagen personalizada:
-
+					ul li {
+					  padding-left: 2rem;
+					  background-image: url(star.svg);
+					  background-position: 0 0;
+					  background-size: 1.6rem 1.6rem;
+					  background-repeat: no-repeat;
+					}
 
 			numeración de lista:
+			Para las listas ordenadas e items podemos usar unos atributos:
 
+				start:
+				Comenzamos la lista con un numero elegido.
+					<ol start="4">
 
+				reversed:
+				Podemos hacer una lista de menor a mayor
+					<ol start="5" reversed>
+
+				value:
+				Se aplican en li para poner los numeros que quisiéramos.
+					<li value="2">
 
 	
 	|| Ritmo:
@@ -809,7 +838,7 @@
 				  line-height: 1.5;
 				}
 				
-				// listas descriptivas
+				// Listas descriptivas
 
 				dd,
 				dt {
