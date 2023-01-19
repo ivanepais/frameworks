@@ -677,35 +677,80 @@
 					}
 			
 			font-style:
-			Aspecto visual de la letra
-
+			Aspecto visual de la letra: normal, italic, oblique.
 
 			font-weight:
-			Peso o grueso de la letra
-
+			Peso o grueso de la letra: normal, bold, lighter, bolder, 100-900;
 
 			text-transform:
+			Aspecto visual para todo el texto.
 
+				none: Impide la transformación.
+				uppercase: Pone todo el texto en mayus.
+				capitalize: Transforma las letras iniciales de cada palabra en el texto.
+				full-width: Transforma los caracteres para cada uno quede dentro de una caja de ancho fijo, similar a una fuente monoespaciada. Permite la alineacion de caracteres occidentales con los asiáticos.
 			
 			text-decoration:
+			Se usa para los subrayado.
 
+				none: Desactiva la decoración presente del texto.
+				underline: Subraya el texto.
+				overline: Proporciona una linea arriba del texto.
+				line-through: Coloca un tachado sobre el texto.
 
 			text-shadow:
+			Aplica sombras al texto. Admite valores en unidad de longitud, en este orden:
+				
+				Desplazamiento horizontal:
+				Desplazamiento vertical:
+				Radio de desenfoque:
+				Color: 
+
+					text-shadow: 1px 1px 1px red;
+
+			Sombas multiples:
+			Se pueden aplicar separando con una coma el grupo de valores que define cada sombra individual. Todo a un solo elemento.
+			
+				text-shadow: -1px -1px 1px #aaa,
+	             0px 4px 1px rgba(0,0,0,0.5),
+	             4px 4px 5px rgba(0,0,0,0.7),
+	             0px 0px 7px rgba(0,0,0,0.4); 
 
 
 		Propiedades que afectan a la disposición del texto en su conjunto:
 			
+			text-align:		
 
+				left: Alinea el texto por la izquierda.
+    			right: Alinea el texto por la derecha.
+    			center: Centra el texto.
+    			justify: Varía los espacios entre las palabras para que todas las líneas de texto tengan el mismo ancho.
+    			se puede combianar con la propiedad hyphens: auto; por ejemplo.
 
+			line-height (interlineado):
+			Toma unidades de longitudes y tambien puede tomar un valor sin unidades que actúa como multiplicador de <em>font-size</em> para determinar la altura entre líneas, es la mejor opción
+		
+			letter-spacing (espaciado entre letras) y word-spacing (espaciado entre palabras):
+			Son utilies para lograr algun efecto o para aumentar la visibilidad de algun tipo de letra condensada.
+
+				html {
+				  font-size: 10px;
+				}
+
+				p {
+				  font-size: 1.5rem;
+				  color: red;
+				  font-family: Helvetica, Arial, sans-serif;
+				  line-height: 1.6;
+				  letter-spacing: 1px;
+				}
 		
 		Ritmos verticales:
 
 
-
-
 	|| Estilo a las listas:
-
-
+		Tienen un propiedades predeterminadas por cada navegador, por ejemplo: 
+		Es necesario que estas mantengan los mismos espacios verticales/top-bottom (tambien llamado ritmos verticales) que el resto de los elementos como parrafos e imagenes y el mismo espaciado horizontal/left-right entre uno y otro.
 
 
 	|| Estilo a los enlaces:
