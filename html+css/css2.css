@@ -2,22 +2,22 @@
 	|| Box Model
 
 		Caja en bloque:
-            Fuerza un salto de linea al llegar al final de la linea.
-            Se extenderá en la dirección de la linea para rellenar todo el espacio disponible que haya en su contenedor, la mayoría de las veces, la caja será tan ancha y ocupara todo el espacio como su contenedor.
-            Respetan las propiedades <strong>width</strong> y <strong>height</strong>.
-            Las propiedades padding, margin y border separan la caja de otros elementos.
+			Fuerza un salto de linea al llegar al final de la linea.
+			Se extenderá en la dirección de la linea para rellenar todo el espacio disponible que haya en su contenedor, la mayoría de las veces, la caja será tan ancha y ocupara todo el espacio como su contenedor.
+			Respetan las propiedades <strong>width</strong> y <strong>height</strong>.
+			Las propiedades padding, margin y border separan la caja de otros elementos.
 
 		Caja en linea:
-           	No fuerza un salto de linea al llegar al final de la linea.
-            Las propiedades <strong>width</strong> y <strong>height</strong> no funcionan por defecto (solo cambiando su tipo de visualización). Aunque con padding se puede agrandar la caja desde adentro pero se superponen los otros elementos, si hay y dependiendo de cuanto sea el padding.
-            Las propiedades padding, margin y border <em>verticales</em> no alejan a otras cajas en linea.
-            Las propiedades padding, margin y border <em>horizontales</em> si alejan a otras cajas en linea.
+			No fuerza un salto de linea al llegar al final de la linea.
+			Las propiedades <strong>width</strong> y <strong>height</strong> no funcionan por defecto (solo cambiando su tipo de visualización). Aunque con padding se puede agrandar la caja desde adentro pero se superponen los otros elementos, si hay y dependiendo de cuanto sea el padding.
+			Las propiedades padding, margin y border <em>verticales</em> no alejan a otras cajas en linea.
+			Las propiedades padding, margin y border <em>horizontales</em> si alejan a otras cajas en linea.
 
 		Partes de una caja:
-            Contenido (content box): area que muestra el contenido, puede modificarse con las propiedades width y height.
-            Relleno (padding box): espacio en blanco alrededor del contenido, se modifica con la propiedad padding.
-            Borde (border box): envuelve y limita la caja, puede modificarse con border.
-            Margen (margin box): espacio en blanco entre la caja y los otros elementos, se usa para separarlos. Se modifica con margin.
+			Contenido (content box): area que muestra el contenido, puede modificarse con las propiedades width y height.
+			Relleno (padding box): espacio en blanco alrededor del contenido, se modifica con la propiedad padding.
+			Borde (border box): envuelve y limita la caja, puede modificarse con border.
+			Margen (margin box): espacio en blanco entre la caja y los otros elementos, se usa para separarlos. Se modifica con margin.
 
 		Modelos de caja:
 			Estándar: suma todo y no cálcula automaticamente el ancho y alto de la caja.
@@ -25,187 +25,187 @@
 	
 		Margin:
 			Buenas practicas:
-            Margenes automáticos para centrar elementos</strong> con margin-left: auto; mueve la caja hacia el margen derecho (al agrandar el margen izquierdo). 
-            Con margin-right: auto; muevo todo el elemento hacia la izquierda y con las dos declaraciones centramos el elemento o la caja.</p>
-           	Siempre que no se use flexbox.
+			Margenes automáticos para centrar elementos</strong> con margin-left: auto; mueve la caja hacia el margen derecho (al agrandar el margen izquierdo). 
+			Con margin-right: auto; muevo todo el elemento hacia la izquierda y con las dos declaraciones centramos el elemento o la caja.</p>
+			Siempre que no se use flexbox.
 
-            Malas practicas:
-            Eliminar el margin y el padding</strong>: Con margin: 0; y padding: 0; se juntan todos los elementos y no se pueden distinguir. Peor es la situación si usan un selector universal porque van a tener que ir elemento a elemento para cambiar estas propiedades.
-            Centrar elementos con margin 0 auto:</strong> Puede desaparecer el espacio/separación vertical si hay otros elementos antes en la cascada.</p>
-            Usar margin 0 y padding 0 en el body:</strong> El primero por que todos los navegadores tienen por defecto un margin 8px (a todos los lados) se puede ver en inspeccionar elemento y los hace desaparecer. El segundo no tiene sentido porque no hay padding por defecto.
+			Malas practicas:
+			Eliminar el margin y el padding</strong>: Con margin: 0; y padding: 0; se juntan todos los elementos y no se pueden distinguir. Peor es la situación si usan un selector universal porque van a tener que ir elemento a elemento para cambiar estas propiedades.
+			Centrar elementos con margin 0 auto:</strong> Puede desaparecer el espacio/separación vertical si hay otros elementos antes en la cascada.</p>
+			Usar margin 0 y padding 0 en el body:</strong> El primero por que todos los navegadores tienen por defecto un margin 8px (a todos los lados) se puede ver en inspeccionar elemento y los hace desaparecer. El segundo no tiene sentido porque no hay padding por defecto.
 			
 			Colapso de margin
-            Si hay dos elementos cuyo margen se tocan, el margen que se sobrepone es el más grande. Un problema común es cuando queremos crear espacios y no se asigna el que le decimos, lo más probable es que haya un colapso de margen.
+			Si hay dos elementos cuyo margen se tocan, el margen que se sobrepone es el más grande. Un problema común es cuando queremos crear espacios y no se asigna el que le decimos, lo más probable es que haya un colapso de margen.
 			Otros casos:
-                Dos márgenes negativos colapsarán y se usará el valor más pequeño (el más alejado de cero).
-                Si un margen es negativo, su valor se restará del total.
+				Dos márgenes negativos colapsarán y se usará el valor más pequeño (el más alejado de cero).
+				Si un margen es negativo, su valor se restará del total.
 		
 
 	|| Backgrounds y Borders:
 		
 		Background-color:
-        Define el color de fondo de cualquier elemento/caja en CSS, el color se va a aplicar por debajo del contenido y del padding. Los valores de color pueden ser todos los que permite esta propiedad.
-                .box {
-                  background-color: #567895;
-                }
+		Define el color de fondo de cualquier elemento/caja en CSS, el color se va a aplicar por debajo del contenido y del padding. Los valores de color pueden ser todos los que permite esta propiedad.
+				.box {
+				  background-color: #567895;
+				}
 		
 		Background-image
-        Permite poner una imagen de fondo a un elemento o caja (lo mas utilizado). De forma predeterminada una imagen grande no se ajusta a la caja, mientras que una imagen pequeña se repite hasta llenar la caja. Además si le aplicamos un color de fondo a la imagen, ésta va a quedar por encima del color.
+		Permite poner una imagen de fondo a un elemento o caja (lo mas utilizado). De forma predeterminada una imagen grande no se ajusta a la caja, mientras que una imagen pequeña se repite hasta llenar la caja. Además si le aplicamos un color de fondo a la imagen, ésta va a quedar por encima del color.
 				.b {
-                  background-image: url(star.png);
-                  background-color: blue;
-                }
+				  background-image: url(star.png);
+				  background-color: blue;
+				}
 		
 		Background-repeat
-        Se usa para controlar el comportamiento repetitivo de las imágenes de fondo. Los valores son: no-repeat (evita que el fondo se repita), repeat-x (repite el fondo horizontalmente), repeat-y (repite el fondo verticalmente), repeat (repite el fondo de forma vertical y horizontal).
+		Se usa para controlar el comportamiento repetitivo de las imágenes de fondo. Los valores son: no-repeat (evita que el fondo se repita), repeat-x (repite el fondo horizontalmente), repeat-y (repite el fondo verticalmente), repeat (repite el fondo de forma vertical y horizontal).
 				.box2 {
-                    background-image: url(star.png);
-                    background-repeat: repeat-x;
-                }
+					background-image: url(star.png);
+					background-repeat: repeat-x;
+				}
 
 		Background-size
-        Se usa para dimensionar las imágenes de fondo, usa tipo de valores de medida como longitud (px) y porcentaje (%). También tiene valores de palabra clave como: <strong>cover</strong> (el navegador agrandará la imagen para que cubra toda la caja, sin que se pierda su relación de aspecto, que se recorte la imagen). Por eso es probable que parte de la caja quede sin cubrir. También está <strong>contain</strong>: el navegador hará que la imagen cubra toda la caja a costa de cortar la imagen, perdiendo su relación de aspecto.
+		Se usa para dimensionar las imágenes de fondo, usa tipo de valores de medida como longitud (px) y porcentaje (%). También tiene valores de palabra clave como: <strong>cover</strong> (el navegador agrandará la imagen para que cubra toda la caja, sin que se pierda su relación de aspecto, que se recorte la imagen). Por eso es probable que parte de la caja quede sin cubrir. También está <strong>contain</strong>: el navegador hará que la imagen cubra toda la caja a costa de cortar la imagen, perdiendo su relación de aspecto.
 				.box {
-                  background-image: url(balloons.jpg);
-                  background-repeat: no-repeat;
-                  background-size: 100px 10em;
-                }
+				  background-image: url(balloons.jpg);
+				  background-repeat: no-repeat;
+				  background-size: 100px 10em;
+				}
 
-                .box {
-                    background-image: url(star.png);
-                    background-repeat: repeat;
-                    background-size: cover;
-                }        			
+				.box {
+					background-image: url(star.png);
+					background-repeat: repeat;
+					background-size: cover;
+				}        			
 
-        Gradient: degradado
-        Es un tipo de imagen que se puede usar como fondo, se establece usando background-image con el valor linear-gradient o radial-gradient.
+		Gradient: degradado
+		Es un tipo de imagen que se puede usar como fondo, se establece usando background-image con el valor linear-gradient o radial-gradient.
 				.a {
-                  background-image: linear-gradient(105deg, rgba(0,249,255,1) 39%, rgba(51,56,57,1) 96%);
-                }
+				  background-image: linear-gradient(105deg, rgba(0,249,255,1) 39%, rgba(51,56,57,1) 96%);
+				}
 
-	    Bordes
-        Por lo general se usa la propiedad abreviada borde para poner el ancho, estilo y color en una sola linea. Pero para diseños más creativos se puede usar cada lado del borde de manera diferente.
+		Bordes
+		Por lo general se usa la propiedad abreviada borde para poner el ancho, estilo y color en una sola linea. Pero para diseños más creativos se puede usar cada lado del borde de manera diferente.
 				.box {
-                  border: 1px solid black;
-                }
+				  border: 1px solid black;
+				}
 
-                .box2 {
-                  border-top: 1px solid black;   
-                }
+				.box2 {
+				  border-top: 1px solid black;   
+				}
 
-                box3 {
-                    border-top-width: 1px;
-                    border-top-style: solid;
-                    border-top-color: black;  
-                }		
+				box3 {
+					border-top-width: 1px;
+					border-top-style: solid;
+					border-top-color: black;  
+				}		
 		
-        Border-radius: esquinas redondeadas
-        Aplica sobre la esquina de la caja, distinto a border que solo aplica a los lados.
+		Border-radius: esquinas redondeadas
+		Aplica sobre la esquina de la caja, distinto a border que solo aplica a los lados.
 				.box {
-                  border-radius: 10px;
-                }
-                
-                .box2 {
-                  border-top-right-radius: 1em 10%;
-                }
+				  border-radius: 10px;
+				}
+				
+				.box2 {
+				  border-top-right-radius: 1em 10%;
+				}
 	
 
 	|| Writing Mode, Display, Propiedades fisicas y lógicas
 		
 		La propiedad writing-mode cambia la dirección en bloque y en línea (o vertical u horizontal) de los elementos.
 		Mientras que display cambia el diseño/disposición de los elementos interiormente (diseño) y exteriormente (interacción).
-    	El flujo físico es el que se usa para las coordenadas top, right, bottom y left en distintas propiedades como margin, padding, etc. Entonces, las coordenadas estan atadas a los lugares fisicos de las cajas de css tomo puede ser un top. 
-    	El flujo lógico depende desde donde empiezan y terminan los elementos en los modos de escritura, por eso se utiliza <em>block/inline</em> con <em>start/end</em> que sirven para cualquier modo de escritura así no tendrás que ajustar nada y escribir menos código.
+		El flujo físico es el que se usa para las coordenadas top, right, bottom y left en distintas propiedades como margin, padding, etc. Entonces, las coordenadas estan atadas a los lugares fisicos de las cajas de css tomo puede ser un top. 
+		El flujo lógico depende desde donde empiezan y terminan los elementos en los modos de escritura, por eso se utiliza <em>block/inline</em> con <em>start/end</em> que sirven para cualquier modo de escritura así no tendrás que ajustar nada y escribir menos código.
 	 
 	
 	|| Propiedades y valores lógicos
-	    Estas van a reemplazar a las propiedades width y height (valores horizontales) en los modos de escritura como horizontal-tb, vertical-rl y lr porque width y height no se ajustan al contenido en los modos mencionados. Y a otros valores más.
+		Estas van a reemplazar a las propiedades width y height (valores horizontales) en los modos de escritura como horizontal-tb, vertical-rl y lr porque width y height no se ajustan al contenido en los modos mencionados. Y a otros valores más.
 
-	    inline-size:
-	   	Se refiere al tamaño de la dimension inline (texto/contenido dentro de la caja), va a extender o encoger las lineas de texto/contenido. Reemplaza a width.
+		inline-size:
+		Se refiere al tamaño de la dimension inline (texto/contenido dentro de la caja), va a extender o encoger las lineas de texto/contenido. Reemplaza a width.
 
 		block-size:
-	    Se refiere al tamaño de la caja, reemplaza a height. En resumen son la altura y la anchura que se usan en estos modos de escritura pero refiriéndose a las dos dimensiones.
-	        .box {
-              inline-size: 150px;
-            }
+		Se refiere al tamaño de la caja, reemplaza a height. En resumen son la altura y la anchura que se usan en estos modos de escritura pero refiriéndose a las dos dimensiones.
+			.box {
+			  inline-size: 150px;
+			}
 	
 		margin-block-start:
-	    Margen de inicio del bloque. Reemplaza a margin,.
+		Margen de inicio del bloque. Reemplaza a margin,.
 
-	    padding-inline-start:
-	    Es relleno va a aplicar al inicio de la dimension en linea (al inicio de las lineas de texto). Reemplaza a padding-left.
+		padding-inline-start:
+		Es relleno va a aplicar al inicio de la dimension en linea (al inicio de las lineas de texto). Reemplaza a padding-left.
 
-	    border-block-end:
-	    El borde se va a aplicar al final del bloque.
-	    Las propiedades físicas quedan ligadas a sus direcciones físicas, mientras que las propiedades lógicas cambian con el modo de escritura.
+		border-block-end:
+		El borde se va a aplicar al final del bloque.
+		Las propiedades físicas quedan ligadas a sus direcciones físicas, mientras que las propiedades lógicas cambian con el modo de escritura.
 
-	    block-start:
-	    Reemplaza a la propiedad top.
+		block-start:
+		Reemplaza a la propiedad top.
 
-	    inline-end:
-	    Reemplaza a la propiedad right.
+		inline-end:
+		Reemplaza a la propiedad right.
 
-	    block-end:
-	    Reemplaza a la propiedad bottom.
+		block-end:
+		Reemplaza a la propiedad bottom.
 
-	    inline-start:
-	    Reemplaza a la propiedad left. Si estamos en el modo de escritura horizontal-tb, el texto empieza por izquierda y termina por derecha, entonces, tiene sentido que esta propiedad reemplacé a left.
+		inline-start:
+		Reemplaza a la propiedad left. Si estamos en el modo de escritura horizontal-tb, el texto empieza por izquierda y termina por derecha, entonces, tiene sentido que esta propiedad reemplacé a left.
 			
 			.box {
-              inline-size: 200px;
-              writing-mode: horizontal-tb;
-            }
+			  inline-size: 200px;
+			  writing-mode: horizontal-tb;
+			}
 
-            .logical {
-              margin-block-start: 20px;
-              padding-inline-end: 2em;
-              padding-block-start: 2px;
-              border-inline-end: 10px dotted rebeccapurple;
-              border-block-end: 1em double orange;
-            }
+			.logical {
+			  margin-block-start: 20px;
+			  padding-inline-end: 2em;
+			  padding-block-start: 2px;
+			  border-inline-end: 10px dotted rebeccapurple;
+			  border-block-end: 1em double orange;
+			}
 
-            .physical {
-              margin-top: 20px;
-              padding-right: 2em;
-              padding-top: 2px;
-              border-bottom: 1em double orange;
+			.physical {
+			  margin-top: 20px;
+			  padding-right: 2em;
+			  padding-top: 2px;
+			  border-bottom: 1em double orange;
 	
 	
 	|| Desbordamiento/overflowing
 		Se aplicarán propiedades para controlar el contenido dentro de los elementos, evitando la perdida datos.
 
 		Propiedad overflow
-    	Controlamos como se comporta el desborde de contenido. 
+		Controlamos como se comporta el desborde de contenido. 
 
-    	Valor predeterminado:
-    	<em>visible</em>.
+		Valor predeterminado:
+		<em>visible</em>.
 
-    	Ocultar:
-    	<em>hidden</em> hace que los datos se pierdan para el usuario.
-    	
-    	Barra de desplazamiento:
-    	<em>scroll</em> agrega una barra de desplazamiento horizontal y vertical a la caja. 
+		Ocultar:
+		<em>hidden</em> hace que los datos se pierdan para el usuario.
+		
+		Barra de desplazamiento:
+		<em>scroll</em> agrega una barra de desplazamiento horizontal y vertical a la caja. 
 
 		Barras de desplazamiento cuando sean necesarias:
 		<em>auto>/em>
 
 		Propiedad <em>overflow-y: 
-    	<em>scroll</em> agrega una barra de desplazamiento vertical. 
+		<em>scroll</em> agrega una barra de desplazamiento vertical. 
 		
-    	Propiedad overflow-x: 
-    	<em>scroll</em> agrega una barra horizontal, aunque no es recomendada para las palabras largas, 
-    	es mejor investigar <em>"word-break"</em> y <em>"overflow-wrap"</em>. 
+		Propiedad overflow-x: 
+		<em>scroll</em> agrega una barra horizontal, aunque no es recomendada para las palabras largas, 
+		es mejor investigar <em>"word-break"</em> y <em>"overflow-wrap"</em>. 
 
-    	Dos valores en la propiedad overflow:
-    	Representan a overflow-x y overflow-y.
+		Dos valores en la propiedad overflow:
+		Representan a overflow-x y overflow-y.
 		
 			.box {
-              border: 1px solid #333333;
-              width: 200px;
-              height: 100px;
-              overflow-y: scroll;
-            }
+			  border: 1px solid #333333;
+			  width: 200px;
+			  height: 100px;
+			  overflow-y: scroll;
+			}
 
 		Block Formatting contentext:
 		Cuando se usa overflow, la caja se convierte en un bfc que es como otro html superpuesto; tiene reglas de comportamiento de diseño en bloque.
@@ -246,7 +246,7 @@
 					}
 
 					.box2 {
-			          padding: 1em;
+					  padding: 1em;
 					}
 
 		Porcentajes:
@@ -319,7 +319,7 @@
 		Matriz: Tono base del color, su valor va de 0 y 360 que representa un angulo en torno a una rueda de colores.
 		Saturación: Es la intensidad del color, toma un valor entre 0 (tono gris) y 100% (max saturación).
 		Luminosidad: Es la claridad o brillo del color, su valor está entre 0 (negro) y 100% (blanco).
- 		Su canal alfa con la funcion HSLA que controla la opacidad del elemento.
+		Su canal alfa con la funcion HSLA que controla la opacidad del elemento.
 			.box {
 			  background-color: hsl(188, 97%, 28%);
 			}
@@ -348,8 +348,8 @@
 				en width:
 				Si le damos un ancho en porcentaje dependera del tamaño de su <em>contenedor padre<em>, sin ancho dado por nosotros, ocuparía el total del espacio en horizontal por tratarse de un elemento de bloque.	
 					.box {
-			 			border: 5px solid darkblue;
-			 			width: 50%;
+						border: 5px solid darkblue;
+						width: 50%;
 					}    
 
 				margin y padding:
@@ -396,24 +396,24 @@
 				.max {
 				  max-width: 100%;
 				}
-  				
-  				<div class="wrapper"> //contenedor con tres cajas.
+				
+				<div class="wrapper"> //contenedor con tres cajas.
 
 					// el ancho mínimo van hacia las img.
 
-  					<div class="box"><img src="star.png" alt="star" 
-  					class="width"> 
-  					</div>
+					<div class="box"><img src="star.png" alt="star" 
+					class="width"> 
+					</div>
 
-  					// la subcaja contiene a cada img.
+					// la subcaja contiene a cada img.
 
-  					<div class="box"><img src="star.png" alt="star" 
-  					class="max">
-  					</div>
+					<div class="box"><img src="star.png" alt="star" 
+					class="max">
+					</div>
 
-  					<div class="minibox"><img src="star.png" alt="star" 
-  					class="max">
-  					</div>
+					<div class="minibox"><img src="star.png" alt="star" 
+					class="max">
+					</div>
 				
 				</div>
 
@@ -449,9 +449,9 @@
 			Con la etiqueta <img> podemos poner una imagen embebida/suelta por la página.
 			De acuerdo a la situación la podemos dimensionarla con los atributos height y width, con la propiedad max-
 				<img class=""
-			     src=""
-			     alt=""
-			    >
+				 src=""
+				 alt=""
+				>
 
 			Con la propiedad background-image: url(); podemos poner una imagen de fondo de un contenedor con 
 				<div class="box"></div> 
@@ -474,16 +474,16 @@
 				.max {
 				  max-width: 100%;
 				}
-  				
-  				<div class="wrapper"> //contenedor con tres cajas.
+				
+				<div class="wrapper"> //contenedor con tres cajas.
 
 					// el ancho mínimo van hacia las img.
 
-  					<div class="box"><img src="star.png" alt="star" 
-  					class="max"> 
-  					</div>
+					<div class="box"><img src="star.png" alt="star" 
+					class="max"> 
+					</div>
 
-  					// la subcaja contiene a cada img.
+					// la subcaja contiene a cada img.
 
 
 		object-fit:
@@ -652,7 +652,7 @@
 			Se combinan fuentes seguras para la web: Arial, Courier New, Georgia, Times New Roman, Verdana, Trebuchet MS; con fuentes predeterminadas o genericas: serif, sans-serif, monospace, cursive, fantasy; y fuentes web o especiales
 				
 				p {
-			  	   font-family: "Trebuchet MS", Verdana, sans-serif;
+				   font-family: "Trebuchet MS", Verdana, sans-serif;
 				}
 
 			font-size:
@@ -663,17 +663,17 @@
 				*Si aplicamos 10px al font-size del documento, los calculos son más sensillos:
 
 					html {
-				  		font-size: 10px;
+						font-size: 10px;
 					}	
 
 					h1 {
-				  		font-size: 2.6rem;
+						font-size: 2.6rem;
 					}		
 
 					p {
-				  		font-size: 1.4rem;
-				 		color: red;
-				  		font-family: Helvetica, Arial, sans-serif;	
+						font-size: 1.4rem;
+						color: red;
+						font-family: Helvetica, Arial, sans-serif;	
 					}
 			
 			font-style:
@@ -712,9 +712,9 @@
 			Se pueden aplicar separando con una coma el grupo de valores que define cada sombra individual. Todo a un solo elemento.
 			
 				text-shadow: -1px -1px 1px #aaa,
-	             0px 4px 1px rgba(0,0,0,0.5),
-	             4px 4px 5px rgba(0,0,0,0.7),
-	             0px 0px 7px rgba(0,0,0,0.4); 
+				 0px 4px 1px rgba(0,0,0,0.5),
+				 4px 4px 5px rgba(0,0,0,0.7),
+				 0px 0px 7px rgba(0,0,0,0.4); 
 
 
 		Propiedades que afectan a la disposición del texto en su conjunto:
@@ -722,10 +722,10 @@
 			text-align:		
 
 				left: Alinea el texto por la izquierda.
-    			right: Alinea el texto por la derecha.
-    			center: Centra el texto.
-    			justify: Varía los espacios entre las palabras para que todas las líneas de texto tengan el mismo ancho.
-    			se puede combianar con la propiedad hyphens: auto; por ejemplo.
+				right: Alinea el texto por la derecha.
+				center: Centra el texto.
+				justify: Varía los espacios entre las palabras para que todas las líneas de texto tengan el mismo ancho.
+				se puede combianar con la propiedad hyphens: auto; por ejemplo.
 
 			line-height (interlineado):
 			Toma unidades de longitudes y tambien puede tomar un valor sin unidades que actúa como multiplicador de <em>font-size</em> para determinar la altura entre líneas, es la mejor opción
@@ -744,19 +744,97 @@
 				  line-height: 1.6;
 				  letter-spacing: 1px;
 				}
-		
-		Ritmos verticales:
 
 
 	|| Estilo a las listas:
 		Tienen un propiedades predeterminadas por cada navegador, por ejemplo: 
 		Es necesario que estas mantengan los mismos espacios verticales/top-bottom (tambien llamado ritmos verticales) que el resto de los elementos como parrafos e imagenes y el mismo espaciado horizontal/left-right entre uno y otro.
+		
+			Las listas ul y ol tienen:
+			margin: top y bottom de 16px (1em).
+			padding-left: 40px (2.5em).
+			Los renglones (li): no tienen margin, border y padding.
+		
+			La lista dl:
+			Tiene un margin top y bottom pero no tiene padding.
+			El parrafo (dd) de la lista descriptiva tiene un margin-left de 40px (2.5em).
+		
+		Un parrafo cualquiera tiene un margin superior e inferior de 16px (1em).
+		
+		Personalizar elementos li:
+
+			estilo:
+
+
+			posición:
+
+
+			imagen personalizada:
+
+
+			numeración de lista:
+
+
+
+	
+	|| Ritmo:
+		Las propiedades que afectan a la disposición del texto deben ser coherentes en todo el sitio.
+		 	
+		 	1° Tomamos el HTML y se establece un tipo de letra y tamaño para todo el sitio que van a heredar los demas elementos.
+			2° Tomamos el titulo secundario, todas las listas y los parrafos para establecer su tamaño de fuente, así tendran el mismo espaciado superior e inferior.
+			3° Aplicamos el interlineado line-height para las listas descriptivas (dl) en su titulo (dt) y su parrafo (dd).
+			   Aplicamos negrita para el titulo y aumentamos el margen de abajo para su parrafo separandolo de los siguientes elementos, 
+			   Será el mismo espacio entre los titulos y todos los parrafos.
+
+			Ejemplo:
+
+				html {
+				  font-family: Helvetica, Arial, sans-serif;
+				  font-size: 10px;
+				}
+
+				h2 {
+				  font-size: 2rem;
+				}
+			
+				ul,
+				ol,
+				dl,
+				p {
+				  font-size: 1.5rem;
+				}
+
+				li,
+				p {
+				  line-height: 1.5;
+				}
+				
+				// listas descriptivas
+
+				dd,
+				dt {
+				  line-height: 1.5;
+				}
+
+				dt {
+				  font-weight: bold;
+				}
+	
+				// Estilos particulares:
+		
+				p {
+				  font-size: 1.5rem;
+				  color: red;
+				  font-family: Helvetica, Arial, sans-serif;
+				  line-height: 1.6;
+				  letter-spacing: 1px;
+				}
 
 
 	|| Estilo a los enlaces:
 
 
-
+			
 
 	|| Fuentes web:
 
@@ -765,4 +843,4 @@
 
 
 */				
-    
+	
