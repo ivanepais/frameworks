@@ -452,6 +452,12 @@
 				 src=""
 				 alt=""
 				>
+			
+			Imagen con enlace:
+				<a href="https://developer.mozilla.org/">
+					<img src="mdn-logo-sm.png" alt="MDN">
+					title="Logo del navegador Mozilla Firefox".
+				</a>
 
 			Con la propiedad background-image: url(); podemos poner una imagen de fondo de un contenedor con 
 				<div class="box"></div> 
@@ -861,9 +867,102 @@
 
 
 	|| Estilo a los enlaces:
+				
+		Por defecto vienen:
+		Subrayados
+		Los no visitados (:link) se ven azul.
+		Los visitados (:visited) se ven violetas.
+		Al pasar por arriba un enlace (:hover), el cursor cambia de forma.
+		Si tiene foco (:focus) se ve un contorno alrededor del link apretando tab y así se va cambiando (Windows).
+		Los activos (:active) se ponen de color rojo (se distingue si se mantiene apretado el click derecho).
+		
+		Cambiar estilo por defecto:
+		Usando las propiedades: color, cursor, outline.
 
+		Se recomienda:
+		Subrayar los enlaces, pero no otros elementos; sino, destacarlos de otra forma</li>
+		Aplicar :hover para resaltarlos de alguna manera.
 
+		Aplicar estilo:
+		Se tieen que seguir el orden: 
+		L(:link), V (:visited), F (:focus), H (:hover), A (:active).
 			
+			a {
+			  outline: none;
+			  text-decoration: none;
+			  padding: 2px 1px 0;
+			}
+
+			a:link {
+			  color: #265301;
+			}
+
+			a:visited {
+			  color: #437a16;
+			}
+
+			a:focus {
+			  border-bottom: 1px solid;
+			  background: #bae498;
+			}
+
+			a:hover {
+			  border-bottom: 1px solid;
+			  background: #cdfeaa;
+			}
+
+			a:active {
+			  background: #265301;
+			  color: #cdfeaa;
+			}
+
+		Icono al costado en los enlaces: 
+		Pueden usarse para señalar un sitio externo/una acción.	
+			a[href^="http"] {
+			  background: url("external-link-52.png") no-repeat 100% 0;
+			  background-size: 16px 16px;
+			  padding-right: 19px;
+		
+		Aspecto de botón en un enlace:
+			.container {
+			  display: flex;
+			  gap: 0.625%;
+			}
+
+			a {
+			  flex: 1;
+			  text-decoration: none;
+			  outline: none;
+			  text-align: center;
+			  line-height: 3;
+			  color: black;
+			}
+
+			a:link,
+			a:visited,
+			a:focus {
+			  background: palegoldenrod;
+			  color: black;
+			}
+
+			a:hover {
+			  background: orange;
+			}
+
+			a:active {
+			  background: darkred;
+			  color: white;
+			}
+		
+		Enlaces con imagen en nav:
+
+			<nav class="container">
+			  <a href="#"><img src="mdn-logo-sm.png" alt="MDN"></a>
+			  <a href="#"><img src="mdn-logo-sm.png" alt="MDN"></a>
+			  <a href="#"><img src="mdn-logo-sm.png" alt="MDN"></a>
+			  <a href="#"><img src="mdn-logo-sm.png" alt="MDN"></a>
+			  <a href="#"><img src="mdn-logo-sm.png" alt="MDN"></a>
+			</nav>
 
 	|| Fuentes web:
 
