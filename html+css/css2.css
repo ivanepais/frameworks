@@ -965,10 +965,54 @@
 			</nav>
 
 	|| Fuentes web:
+		Es una función de CSS que adminte archivos de fuentes para no depender de las fuentes del sistema.
+		
+		1° Declaramos @font-face, usamos la propiedad font-family para nombrar la fuente y la propiedad src con la funcion url() y la dirección donde se encuentra nuestra fuente.
+		2° Declaramos el HTML y usamos font-family para dar una listas de fuentes, poniendo el nmbre de @font-face y otras fuentes para personalizar el sitio.
+			Para usar este metodo hay que tener en cuenta que:
+			
+			@font-face {
+			  font-family: "myFont";
+			  src: url("myFont.woff2");
+			}
 
+			html {
+			  font-family: "myFont", "Bitstream Vera Serif", serif;
+			}
 
+		Los navegadores adminte diferentes formatos de letras, por ejemplo, los modernos adminten WOFF/WOFF2 (Web Open Font Format 1 y 2). Las versiones antiguas de IE admiten EOT (Embedded Open Type).
+		Elegimos dos tipos de letra, una para encabezados (puede ser de tipo Display o Slab serif) y otra para parrafos (menos llamativa y comoda para leer como sans), no importa el formato (TTF o OTF).
+		puede tener varias versiones de una misma fuente (como thin, regular, normal, bold, etc) y archivo de licencia,
+			
+			Ejemplo:
+			
+			html {
+			  font-size: 10px;
+			  margin: 0;
+			  font-family: sans-serif;
+			}
+			
+			h1 {
+			  font-size: 3.6rem;
+			  color: #0084ff;
+			  font-family: 'rubik';
+			  font-weight: normal;
+			  font-style: normal;
+			 }
+		
+		Para una misma fuente vemos hay versiones con distinta extensión por ejemplo: .ttf, .woff, .woff2 que se necesitan para tener compatibilidad con los navegadores.
+		Tambien tiene una hoja de estilo CSS que contiene el código de la propiedad @font-face que se necesita.
 
+		Ejemplo 2:
 
+		@font-face {
+			  font-family: "zantrokeregular";
+			  src: url("zantroke-webfont.woff2") format("woff2"), url("zantroke-webfont.woff")
+			      format("woff");
+			  font-weight: normal;
+			  font-style: normal;
+		
+		Se pone la ruta y el tipo de archivo para compatibilidad. Vemos que podemos poner varias declaraciones separadas por comas.
 
-*/				
+*/			
 	
