@@ -1,0 +1,222 @@
+/*
+	|| Normal Flow
+		Disponemos de elementos de bloque que aparecen uno debajo de otro y 
+		de elementos de línea que aparecen uno al lado de otro.
+
+
+	|| Flex
+
+		Contenedor y elementos flex:
+
+			<div class="wrapper">
+              <div class="box1">One</div>
+              <div class="box2">Two</div>
+              <div class="box3">Three</div>
+            </div>
+            
+            .wrapper {
+              display: flex;
+            }
+
+            .wrapper > div { 
+              flex: 1;   // selecciona todos los descendientes del contenedor.
+            }
+		
+		Propiedades para el contenedor:
+			display: flex
+			flex-direction
+			align-items
+			justify-content
+
+		Propiedades para los elementos:
+			flex
+
+
+	|| Grid
+		
+		Contenedor y elementos:
+			
+			<div class="wrapper">
+              <div class="box1">One</div>
+              <div class="box2">Two</div>
+              <div class="box3">Three</div>
+              <div class="box4">Four</div>
+            </div>
+            
+            .wrapper {
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr;
+              grid-template-rows: 100px 100px;
+              gap: 10px;
+            }
+
+            .box1 {
+              grid-column: 2 / 4;
+              grid-row: 1;
+            }
+		
+
+		Propiedades para el contenedor:
+			display: grid
+			grid-template-rows
+			grid-template-columns
+			gap
+		
+
+		Propiedades para los elementos:
+			grid-column
+			grid-row        //ubicación 
+
+
+	|| Float
+	Se utiliza para desplazar un elemento del flujo normal y ubicarlo en alguna parte de la ventana del navegador.
+		Tiene cuatro valores para establecer la flotación a los lados de otros elementos: left, right, none, inherit (heredar propiedades del padre)
+	
+			<div class="box">Float</div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam</p>
+
+            .box {
+              float: left;
+              width: 150px;
+              height: 150px;
+              margin-right: 30px;
+            }
+
+
+	|| Position
+		Se usa para mover elementos desde su ubicación por defecto en el flujo normal hacia otra posición.
+
+		static:
+		Valor por defecto en cada elemento.
+
+		relative:
+		Permite mover elementos solo respecto a su flujo normal, puede superponerse con otros.
+		Para moverlo usamos propiedades como <em>top</em> y <em>left</em> que lo va a empujar desde arriba y desde la izquierda,
+			
+			.positioned {
+              position: relative;
+              top: 30px;
+              left: 30px;
+            }
+
+		absolute:
+		Saca los elementos del flujo normal, para poder moverlo al borde del <em>html</em> (o de su elemento padre más próximo) para crear elementos de diseño complejo como paneles ocultos en la página que aparecen con un botón.		
+		Las propiedades top y left si van hacia arriba y a la izquierda, no empujan desde esas direcciónes como en relative.
+		Dependiendo del contenedor padre, dimensionamos el elemento.
+			
+			.positioned {
+              position: absolute;
+              top: 30px;
+              left: 30px;
+            }
+
+		fixed:
+		El elemento se pega al borde del html, actuando en un rango de área.
+			
+			.positioned {
+              position: fixed;
+              top: 30px;
+              left: 30px;
+            }
+
+		sticky:
+		Puede hacer que un elemento esté estatico que se desplazará cuando se mueva la pantalla.
+			
+			.positioned {
+              position: sticky;
+              top: 30px;
+              left: 30px;
+            }
+
+		Contenedor y z-index:
+
+	
+	|| Multi-column
+		Podemos acomodar el contenido en columnas mediante un contenedor con algunos elementos.
+
+		Propiedades para el contenedor:
+		column-count: Divide el contenido en la cantidad de columnas indicadas.
+		column-width: La cantidad de columnas dependera del ancho del contenedor.
+			
+			Ejemplo:
+			<div class="container">
+              <h1>Multi-column Layout</h1>
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus</p>
+
+              <p>Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada</p>
+            </div>  
+
+            .container {
+              column-width: 200px;
+            }
+
+
+	|| Table
+		Se usa para mostrar datos en filas y columnas, mucho tiempo atras se podía usar para diseñar páginas.
+		Ahora se puede usar para crear cosas especificas cuando un sitio admite navegadores antiguos.
+
+		display: en los elementos form (table), div (table-row) para una fila. 
+		Label e input (<em>table-cell</em>) para las celdas. 
+		Para el parrafo que sigue despues del formulario tiene el valor <em>table-caption</em> para el titulo/descripción de la tabla
+
+		Consta de espacios para el form, los campos con margin en 0 (arriba y abajo) y auto (centra horizontalmente), el ancho de los campos estan definidos, etc.
+			
+			            <form>
+              <p>First of all, tell us your name and age.</p>
+              <div>
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" />
+              </div>
+
+              <div>
+                <label for="lname">Last name:</label>
+                <input type="text" id="lname" />
+              </div>
+
+              <div>
+                <label for="age">Age:</label>
+                <input type="text" id="age" />
+              </div>
+            </form>
+            
+            html {
+              font-family: sans-serif;
+            }
+
+            form {
+              display: table;
+              margin: 0 auto;
+            }
+
+            form div {
+              display: table-row;
+            }
+
+            form label,
+            form input {
+              display: table-cell;
+              margin-bottom: 10px;
+            }
+
+            form label {
+              width: 200px;
+              padding-right: 5%;
+              text-align: right;
+            }
+
+            form input {
+              width: 300px;
+            }
+
+            form p {
+              display: table-caption;
+              caption-side: bottom;
+              width: 300px;
+              color: #999;
+              font-style: italic;
+            }
+
+
+
+*/
