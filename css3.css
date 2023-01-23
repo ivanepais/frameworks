@@ -2,6 +2,17 @@
 	|| Normal Flow
 		Disponemos de elementos de bloque que aparecen uno debajo de otro y 
 		de elementos de línea que aparecen uno al lado de otro.
+			
+			bloque:
+			Va a ocupar el 100% del ancho de su elemento padre.
+			
+			línea:
+			Tiene su ancho y alto determinado por su contenido, a menos que cambie a display: inline-block;
+		
+		*Es una buena practica comenzar el documento con el flujo normal y despues hacer las modificaciones.
+		Al contenido de una caja se le añade padding (relleno), border y margin. 
+		El modelo de caja más facil de aplicar es el que se usa con box-sizing: border-box en el cual las propiedades anteriores no afectan a la caja cambiando su anchura y altura dado.
+		Si dos elementos adyacentes tienen margen aplicado, se impondrá el más grande debido al colapso de margen.
 
 
 	|| Flex
@@ -24,12 +35,36 @@
 		
 		Propiedades para el contenedor:
 			display: flex
-			flex-direction
+			flex-direction y flex-wrap = flex-flow
 			align-items
 			justify-content
 
 		Propiedades para los elementos:
 			flex
+			align-self
+			justify-self
+			order
+		
+		Anidación:
+		
+		El articulo 3 tiene 3 divs tomamos el 1° para transformarlo en contenedor de nuestros botones.
+
+			article:nth-of-type(3) div:first-child {
+			  flex: 1 100px;
+			  display: flex;
+			  flex-flow: row wrap;
+			  align-items: center;
+			  justify-content: space-around;
+			}
+	
+		botones con flex: 1 auto; ocuparán el espacio que puedan cuando reducimos el ancho de la ventana del navegador y cuando no puedan saltarán a la nueva línea.
+			
+			button {
+			  flex: 1 auto;
+			  margin: 5px;
+			  font-size: 18px;
+			  line-height: 1.5;
+			}
 
 
 	|| Grid
@@ -66,6 +101,7 @@
 		Propiedades para los elementos:
 			grid-column
 			grid-row        //ubicación 
+			grid-area
 
 
 	|| Float
@@ -162,7 +198,7 @@
 
 		Consta de espacios para el form, los campos con margin en 0 (arriba y abajo) y auto (centra horizontalmente), el ancho de los campos estan definidos, etc.
 			
-			            <form>
+			<form>
               <p>First of all, tell us your name and age.</p>
               <div>
                 <label for="fname">First name:</label>
