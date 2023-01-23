@@ -95,13 +95,117 @@
 			display: grid
 			grid-template-rows
 			grid-template-columns
+			grid-column-gap
+			grid-row-gap
 			gap
+			grid-auto-rows      //tamaño implícito
+			grid-auto-columns
 		
 
 		Propiedades para los elementos:
+			grid-column-start/end
+			grid-row-start/end
 			grid-column
 			grid-row        //ubicación 
 			grid-area
+			grid-template-areas
+			grid-template-rows
+			grid-template-columns
+
+		Repetir cuadrícula y fila o columna implicita:
+		El primer valor será para la cantidad y el segundo valor será para el tamaño, separados por una coma.
+		Podemos determinar tamaño de fila o columna implicita con grid-auto-rows/columns.
+
+			.container {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+			  grid-auto-rows: 100px;
+              gap: 20px;
+            }
+		
+		Contenido min y max:
+		El contenido mínimo/max deben coincidir al menos para evitar desbordamiento.			
+		
+		minmax(): 
+		El primer valor es para altura (row) o anchura (column) mínima y el segundo determina el valor máximo.
+			
+			.container {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-auto-rows: minmax(100px, auto);
+              gap: 20px;
+            }
+
+        Filas o columnas como sean posibles:
+        Para que el contenedor admita la cantidad maxima de columnas posibles.
+        
+        repeat():
+		El 1° valor será auto-fill, el 2° la función minmax() y sus valores serán: tamaño (mínimo) y fr (unidad flexible) maximo.
+		O sea, repite los valores de min y max.	
+			
+			.container {
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+              grid-auto-rows: minmax(100px, auto);
+              gap: 20px;
+            }
+
+		Posicionamiento sobre líneas:
+		Las lineas son definidas por grid, no son los espacios (gutters).
+		Usamos valores de inicio y fin en una sola propiedad.	
+			
+			header {
+              grid-column: 1 / 3;
+              grid-row: 1;
+            }
+
+		Se coloca en la columna 1 hasta la 3ra y se extiende por toda la fila.
+		Los valores negativos como -1, -2, -3 solo funcionan con explícita.
+		
+		Posicionamiento sobre áreas:
+		Cada palabra representará una columna/fila y cada línea de nombres representará a una fila.
+		
+			Usamos grid-template-rows o grid-template-columns:
+			Se usa en el contenedor y las palabras van entre comillas, al final ponemos el punto y coma para cerrar la propiedad. 
+			Con los nombres debemos replicar la forma en la que queremos que se vea la página.
+		
+			Reglas:
+				Se llenan todas las celdas.
+    			Para llenar dos celdas repetimos el nombre.
+    			Las areas deben ser solo rectangulares.
+    			Las areas no pueden repetirse en lugares diferentes.
+			
+			.container {
+              display: grid;
+              grid-template-areas:
+                "header header"
+                "sidebar content"
+                "footer footer";
+              grid-template-columns: 1fr 3fr;
+              gap: 20px;
+            }
+
+            header {
+              grid-area: header;
+            }
+	
+
+		Superponiendo elementos:
+		Usando las líneas de la cuadrícula con grid-column y grid-row.
+		
+		Anidación de cuadrículas:
+		Tomamos un elemento del contenedor para convertirlo en cuadrícula, no hereda las propiedades del contenedor padre, se acomoda en una cuadrícula aparte.
+		
+		Cuadrícula de 12/16 columnas:
+		Los frameworks para diseñar una cuadrícula se basaban en 12 o 16, pero para esto ya no se necesitan de terceros.
+		Podemos hacer estás cuadrículas nativamente.
+		Solo necesitamos un contenedor con una cuadrícula de 12 columnas. 
+			
+			.container {
+            	display: grid;
+            	grid-template-columns: repeat(12, minmax(0,1fr));
+            	gap: 20px;
+       		}
 
 
 	|| Float
