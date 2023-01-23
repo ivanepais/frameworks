@@ -1,5 +1,5 @@
 /*
-	|| Normal Flow
+	|| NORMAL FLOW
 		Disponemos de elementos de bloque que aparecen uno debajo de otro y 
 		de elementos de línea que aparecen uno al lado de otro.
 			
@@ -15,7 +15,7 @@
 		Si dos elementos adyacentes tienen margen aplicado, se impondrá el más grande debido al colapso de margen.
 
 
-	|| Flex
+	|| FLEX
 
 		Contenedor y elementos flex:
 
@@ -67,7 +67,7 @@
 			}
 
 
-	|| Grid
+	|| GRID
 		
 		Contenedor y elementos:
 			
@@ -88,8 +88,7 @@
             .box1 {
               grid-column: 2 / 4;
               grid-row: 1;
-            }
-		
+            }		
 
 		Propiedades para el contenedor:
 			display: grid
@@ -101,7 +100,6 @@
 			grid-auto-rows      //tamaño implícito
 			grid-auto-columns
 		
-
 		Propiedades para los elementos:
 			grid-column-start/end
 			grid-row-start/end
@@ -187,8 +185,7 @@
 
             header {
               grid-area: header;
-            }
-	
+            }	
 
 		Superponiendo elementos:
 		Usando las líneas de la cuadrícula con grid-column y grid-row.
@@ -208,10 +205,11 @@
        		}
 
 
-	|| Float
-	Se utiliza para desplazar un elemento del flujo normal y ubicarlo en alguna parte de la ventana del navegador.
+	|| FLOAT
+		Se utiliza para desplazar un elemento del flujo normal que flotará en el documento para poder ubicarlo en alguna parte de la ventana del navegador.
 		Tiene cuatro valores para establecer la flotación a los lados de otros elementos: left, right, none, inherit (heredar propiedades del padre)
-	
+		No podemos aplicar propiedades del model box a los elementos que están alrededor para elejarlo, lo aplicamos al float.
+
 			<div class="box">Float</div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam</p>
 
@@ -221,9 +219,28 @@
               height: 150px;
               margin-right: 30px;
             }
+	
+		Clear:
+		Si solo aplicamos esta propiedad, mueve el flotante y vemos que los elementos circulantes dejan de envolverse al float.
+		El problema es que no se integra con los demás elementos.
+
+			.cleared {
+			  clear: left;
+			}
+
+		display: flow-root
+		Creará un bloque que envuelve los elementos para que no sobresalgan en la parte inferior.
+		Un BFC (block formatting context) crea un pequeño diseño para que un elemento padre pueda abarcar el tamaño que toman los elementos hijos como son el flotante y el parrafo.
+			
+			.wrapper {
+			  background-color: rgb(79, 185, 227);
+			  padding: 10px;
+			  color: #fff;
+			  display: flow-root;
+			}
 
 
-	|| Position
+	|| POSITION
 		Se usa para mover elementos desde su ubicación por defecto en el flujo normal hacia otra posición.
 
 		static:
@@ -231,13 +248,15 @@
 
 		relative:
 		Permite mover elementos solo respecto a su flujo normal, puede superponerse con otros.
-		Para moverlo usamos propiedades como <em>top</em> y <em>left</em> que lo va a empujar desde arriba y desde la izquierda,
+		Para moverlo usamos propiedades como <em>top</em> y <em>left</em> que lo va a empujar desde arriba y desde la izquierda.
 			
 			.positioned {
               position: relative;
               top: 30px;
               left: 30px;
             }
+
+		Toma estos lados de la caja y los mueve en dirección contraria.
 
 		absolute:
 		Saca los elementos del flujo normal, para poder moverlo al borde del <em>html</em> (o de su elemento padre más próximo) para crear elementos de diseño complejo como paneles ocultos en la página que aparecen con un botón.		
@@ -250,8 +269,19 @@
               left: 30px;
             }
 
+        La posición del elemento absoluto depende de su contenedor o ancestro más cercano y no del flujo normal.
+		
+		Crear contenedor ancestro:
+		Si ningún ancestro tiene un valor de position explicito (que nosotros codeamos) tendrá por defecto el valor sticky y su contenedor será el viewport (toda la ventana grafica disponible).
+		Necesitamos codear uno:
+
+			position: relative;
+		
+		Para nuestro ancestro, así el contenedor deja de ser la ventana gráfica.
+		El tamaño se podrá definir mejor.
+
 		fixed:
-		El elemento se pega al borde del html, actuando en un rango de área.
+		El elemento se pega al borde del html.
 			
 			.positioned {
               position: fixed;
@@ -261,7 +291,8 @@
 
 		sticky:
 		Puede hacer que un elemento esté estatico que se desplazará cuando se mueva la pantalla.
-			
+		El elemento sticky solo se desplazará en un área: por todo alto o dimensión de su elemento padre (elemento de bloque, flex o grid más cercado).	
+		
 			.positioned {
               position: sticky;
               top: 30px;
@@ -270,8 +301,13 @@
 
 		Contenedor y z-index:
 
+
+
+
+
+
 	
-	|| Multi-column
+	|| MULTI-COLUMN
 		Podemos acomodar el contenido en columnas mediante un contenedor con algunos elementos.
 
 		Propiedades para el contenedor:
@@ -292,7 +328,7 @@
             }
 
 
-	|| Table
+	|| TABLE
 		Se usa para mostrar datos en filas y columnas, mucho tiempo atras se podía usar para diseñar páginas.
 		Ahora se puede usar para crear cosas especificas cuando un sitio admite navegadores antiguos.
 
