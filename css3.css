@@ -270,7 +270,11 @@
             }
 
         La posición del elemento absoluto depende de su contenedor o ancestro más cercano y no del flujo normal.
-		
+			Ej:
+			Especifican la distancia que debe estar el elemento desde cada uno de los lados del elemento que lo contiene. 
+			Entonces, en este caso, estamos diciendo que el elemento absolutamente posicionado debe estar a 30 px desde la parte superior del "elemento contenedor" y 30 px desde la izquierda.
+
+
 		Crear contenedor ancestro:
 		Si ningún ancestro tiene un valor de position explicito (que nosotros codeamos) tendrá por defecto el valor sticky y su contenedor será el viewport (toda la ventana grafica disponible).
 		Necesitamos codear uno:
@@ -298,6 +302,42 @@
               top: 30px;
               left: 30px;
             }
+
+        Si es muy pequeño no se notará que se queda fijo. Con las propiedades top, bottom, left y right lo movemos hacia su lado contrario.
+			
+			Scrolling index:
+			Le agregamos sticky a al elemento <em>dt</em> (description title) de la lista de descripcion (dl). Con un valor maximo de 0 en top, los encabezados se desplazan con el contenido (dd) y cada encabezado siguiente reemplazará al anterior. Con un margen vertical (1em) y horizontal (0).
+				
+				<h1>Sticky positioning</h1>
+
+					<dl>
+					  <dt>A</dt>
+					  <dd>Apple</dd>
+					  <dd>Ant</dd>
+					  <dd>Altimeter</dd>
+					  <dt>B</dt>
+					</dl>
+
+				dt {
+				  background-color: black;
+				  color: white;
+				  padding: 10px;
+				  position: sticky;
+				  top: 0;
+				  left: 0;
+				  margin: 1em 0;
+				}
+
+		top, left, right y bottom:
+
+			relative, fixed, sticky:
+			Lo usamos para empujar los elementos desde estas direcciones.
+			Ej: La propiedad top: 0; hace el elemento no se mueva desde esta posición.
+
+			absolute: 
+			Toma distancia de su elemento contenedor.
+			Ej: top: 0; toma toda la dimensión top del contenedor.
+
 
 		Contenedor ancestro más cercano:
 		HTML es un jerarquia de elemento relacionados, entre ellos pueden ser:
