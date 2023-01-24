@@ -281,7 +281,7 @@
 		El tamaño se podrá definir mejor.
 
 		fixed:
-		El elemento se pega al borde del html.
+		El elemento flotará fijamente por la ventana del navegador porque es su contenedor natural mientras su ancestro no tenga las propiedades transform o perspective con un valor distinto de none.
 			
 			.positioned {
               position: fixed;
@@ -299,9 +299,62 @@
               left: 30px;
             }
 
-		Contenedor y z-index:
+		Contenedor ancestro más cercano:
+		HTML es un jerarquia de elemento relacionados, entre ellos pueden ser:
+
+			Elemento padre: 
+			Un elemento que <em>contiene directamente</em> a otros elementos.
+		
+			Hijo: 
+			Elemento que <em>está contenido</em> directamente dentro de otro elemento.
+		
+			Hermano: 
+			Los elementos son hermanos cuando <em>comparten</em> el mismo elemento principal.
+		
+			antepasado:
+			Elemento que contiene <em>en cualquier nivel</em> a otros elementos, será un antepasado de estos.
+
+			descendiente: 
+			Elemento que esta <em>está contenido</em> (en cualquier nivel) dentro de otro elemento.
+		
+		Las áreas de una caja (margin, border, padding, content) pueden ser el contenedor de un elemento posicionado:
+
+		Bloque contenedor y position:
+		Para generar un bloque contenedor debe haber un ancestro (más cercano) para el elemento.		
+		Determina la posición en donde va a estar ubicado.
+		Si un elemento no cumple para ser bloque contenedor, pasa al otro más cercano.	
+		Para ser contenedor, un elemento cercano debe tener ciertas caracteristicas:	
+				
+			Si el elemento es static, relative o sticky:
+			El bloque contenedor será el <em>content área</em> del antepasado si es un elemento en bloque, flex o grid. Un elemento en linea no es tenido en cuenta porque no es un bloque contenedor.
+			
+			Si es absolute: 
+			El contenedor será el <em>padding</em> del antepasado mientras no tenga aplicado <span>position: static;</span> o sea, puede tener fixed, absolute, relative. Este truco lo usamos en el apartado de posicionamiento, para que el contenedor del elemento no sea el viewport y se extienda por toda la pantalla.
+			
+			Si es fixed: 
+			El contenedor será el viewport (ventana grafica) del navegador.
+			
+			Si es absolute o fixed:
+			El contenedor puede ser el padding del ancestro si tiene las siguientes propiedades:
+				
+				transform o perspective distinto del valor none.
+				will-change con los valores transform o perspective.
+				filter distinto del valor none o will-change (solo en firefox).
+				contain con el valor paint.
+				backdrop-filter distinto de none.
+		
+		Mover el BFC:
 
 
+
+		z-index:
+		Establece el orden de renderización/visualizacion en la página usando el eje z de un elemento posicionado y sus descendientes o de los elementos flexibles.
+		Funciona con un elemento posicionado con el valor absolute, fixed o sticky.
+
+			orden html:
+			El orden en que aparecen los elementos posicionados en el HTML: los que aparecen últimos se superponen a los que estaban primeros. El eje z es una línea imaginaria que va desde la pantalla hacia nosotros.
+		
+		Agregamos un valor entero (positivo o negativo) a z-index para subirlo o bajarlo de capa.
 
 
 
