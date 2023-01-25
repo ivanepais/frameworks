@@ -328,6 +328,8 @@
 				  margin: 1em 0;
 				}
 
+				El efecto es que cada elemento dt se quedará fijo.
+
 		top, left, right y bottom:
 
 			relative, fixed, sticky:
@@ -336,7 +338,7 @@
 
 			absolute: 
 			Toma distancia de su elemento contenedor.
-			Ej: top: 0; toma toda la dimensión top del contenedor.
+			Ej: top: 0; toma toda la dimensión top del contenedor ancestro.
 
 
 		Contenedor ancestro más cercano:
@@ -384,11 +386,15 @@
 				backdrop-filter distinto de none.
 		
 		Mover el BFC:
+		Usamos el inspector para saber los valores de las areas de los ancestro y dar valores en px a las propiedades top, bottom, left y right.
+		Con los porcentajes podemos hacerlo más rápido, sin tener que restar los px del contenedor y nuestro elemento. Hace referencia al ancho del contenedor. El valor 0 se acerca al borde del contenedor.
 
 
-
-		z-index:
-		Establece el orden de renderización/visualizacion en la página usando el eje z de un elemento posicionado y sus descendientes o de los elementos flexibles.
+	|| Z-INDEX:
+	 	El elemento HTML es capaz de crear el contexto de diseño/formato inicial para poder aplicar el diseño en bloque y en línea en los elementos, tambien puede crear el contexto de apilamiento inicial que nos permite verlos y ubicarlos en orden.
+		Establece el orden de renderización/visualizacion en la página usando el eje z de un elemento posicionado y sus descendientes o de los elementos flexibles.		
+		Así como tambien habia propiedades para crear diferentes contextos de diseño, hay propiedades que crean otros contextos de apilamiento.
+		
 		Funciona con un elemento posicionado con el valor absolute, fixed o sticky.
 
 			orden html:
@@ -396,8 +402,71 @@
 		
 		Agregamos un valor entero (positivo o negativo) a z-index para subirlo o bajarlo de capa.
 
+		Contextos de aplilamiento:
+		Una jerarquia de apilamiento es la estructura que generan todos los elementos del HTML, formado por elementos hermanos y padre/hijo. 
+		Existen los niveles en una jerarquia, por ejemplo, elementos hermanos es un nivel y si hay hijos de uno de ellos pasa a ser el segundo nivel. 
+		Podemos identificar el orden de renderización (visualización de elementos) imaginando un numero de versión.
+
+		Orden de apilamiento:
+			
+			Fondo y borde del elemento raíz (HTML).
+			Cualquier elemento en bloque del flujo normal.
+			Bloques flotantes.
+			Elementos en línea del flujo normal
+			Elementos position siguiendo su orden en el HTML (los ultimos que aparecen en el HTML se superponen a los primeros).
+		
+		Apilando con z-index:
+		Z-index solo funciona cuando creamos un nuevo contexto de apilamiento en un elemento y un ejemplo es usando position + z-index.	
+		Se usa si queremos un orden diferente en los elementos a como vienen predeterminados, visualmente los elementos se alejarán o acercarán de nosotros. 
+		Una capa con un numero mayor se renderizará encima de las capas con números menores.
+			
+			Abajo: Elemento más lejanos al observador.
+			...
+			Capa -1
+			Capa 0: Capa de renderización inicial/por defecto, cuando los elementos no tienen z-index.</li>
+			Caja 1
+			Caja 2
+			Caja 3
+			...
+			Arriba: Elemento más cercano al observador.
+		
+		*Si varios elementos comparten el mismo valor de z-index, se situarán en esa capa pero se ordenarán con las reglas basicas anteriores sin z-index.
+		*Si los elementos hijos tienen z-index y su padre no, estos se ordenarán en el contexto de apilamiento inicial.
+		*Los elementos hijos tiene su propio contexto: se ordenan entre ellos, los de afuera no interfieren y se superponen visualmente a su padre. Si el elemento padre tiene z-index se ordenará en su propio contexto y se moverá junto a sus hijos.
+		
+		Propiedades que crean contextos de apilamiento:
+
+			elemento raíz (HTML).
+			position (relative o absulute, fixed o sticky) y z-index distinto de 0.
+			item flex o item grid.
+			opacity menor de "1".
+			transform distinto de "none".
+			mix-blend-mode distinto de "normal".
+			filter distinto de "none".
+			perspective distinto de "none".
+			isolation distinto de "isolate".
+			will-change en un valor no inicial.
+			contain con layout, paint, strict, content.
 
 
+	|| BFC: contexto de formato de bloque
+		Es la región en que ocurre la disposición de las cajas de bloque y en la cuál los elementos flotantes interactúan los unos con los otros.
+		A estos bloques se les aplica las propiedades del model box para alejarlos de los demás, si las aplicamos a los elementos normales no tendrían efecto como vimos con los flotantes.
+		Por eso para diseñarlos o solucionar problemas, creamos un bfc contenedor o adyacente.
+
+			Es creado por un elemento con: 
+				elemento raiz (<HTML>) o algo que lo contiene.
+				float diferente de none.
+				position absolute o fixed.
+				display: inline-block.
+				display: table-cell, que es la propiedad por defecto de las celdas de una tabla HTML.
+				display: table-caption, que es la propiedad por defecto de los subtítulos de tablas HTML.
+				overflow distinto a visible.
+				display: flex o inline-flex.
+				display: flow-root.
+				Flex items, Grid items.
+				Multicol containers.
+				column-span: all, siempre; incluso cuando no está en el contenedor de multicolumna.
 
 	
 	|| MULTI-COLUMN
