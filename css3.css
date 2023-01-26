@@ -247,7 +247,7 @@
 		Valor por defecto en cada elemento.
 
 		relative:
-		Permite mover elementos solo respecto a su flujo normal, puede superponerse con otros.
+		Permite mover elementos dentro flujo normal, puede superponerse con otros.
 		Para moverlo usamos propiedades como <em>top</em> y <em>left</em> que lo va a empujar desde arriba y desde la izquierda.
 			
 			.positioned {
@@ -260,6 +260,7 @@
 
 		absolute:
 		Saca los elementos del flujo normal, para poder moverlo al borde del <em>html</em> (o de su elemento padre más próximo) para crear elementos de diseño complejo como paneles ocultos en la página que aparecen con un botón.		
+		El espacio en la página dónde estaba el elemento desaparece, los demás elementos tomán el lugar. Tendrá su bloque o capa propia.
 		Las propiedades top y left si van hacia arriba y a la izquierda, no empujan desde esas direcciónes como en relative.
 		Dependiendo del contenedor padre, dimensionamos el elemento.
 			
@@ -274,7 +275,6 @@
 			Especifican la distancia que debe estar el elemento desde cada uno de los lados del elemento que lo contiene. 
 			Entonces, en este caso, estamos diciendo que el elemento absolutamente posicionado debe estar a 30 px desde la parte superior del "elemento contenedor" y 30 px desde la izquierda.
 
-
 		Crear contenedor ancestro:
 		Si ningún ancestro tiene un valor de position explicito (que nosotros codeamos) tendrá por defecto el valor sticky y su contenedor será el viewport (toda la ventana grafica disponible).
 		Necesitamos codear uno:
@@ -286,12 +286,26 @@
 
 		fixed:
 		El elemento flotará fijamente por la ventana del navegador porque es su contenedor natural mientras su ancestro no tenga las propiedades transform o perspective con un valor distinto de none.
+		
+			h1 {
+			  position: fixed;
+			  top: 0;
+			  width: 500px;
+			  margin-top: 0;
+			  background: white;
+			  padding: 10px;
+			}
+
+			top 0 es para que se adhiera a la parte superior o para no moverlo desde esa posición.
+			Le damos al encabezado el mismo ancho que la columna de contenido y luego un fondo blanco y algo de relleno y margen para que el contenido no sea visible debajo.
+			El encabezado posicionado ya no aparece en el flujo del documento, puede causar efectos que debemos arreglar.
+			Cuando fijamos un elemento parte del contenido se recorta al movernos por la página.
 			
-			.positioned {
-              position: fixed;
-              top: 30px;
-              left: 30px;
-            }
+			Podríamos mejorar esto bajando o moviendo los elementos normales del documento:
+			
+			p:nth-of-type(1) {
+			   margen superior: 60px;
+			}
 
 		sticky:
 		Puede hacer que un elemento esté estatico que se desplazará cuando se mueva la pantalla.
@@ -329,6 +343,10 @@
 				}
 
 				El efecto es que cada elemento dt se quedará fijo.
+
+		Colapso de margen en los elementos posicionados:
+		Los margenes pueden ser aplicados, pero no colapsan, se sumarían.
+		
 
 		top, left, right y bottom:
 
@@ -467,6 +485,39 @@
 				Flex items, Grid items.
 				Multicol containers.
 				column-span: all, siempre; incluso cuando no está en el contenedor de multicolumna.
+		
+		Colapso de margen:
+		Si tenemos dos elementos adyacentes con margen vertical en dónde se tocan el de arriba y abajo, tal vez esperamos que se sumen para que haya más espacio. Pero este no es el comportamiento natural de los margenes, converge el más grande.
+			
+			Ejemplo: 
+				<div class="blue"></div>
+				<div class="red"></div>
+
+				.blue,
+				.red {
+				  height: 50px;
+				  margin: 10px 0;
+				}
+		
+			Podemos evitar el colapso, si envolvemos el segundo elemento y a este contenedor lo convertimos en bfc:
+
+				<div class="blue"></div>
+				<div class="outer">
+				  <div class="red"></div>
+				</div>
+				
+				.outer {
+				  overflow: hidden;
+				  background: transparent;
+				}
+
+		BFC externo: 
+		Cuando un contenedor es BFC para sus elementos internos.
+
+		BFC interno:
+		Cuando un elemento interno es un BFC dentro de un contenedor normal.
+
+
 
 	
 	|| MULTI-COLUMN
