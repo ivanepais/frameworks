@@ -518,15 +518,23 @@
 		Cuando un elemento interno es un BFC dentro de un contenedor normal.
 
 
-
-	
 	|| MULTI-COLUMN
 		Podemos acomodar el contenido en columnas mediante un contenedor con algunos elementos.
 
 		Propiedades para el contenedor:
-		column-count: Divide el contenido en la cantidad de columnas indicadas.
-		column-width: La cantidad de columnas dependera del ancho del contenedor.
+		column-count: 
+		Divide el contenido en la cantidad de columnas indicadas.
+		Toma un valor que será la cantidad de columnas en las que se dividirán los parrafos porque es el contenido
 			
+			.container {
+			  column-count: 3;
+			}	
+
+		column-width: 
+		La cantidad de columnas dependera del ancho del contenedor.
+		Si el ancho del contenedor es menor que el ancho de la columna; se crea una sola columna más pequeña que el contenedor. Cuando sobra espacio se reparte entre las columnas que tendrán más ancho de lo indicado.
+		El ancho de las columnas se adaptarán al tamaño de la ventana del navegador.
+
 			Ejemplo:
 			<div class="container">
               <h1>Multi-column Layout</h1>
@@ -539,8 +547,84 @@
             .container {
               column-width: 200px;
             }
+		
+		Estilo a las columnas:
+		Las columnas divididas no se pueden diseñar individualmente: cambiarles el tamaño, fondo o color de texto, etc.
+		
+		column-gap:
+		Cambiamos el espacio entre las columnas usando un valor de longitud (% o px), tambien se puede usar con flexbox, grid, etc.
+		
+		column-rule: 
+		Agregamos el ancho, estilo y color de la línea que separa a las columna; es una propiedad abreviada.
+		Ocupa el espacio que creó column-gap, si quiere más espacio deberá aumentar esta.
+		
+		Si queremos 10px a cada lado de las columnas; tenemos que agregar column-gap: 25px; 5px para la línea entre las columnas (estilo de column-rule) y se reparten 10px a cada lado de las columnas.
+			
+			.container {
+			  column-count: 3;
+			  column-gap: 20px;
+			  column-rule: 4px dotted rgb(79, 185, 227);
+			}
+		
+		Columnas expansivas:
 
+		column-span: all
+		Podemos hacer que un elemento se extienda sobre todas las columnas. Para hacer esto, este elemento divide al contenido de las columnas y continua después.
+		Ocupa todas las columnas o ninguna.
+		Se convierte en un bfc:  mini HTML que funciona aparte y sigue el diseño de bloques.
+		
+		Fragmentación de cajas:
+		al dividir el contenido de un conetenedor nos puede traer un problema en la experiencia de lectura: el texto se puede ver cortado.
+			
+			<div class="container">
+			  <div class="card">
+			    <h2>I am the heading</h2>
+			    <p>
+			      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+			      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+			    </p>
+			  </div>
+			</div>
 
+			.container {
+			  column-width: 250px;
+			  column-gap: 20px;
+			}
+
+			.card {
+			  background-color: rgb(207, 232, 220);
+			  border: 2px solid rgb(79, 185, 227);
+			  padding: 10px;
+			  margin: 0 0 1em 0;
+			}
+		
+		Si tenemos muchas cartas como esta, el contenedor multicolumna que divide cada divs y no solamente los parrafos: corta mal las cajas y dificulta la lectura.
+		
+		break-inside:
+		Establecemos como deben comportarse los saltos de página o región dentro de una caja. Decidimos si se deben romper o si lo evitamos.
+		El valor avoid que evita cualquier ruptura; al contenedor/div del titulo y el parrafo.
+			
+			.card {
+			  break-inside: avoid;
+			  page-break-inside: avoid;
+			  background-color: rgb(207, 232, 220);
+			  border: 2px solid rgb(79, 185, 227);
+			  padding: 10px;
+			  margin: 0 0 1em 0;
+			}
+		
+		break-before y break-after:
+		Se usa para separar antes y despues de un elemento señalado
+		Funciona entre los elementos/contenedores. Tienen valores en comun, se usan para el diseño en multicolumna, para los saltos de páginas en un documento de lectura, para regiones (experimental). Tambien valores genericos y globales.
+
+			Si queremos que en una hoja de impresión se corte para usar una hoja nueva en cierto elemento usamos el valor break-before: page.
+			Otro uso es querer evitar que los encabezados terminen como ultimo en una página de documento o columna, entonces, usamos: break-after: avoid.	
+
+		Propiedades orphans y widows:
+		Determinan cuantas líneas deben quedar/mostrase al principio (widows) o al final (orphans) de un salto de página o corte de una columna.
+		Solo funcionan para las líneas de parrafos.
+		
+		
 	|| TABLE
 		Se usa para mostrar datos en filas y columnas, mucho tiempo atras se podía usar para diseñar páginas.
 		Ahora se puede usar para crear cosas especificas cuando un sitio admite navegadores antiguos.
