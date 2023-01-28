@@ -1,0 +1,129 @@
+/*
+	|| RESPONSIVE DESING		
+		responsive web desing (RWD) es un conjunto de practicas que permite que las páginas web modifiquen su diseño y apariencia para adaptarse a diferentes anchos de pantalla de los dispositivos.
+		
+		media query:
+		Nos permiten ejecutar una series de pruebas/test que aplicarán CSS de manera selectiva cuando se cumplen los requisitos.
+		Se puede agregar multiples (breakpoints) media queries dentro de la hoja de estilo para modificar todo el diseño o parte de él, para que se adapte mejor a los distintos tamaño de pantalla.
+		Una practica comun es crear un diseño de una columna en la que los elementos se ven mientras te desplazas hacia abajo para dispositivos moviles de pantalla estreche (smartphones, tablets, etc). Luego probar/testear resoluciones más grandes e implementar un diseño de varias columnas cuando el usuario dispone de suficiente ancho de pantalla.
+		
+		imágenes responsivas:
+
+			img,
+			picture,
+			video {
+			  max-width: 100%;
+			}
+		
+		font responsive:
+		Cambiar en el tamaño de la fuente cuando se aplica <em>media queries</em>.
+		Para tamaño de fuente grande en resoluciones de ventana grandes.
+			
+			h1 {
+			  font-size: 2rem;
+			}
+
+			@media (min-width: 1200px) {
+			  h1 {
+			    font-size: 4rem;
+			  }
+			}
+		
+		font scale to viewport:
+		1vw es el 1% del ancho de la ventana del navegador. Si cambiamos el ancho, cambia el tamaño de la fuente.
+		La unidad vw pierde la capacidad de hacer zoom al estar relacionada con la ventana gráfica.
+		
+		solución:
+		Implica usar la funcion calc(), si a un valor con em o rem, le sumamos otro valor con vw; se puede usar el zoom, ademas la fuente va a agrandarse a medida que lo haga el ancho de la ventana del navegador.
+			
+			h1 {
+			  font-size: 6vw;
+			  font-size: calc(1.5rem + 3vw);
+			}
+		No necesitamos media queries para hacerla responsiva gradualmente.
+
+		text responsive to width item:
+
+			.item {
+				width: fit-content;
+			}
+			
+			o 
+
+			.item {
+				width: fit-content;
+				block-size: fit-content;
+			}
+
+		width responsive to content/text:
+
+			.item {
+				width: max-content;
+			}
+
+		etiqueta meta:
+		Dice que debe establecer su ancho respecto al ancho del dispositivo y ademas escalar el documento al 100%. De esta manera se logra optimizar la página para moviles.
+		
+			meta name="viewport" content="width=device-width,initial-scale=1" />
+		
+		Se hizo de está manera porque los primeros smartphones mentian sobre el ancho en la ventana gráfica de sus navegadores porque la mayoria de las páginas no se adaptaban a pantallas estrechas, entonces, mostraban la web de escritorio ampliada para que el usuario se desplaze y haga zoom para usar sus funciones.
+		El problema que sucede cuando no configuramos la etiqueta meta anterior, es que en los puntos donde se introduce un media query (breakpoints) para modificar el diseño no funcionará en los dispositivos moviles. Si ponemos un media query que modifique el diseño a partir de una resolución de 480px pero los navegadores moviles están seteados a 980p (da una vista ampliada del sitio como lo hacian antes los moviles, dado su pantalla estrecha), nunca hace efecto. En cambio si configuramos la etiqueta meta, el query funcionará.
+
+
+	|| MEDIA QUERIES
+
+
+
+
+
+
+	|| LEGACY LAYOUT
+
+
+	
+
+
+	|| SUPPORTS BROWSERS
+
+
+
+
+	|| 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
