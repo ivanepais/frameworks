@@ -15,7 +15,7 @@
 			  max-width: 100%;
 			}
 		
-		font responsive:
+		responsive font:
 		Cambiar en el tamaño de la fuente cuando se aplica <em>media queries</em>.
 		Para tamaño de fuente grande en resoluciones de ventana grandes.
 			
@@ -42,20 +42,66 @@
 			}
 		No necesitamos media queries para hacerla responsiva gradualmente.
 
-		text responsive to width item:
+		responsive text to width item:
 
 			.item {
-				width: fit-content;
+				width: fit-content;  //soporte con problemas
 			}
 			
 			o 
 
 			.item {
-				width: fit-content;
-				block-size: fit-content;
+				width: fit-content;  
+				block-size: fit-content; 
 			}
 
-		width responsive to content/text:
+			white-space: // mayor soporte, fallback/legacy
+			Maneja el espacio en blanco y el ajuste de las líneas dentro de un elemento.
+			valores: cambia la estetica o presentación del texto en la caja.
+			normal, nowrap, pre, pre-wrap, pre-line, break-spaces. Todas tienen distintas caracteristicas, responsivas y no responsivas, etc.
+
+				div {
+				  max-width: 100px;
+				  width: 100px;
+				  white-space: break-word;
+				}
+				
+				<div>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum numquam quas odit maiores corrupti, quo amet, exercitationem error veniam tempore voluptates nisi sequi. Eveniet tempora officiis pariatur ab provident rerum.
+				</div>
+
+			división de palabras dentro de si mismas:
+			
+			Propiedades:
+			
+			overflow-wrap: Se aplica a los elementos en línea. las palabras son responsivas pero puede afectar el ancho del elemento/caja.
+			Valores: normal, anywhere, break-word.
+				
+				.item {
+				  overflow-wrap: anywhere;
+				}
+
+				.item {
+				  overflow-wrap: break-word; // buen soporte
+				}
+			
+			hyphens (guiones): divide las palabras cuando el texto se ajusta a varias líneas. Puede evitar la división de guiones, dividir con guiones, etc.			
+			Las reglas de separación de sílabas son específicas del idioma. En HTML, el idioma está determinado por el atributo lang, y los navegadores dividirán con guiones solo si este atributo está presente y el diccionario de guiones apropiado está disponible.
+			Valores: none, normal, auto.
+
+				.hyphens {
+				  hyphens: auto;
+				}
+
+			word-break:
+			Configura los saltos de línea para que no desborden.
+			Valores: normal, break-all, keep-all.
+
+				.item {
+				  word-break: break-all;
+				}
+
+		responsive width to content/text:
 
 			.item {
 				width: max-content;
