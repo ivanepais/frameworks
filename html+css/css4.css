@@ -117,11 +117,123 @@
 
 
 	|| MEDIA QUERIES
+		Permite aplicar estilo mediante una regla con una serie de condiciones, que si son ciertas -en el navegador/dispositivo- cambia el diseño de la página adaptándola a distintos tamaños de pantalla.
+		Tambien pueden detectar caracteristicas/funciones del dispositivo que está usando el usuario. 
+		
+		sintaxis:
 
+			@media media-type and (media-feature-rule) {
+			   CSS rules go here
+		
+		1° va el tipo de query (media-type)
+		2° va el tipo de prueba/test (media-feature-rule) que debe pasar el navegador/disposito del usuario. 
+		3° adentro ponemos una declaración que debe cumplirse
+		4° CSS que se aplicará a un cuando se cumpla la condición.
+		
+		Media type:
+		Los tipos de medios se refiere a dónde se va aplicar la condición y el estilo de CSS:
+			
+			all: Aplica para ventana gráfica e impresión código.
+			print: Para imprimir/aplicar código.
+			screen: Para la ventana gráfica.	
 
+		*Antes de estos, se pone @media para que sean aceptados.
+		*Estos valores son opcionales, si no indicamos ninguno; el media query se aplica a todos los tipos de medios.
+			
+		Media feature rules:
+		Son funciones multimedia, cuando el usuario las activa, podemos cambiar el CSS que se especifica debajo de estas.
+		
+		funciones responsivas:
 
+		width, height; min-width, max-width y min-height, max-height:
+		Si las usamos en -screen- afecta a la ventana del navegador.
+			
+			@media screen and (width: 600px) {
+			  body {
+			    color: red;
+			  }
+			}
+		
+			@media screen and (max-width: 600px) {
+			  body {
+			    color: blue;
+			  }
+			}
 
+		El mínimo actúa como un piso y el máximo un techo. 
+		
+		Orientación:
+		Función multimedia para los dispositivos moviles que nos permite cambiar el CSS si el dispositivo está en modo vertical u horizontal
+		portrait: es la posición vertical, su alto es mayor que el ancho.
+		landscape:  es la posición horizontal, su ancho es mayor que el alto.
+				
+			@media (orientation: landscape) {
+			  body {
+			    color: rebeccapurple;
+			  }
+			}
+			
+		La vista de escritorio es horizontal, la vista en los navegadores movil es vertical.
 
+		
+		puntero:
+		Si los usuarios pasan el mouse/puntero por encima de los elememtos, podemos aplicar estilo.
+			
+			@media (hover: hover) {
+			  body {
+			    color: rebeccapurple;
+			  }
+			}
+
+		valores avanzados: 
+			fine: para los mouse y trackpad que son punteros precisos en areas pequeñas. 
+			coarse: que describe a un puntero grueso como puede ser nuestro dedo en una pantalla tactil.
+			none: cuando el dispositivo no este navegando con un puntero y lo haga con el teclado o un comando de voz.
+	
+		Lógica:
+			
+			and: se tienen que cumplir las dos condiciones.
+
+				@media screen and (min-width: 600px) and (orientation: landscape) {
+					body {
+					   color: blue;
+					}
+				}
+
+				El primer and para conectar el tipo y el segundo para conectar los operadores lógicos. 
+			
+			or: solo hace falta que se cumpla uno de ellos para que se aplique el CSS.
+			Se representa con una coma, podemos crear un media query más complejo con varios conjuntos de condiciones que pueden cumplirse.	
+				
+				@media screen and (min-width: 600px), screen and (orientation: landscape) {
+			  		body {
+			    		color: blue;
+			  		}
+				}
+
+				el texto será azul si la ventana gráfica tiene un minimo de 600px o si el dispositivo está en posición horizontal.
+
+			not:
+			invierte las condiciones que ponemos para que cambie el CSS. 
+
+				@media not all and (orientation: landscape) {
+			  		body {
+			    		color: blue;
+			  		}
+				}
+
+				Vemos que "not" se ubican antes del tipo de media.
+				lo contrario a orientacion: landscape;  es portrait, la pantalla tiene que ser vertical para que cambie el color de texto del body.
+		
+		Ubicar los breakpoints:
+		Hay que usar un media query para cambiar el diseño a uno mejor cuando haya espacio disponible. No importa las dimensiones exactas, se adapta por rangos.
+		En las herramientas para desarrolladores hay simulador de dispositivos para el diseño responsivo.
+		
+		Metodos para el diseño responsivo:
+		1° Empezar haciendo un diseño de escritorio y despues agregar queries para mover los elementos a medida que se va reduciendo la ventana gráfica.
+		2° Comenzamos un diseño de movil para que los elementos se agranden y acomoden a un espacio mayor a medida que se amplia la ventana del navegador. Este es el más seguido.
+		   La vista de los dispositivos más pequeños suelen ser una sola columna de contenido, como aparecen en el flujo normal. Solo hay que ordenar bien las fuentes para que sean legibles y centrar algunos elementos.
+		
 
 	|| LEGACY LAYOUT
 
