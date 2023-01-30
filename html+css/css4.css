@@ -236,17 +236,34 @@
 		
 
 	|| LEGACY LAYOUT
-
-
-	
+		Los nuevos metodos de diseño están diseñados para convivir con el código viejo o heredado, ya que los sobreescribe, sin causar problemas.
+		En dónde hay código heredado, podemos ir agregando nuevos metodos de diseño sin afectar el código viejo, es la parte más importante para mantener los metodos antiguos y modernos.
+		Tambien se podría usar queries que contengan un diseño moderno con propiedades que no son aceptadas en navegadores antiguos.
 
 
 	|| SUPPORTS BROWSERS
+		En caso de querer dar soporte a navegadores antiguos necesitamos de propiedades fallbacks o respaldo que son las que soportan esos navegadores. 
+		A los fallbacks los colocamos antes de las propiedades más avanzadas.
 
 
+	|| Conversión de diseño
 
+		Float y clear:
+		Las propiedades float y clear no hacen efecto cuando los elementos se convierten en cuadrículas
 
-	|| 
+		Display inline-block:
+		Los elementos de tabla perderan este comportamiento si se convierten en elementos flexibles o de cuadrícula. Ademas si teníamos cajas anonimas para arreglar la estructura de la tabla no se van a crearse o aparecer.
+
+		Display table:
+		Los elementos de tabla perderan este comportamiento si se convierten en elementos flexibles o de cuadrícula. Ademas si teníamos cajas anonimas para arreglar la estructura de la tabla no se van a crearse o aparecer.
+
+		Diseño de multiple columna:
+		Se puede usar de respaldo cuando el contenedor tenga algunas propiedades de columnas que luego se convertiran en cuadrícula.
+
+		Usar Flexbox como respaldo para Grid:
+		Si convertimos un contenedor flexible en uno de cuadrícula, se ignorarán las propiedades de flexbox. Flexbox es más compatible que Grid en navegadores antiguos pero hay algunas inconsistencias que notará en estos navegadores.	
+
+		*Las propiedades usadas para los navegadores antiguos pueden afectar a las propiedades usadas para navegadores modernos que se suele solucionar con queries.
 
 
 
