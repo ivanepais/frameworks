@@ -1,0 +1,84 @@
+/*
+	|| NORMAL FLOW
+
+		Los elementos en bloque tienen dos direcciones: block-direction (como aparecen las cajas) y inline-direction (direción hacia donde fluye el contenido).	
+		La propiedad writing-mode determina las dirección de los elementos en los metodos de diseño.
+		La propiedad display cambia los metodos de diseño.
+
+		Los contexto de formato determina el comportamiento de los elementos en bloque y en línea:
+			
+			en bloque:
+			Los margenes verticales crean una separación, si aplicamos margin: 0; elimina los margen en los cuatro lados, se juntarán las cajas.
+			El contenido de los elementos en bloque ocupará todo el espacio que haya en el contenedor del bloque, hacia donde fluya la dirección de este.
+			Aparecerán uno debajo de otro, incluso si para dos elementos determinamos un ancho para que entren los dos.
+			
+			en línea:
+			Se muestran uno tras otro en la dirección de contenido que disponga el modo de escritura que se esté usando.
+			Solo podemos aplicar propiedades horizontales del model box (izq y der: width (content área), padding, margin)
+			Solo le podemos dar altura si cambiamos el tamaño de fuente para su contenido.
+
+			Colapso de margen:
+			Cuando los margenes top y bottom se tocan, que uno solo: el más grande. Aunque hay más casos.
+
+		Display: define los tipos de visualización 
+
+			exterior:
+			Determina como se comporta la caja con respecto a las demás cajas dentro de ese mismo contexto de formato.
+			
+			interior:
+			Determina como se comportan las cajas/elementos dentro de este elemento.
+
+	
+		Elementos del HTML:
+		El elemento HTML crea el contexto de diseño/formato inicial para que los elementos esten dentro de la página.	
+		Seguirán el comportamiento del normal flow, a menos que con algunas propiedades o algunos valores de display podamos sacarlos de este contexto para crear otros con distintos comportamientos.
+
+			In flow:
+			Elementos que pertenecen al contexto inicial creado por la etiqueta HTML.
+
+			Out flow:
+			Elementos que pueden salir del flujo con float, position fixed y absolute, etc.
+			Podrán superponerse con los elementos que están en el contexto inicial.
+			
+			BFC (block formatting context):
+			Hay propiedades que pueden crear estos elementos especiales que son mini html que estan fuera del principal que siguen su propio comportamiento.
+
+
+	|| FLEX
+
+
+
+
+	|| GRID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ */
