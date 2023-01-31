@@ -4,6 +4,7 @@
 		Los elementos en bloque tienen dos direcciones: block-direction (como aparecen las cajas) y inline-direction (direción hacia donde fluye el contenido).	
 		La propiedad writing-mode determina las dirección de los elementos en los metodos de diseño.
 		La propiedad display cambia los metodos de diseño.
+		Las direction y text-direction son parecidas a writing-mode.		
 
 		Los contexto de formato determina el comportamiento de los elementos en bloque y en línea:
 			
@@ -16,9 +17,14 @@
 			Se muestran uno tras otro en la dirección de contenido que disponga el modo de escritura que se esté usando.
 			Solo podemos aplicar propiedades horizontales del model box (izq y der: width (content área), padding, margin)
 			Solo le podemos dar altura si cambiamos el tamaño de fuente para su contenido.
+			
+			*Los dos tipos de elementos tienen un principio y final que es importante para las propiedades lógicas.	
 
 			Colapso de margen:
 			Cuando los margenes top y bottom se tocan, que uno solo: el más grande. Aunque hay más casos.
+			
+			Elementos de reemplazo (img, video, etc):
+			No cambian su orientación/visualización por el modo de escritura.
 
 		Display: define los tipos de visualización 
 
@@ -27,8 +33,10 @@
 			
 			interior:
 			Determina como se comportan las cajas/elementos dentro de este elemento.
+		
+		Propiedades lógicas:
+		block-size, inline-size y las demás se adaptan bien a los valores de display y writing-mode.
 
-	
 		Elementos del HTML:
 		El elemento HTML crea el contexto de diseño/formato inicial para que los elementos esten dentro de la página.	
 		Seguirán el comportamiento del normal flow, a menos que con algunas propiedades o algunos valores de display podamos sacarlos de este contexto para crear otros con distintos comportamientos.
@@ -41,7 +49,64 @@
 			Podrán superponerse con los elementos que están en el contexto inicial.
 			
 			BFC (block formatting context):
-			Hay propiedades que pueden crear estos elementos especiales que son mini html que estan fuera del principal que siguen su propio comportamiento.
+			Hay propiedades que pueden crear estos elementos especiales que son mini html que estan fuera del principal que exteriormente sigue un comportamiento de bloque.
+			Por ejemplo, un float o los item de grid o flex son bfc.
+
+		Desbordamiento/overflow:
+		Hay más contenido del que cabe en un contenedor de tamaño restringuido.
+		En el flujo normal, darle a un elemento una altura y un ancho fijos genera un desbordamiento.
+		
+		Por defecto la propiedad overflow está en visible.
+		Podemos ocultarlo (hidden) o poner barras horizontal y vertical(scroll) y auto (pone barras cuando son necesarias).
+		overflow es abreviada de overflow-x y overflow-y.
+		Todas estas crean un nuevo BFC.
+
+		Pero tambien hay otras propiedades que se adaptan al texto o al caja para que no se desborde.
+		Como white-space, overflow-wrap, word-break, width: fit-content, width: max-content.
+		
+		*Estas propiedades no hacen falta en un texto no dinamico/contralado usuario. 
+		 Si en una caja definimos ancho pero no alto y la palabra más larga no supera el ancho de la caja, la altura de la caja se ajusta automaticamente al texto;
+			
+			Ej: Para un parrafo en una caja:
+				
+				<div class="box">
+    			<p>One November night in the year 1782, so the story runs, two brothers sat over their winter fire in the little French town of Annonay, watching the grey smoke-wreaths from the hearth curl up the wide chimney.</p>
+				</div>
+				
+				.box {
+				    width: 300px;
+				    border: 5px solid rebeccapurple;
+				    padding: 10px;
+				}
+
+				.box p {
+				    
+				    // no harián falta //
+
+				    white-space: nowrap;
+				    text-overflow: ellipsis;
+				    overflow: hidden;
+				}
+
+		Para propiedades lógicas:
+		Son como block-size e inline-size que reemplazan a height y width.
+
+			overflow-block:
+			Reemplaza a la propiedad vertical, overflow-y
+
+			overflow-inline:
+			reemplaza a la propiedad overflow-x.
+		
+		*Todavía no están implementadas, se deben usar las físicas y ajustar el modo de escritura.
+		
+		Propiedades para los ejes:
+			
+			En bloque:
+			
+
+			En línea:
+
+
 
 
 	|| FLEX
