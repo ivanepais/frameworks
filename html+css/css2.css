@@ -4,20 +4,23 @@
 		Caja en bloque:
 			Fuerza un salto de linea al llegar al final de la linea.
 			Se extenderá en la dirección de la linea para rellenar todo el espacio disponible que haya en su contenedor, la mayoría de las veces, la caja será tan ancha y ocupara todo el espacio como su contenedor.
-			Respetan las propiedades <strong>width</strong> y <strong>height</strong>.
+			Respetan las propiedades width y height.
 			Las propiedades padding, margin y border separan la caja de otros elementos.
 
 		Caja en linea:
 			No fuerza un salto de linea al llegar al final de la linea.
-			Las propiedades <strong>width</strong> y <strong>height</strong> no funcionan por defecto (solo cambiando su tipo de visualización). Aunque con padding se puede agrandar la caja desde adentro pero se superponen los otros elementos, si hay y dependiendo de cuanto sea el padding.
+			Las propiedades width y height no funcionan por defecto (solo cambiando su tipo de visualización). Aunque con padding se puede agrandar la caja desde adentro pero se superponen los otros elementos, si hay y dependiendo de cuanto sea el padding.
 			Las propiedades padding, margin y border <em>verticales</em> no alejan a otras cajas en linea.
 			Las propiedades padding, margin y border <em>horizontales</em> si alejan a otras cajas en linea.
 
 		Partes de una caja:
-			Contenido (content box): area que muestra el contenido, puede modificarse con las propiedades width y height.
+			Contenido (content box): area que muestra el contenido (texto, img, vid), puede modificarse con las propiedades width y height.
 			Relleno (padding box): espacio en blanco alrededor del contenido, se modifica con la propiedad padding.
 			Borde (border box): envuelve y limita la caja, puede modificarse con border.
 			Margen (margin box): espacio en blanco entre la caja y los otros elementos, se usa para separarlos. Se modifica con margin.
+			
+			*Se calculan desde su borde.
+			*El espacio ocupado de los elementos en línea está determinada por la propiedad line-height
 
 		Modelos de caja:
 			Estándar: suma todo y no cálcula automaticamente el ancho y alto de la caja.
@@ -25,14 +28,14 @@
 	
 		Margin:
 			Buenas practicas:
-			Margenes automáticos para centrar elementos</strong> con margin-left: auto; mueve la caja hacia el margen derecho (al agrandar el margen izquierdo). 
+			Margenes automáticos para centrar elementos con margin-left: auto; mueve la caja hacia el margen derecho (al agrandar el margen izquierdo). 
 			Con margin-right: auto; muevo todo el elemento hacia la izquierda y con las dos declaraciones centramos el elemento o la caja.</p>
 			Siempre que no se use flexbox.
 
 			Malas practicas:
-			Eliminar el margin y el padding</strong>: Con margin: 0; y padding: 0; se juntan todos los elementos y no se pueden distinguir. Peor es la situación si usan un selector universal porque van a tener que ir elemento a elemento para cambiar estas propiedades.
-			Centrar elementos con margin 0 auto:</strong> Puede desaparecer el espacio/separación vertical si hay otros elementos antes en la cascada.</p>
-			Usar margin 0 y padding 0 en el body:</strong> El primero por que todos los navegadores tienen por defecto un margin 8px (a todos los lados) se puede ver en inspeccionar elemento y los hace desaparecer. El segundo no tiene sentido porque no hay padding por defecto.
+			Eliminar el margin y el padding: Con margin: 0; y padding: 0; se juntan todos los elementos y no se pueden distinguir. Peor es la situación si usan un selector universal porque van a tener que ir elemento a elemento para cambiar estas propiedades.
+			Centrar elementos con margin 0 auto: Puede desaparecer el espacio/separación vertical si hay otros elementos antes en la cascada.</p>
+			Usar margin 0 y padding 0 en el body: El primero por que todos los navegadores tienen por defecto un margin 8px (a todos los lados) se puede ver en inspeccionar elemento y los hace desaparecer. El segundo no tiene sentido porque no hay padding por defecto.
 			
 			Colapso de margin
 			Si hay dos elementos cuyo margen se tocan, el margen que se sobrepone es el más grande. Un problema común es cuando queremos crear espacios y no se asigna el que le decimos, lo más probable es que haya un colapso de margen.
