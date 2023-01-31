@@ -72,7 +72,7 @@
 				<div class="box">
     			<p>One November night in the year 1782, so the story runs, two brothers sat over their winter fire in the little French town of Annonay, watching the grey smoke-wreaths from the hearth curl up the wide chimney.</p>
 				</div>
-				
+
 				.box {
 				    width: 300px;
 				    border: 5px solid rebeccapurple;
@@ -102,11 +102,26 @@
 		Propiedades para los ejes:
 			
 			En bloque:
-			
+			block-overflow, no está aprobada.
 
 			En línea:
+			text-overflow: siempre evitará el desbordamiento. Para que funcione necesitamos algunos valores de las propiedades white-space y overflow.					
+								
+				.box p {
+				    white-space: nowrap;
+				    text-overflow: ellipsis;
+				    overflow: hidden;
+				}
 
+			Todos los valores cortan el texto:
+				
+				clip: Puede ocurrir en medio de un carácter.
 
+				ellipsis: Antes agrega puntos suspensivos.
+				
+				text-overflow: "-"; agregará un guión.
+
+				text-overflow: ""; impide que corte el texto en medio de una palabra.
 
 
 	|| FLEX
