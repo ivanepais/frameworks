@@ -566,11 +566,49 @@
 			  column-rule: 4px dotted rgb(79, 185, 227);
 			}
 
-		Controlar el desbordamiento:
+		Controlar el desbordamiento: max-width: 100%;
+		Cuando el tamaño de un elemento es mayor que el cuadro de la columna.
+			
+			Ej: una imágen que está entre dos columnas de un contenedor, es más ancha que las columnas
+				
+				<div class="container">
+  					<p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon.</p>
+  					<img src="image.jpg" alt="balloons">
+  					<p>Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi-</p>
+				</div>
+
+				.container {
+				  column-width: 150px;	//puede pasar con column-count.
+				}
+
+			Por defecto, el contenido desbordado no se corta, se sigue mostrando.	
+			Con max-width: 100% se adaptará al ancho de columna.
 		
+		Dependiendo del formato del contenido, impresión (print) o continuo (continuous), el contenido de las columnas se desbordará de diferente manera y cambiará la manera en que lo controlamos.
+		En impresion puede ser que las columnas que se desborden pasan a otra página, lo mismo con los renglones o líneas de texto horizontal.
+		
+		En medios continuos, como una web; las columnas se desbordan en dirección del texto cuando no tenemos altura suficiente.
+			.container {
+			  column-width: 200px;
+			  height: 180px;
+			}
+
+			Si le sacamos la altura, crean más espacio vertical
+			Pero si no podemos, el texto colapsará el contenedor y el navegador nos mostrará una barra de desplazamiento. No tenemos propiedades para esto.
+
+		Aplicar media query:
+		Si el contenido de las columnas es más alto que el viewport, el usuario o lector tendrá que subir y bajar para leer cada columna.
+		Podemos verificar la altura antes de aplicar las propiedades de la columna.
+			
+			@media (min-height: 300px) {
+			  .container {
+			    column-width: 200px;
+			  }
+			}
+			
+			Si la altura tiene un minimo de 300px, crear columnas de 200px para que entre todo el contenido en la pantalla.
 
 
-		
 		Columnas expansivas:
 
 		column-span: all
