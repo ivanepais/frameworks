@@ -248,22 +248,128 @@
 			Grid:
 			Si un elemento flexible se convierte en un elemento de cuadrícula, se ignorarán las propiedades flexibles que se hayan asignado a los elementos secundarios.
 			O reemplazar un cuadrícula con flex, para navegadores antiguos.		
+				
+				   	<div class="box">
+				       <div>One</div>
+				       <div>Two</div>
+				       <div>Three</div>
+				    </div>
+					
+					.box {
+			          display: flex;
+			          flex-wrap: wrap;
+			        }
+
+			        .box>* {
+			          flex: 1 1 200px;
+			        }
+					
+					.box {
+				        display: grid;
+				        grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+				    }
+
+				*creamos el mismo diseño en flex y en grid
 
 			Propiedad display: contents
 			Si un elemento flexible tiene dos elementos anidados, que normalmente no participarían en el diseño flexible.
 			Elimina el diseño o estilo aplicado a a los subitems y tambien el estilo de bloque por fuera que le da el contenedor.
 
+				.box {
+		            display: flex;
+		        }
 
+		        .nested {
+		            background-color: orange;
+		            display: contents;
+		        }
 
+		Alineaciones:
+		Dejan el espacio en el eje principal o secundario.
+		Segun el flex-direction, los ejes van cambian; el espacio estará en eje de bloque o en el eje de línea. 
+			
+			Propiedades:
 
+			justify-content: 
+			Controla la alineación de todos los elementos en el eje principal (main).</li>
+			
+			align-items: 
+			Controla la alineación de todos los elementos en el eje secundario (cross).</li>
+			
+			align-self: Controla la alineación de un elemento en el eje secundario.</li>
+			
+			align-content: 
+			Controla el espacio entre las líneas del eje secundario.</li>
+			
+			gap, column-gap, and row-gap: 
+			Crean espacios entre elementos flexibles.
+			
+			Valores:
+				
+				justify-content: En eje principal
+				
+					flex-start
+					flex-end
+					center
+					space-between
+					space-around
+					space-evenly
+
+				align-items: En eje secundario
+					
+					flex-start
+					flex-end
+					center
+					stretch
+					baseline
+				
+				align-content: En eje secundario
+
+					flex-start
+					flex-end
+					center
+					space-between
+					space-around
+					stretch
+					space-evenly
+			
+		Margenes automaticos:
+		Para separar un grupo de elementos alineados en un contenedor.
+			
+			<div class="box">
+			  <div>One</div>
+			  <div>Two</div>
+			  <div>Three</div>
+			  <div class="push">Four</div>
+			  <div>Five</div>
+			</div>	
+
+			.box {
+			  display: flex;
+			}
+			.push {
+			    margin-left: auto;
+			}
+		
+
+		Gaps: espacios entre los elementos
+
+			.box {
+			  display: flex;
+			  flex-wrap: wrap;
+			  row-gap: 10px;
+			  column-gap: 2em;
+			}
+
+			.box > * {
+			  flex: 1;
+			}
 
 
 	|| GRID
 
-
-
-
-
+		Alineación:
+		El eje principal es la dirección en línea (texto) y el eje secundario es la dirección en bloque (cajas).
 
 
 
