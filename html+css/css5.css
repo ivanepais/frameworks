@@ -142,6 +142,118 @@
 
 
 	|| FLEX
+		Dispone los elementos sobre un eje vertical u horizontal, por eso es unidimensional.
+
+		Dos ejes:
+		El eje principal está definido por flex-direction, y el eje transversal corre en perpendicular (90°) al primero.
+		
+			Valores de flex-direction:
+
+				row: 
+				El eje principal corre en la dirección en línea/texto/contenido. 
+				Los items se ordenan en línea, uno al lado de otro.
+					
+					Su eje secundario correrá en dirección de bloque.
+
+				column: 
+				Corre en dirección de bloque/elementos. 
+				Los items se ordenan en columna, uno debajo de otro.
+					
+					El eje secundario correrá en dirección en línea.
+				
+				column-reverse/row-reverse: dirección contraria.
+		
+		writing-mode:
+		Determina dónde empiezan o terminan los elementos, start/end.
+
+		Valores por defecto:
+
+			Flex-direction: row;
+			Los items no crecen pero si se reducen
+			Los items crecen en el eje transversal para contener todo el contenido
+			flex-basis: auto;
+			flex-wrap: nowrap;
+
+		Valores auto / 0:
+
+			auto:
+			indica que los elementos toman el tamaño establecido en ellos mismo o si no tienen, su contenido determinará su tamaño.
+			
+			0: 
+			indica que va a ignorar el tamaño "auto" de los elementos (por contenido o por su ancho definido) así comparte todo el espacio disponible (del contenedor) proporcionalmente.
+
+		flex-wrap: wrap;
+		Acomoda los elementos en multiples líneas cuando no hay espacio en una sola.
+		
+		flex-flow: 
+		Es abreviada para flex-directión y flex-wrap.
+			
+			{flex-flow: row wrap;}
+
+		Propiedades para los items:
+		Usan el espacio disponible del contenedor flex.
+		Tamaño horizonal/vertical del contenedor menos el tamaño de los elementos.
+		Si sobra espacio, podemos distribuirlo entre los elementos.
+
+			flex-grow: 
+			Agrega/toma espacio del disponible para agrandar elementos.
+
+			flex-shrink:
+			Quita espacio para reducir elementos. 
+
+			flex-basis:
+			Define el tamaño de los elementos para crecer o reducirse.
+
+				auto: valor por defecto.
+				Los elementos toman el tamaño establecido en ellos mismo o si no tienen, su contenido determinará su tamaño.
+			
+				0: 
+				Indica que va a ignorar el tamaño "auto" de los elementos (por contenido o por su ancho definido) así comparte todo el espacio disponible (del contenedor) proporcionalmente.
+			
+			Flex:
+			Abreviada de grow, shink, basis; en este orden.
+
+				Configuraciones:
+
+					flex: 1 o flex: 2
+					Es como si usará flex: 1 1 0, o flex: 2 1 0; para los valores flex grow (crecimiento), shrink (reducción) o basis (tamaño). 
+					Los elementos pueden crecer o reducirse a partir de una base flexible de 0 (espacio proporcional).
+
+					flex: initial
+					Resetea a los valores iniciales que son flex: 0 1, cero para crecimiento, uno para reducción y auto para la base de los valores anteriores.
+					
+					flex: auto
+					Es flex: 1 1 auto, los elementos pueden crecer y reducirse a partir de su tamaño determinado.
+
+					flex: none 
+					Es flex: 0 0 auto, se distribuyen en el contenedor utilizando el tamaño mismo de los elementos, debido al valor auto.
+			
+			Alinear elementos:
+				
+				justify-content:
+				Alinea elementos en el eje principal.
+
+				align-items:
+				Para alinear elementos en el eje secundario
+			
+		Writting mode:
+		Flexbox se adapta a los modos de escritura, se usa para cuestiones creativas de diseño ya que estamos en CSSS, no se usa para cambiar el idioma de un documento completo. 
+		El idioma se trata desde HTML con los atributos dir y lang para indicar la dirección de texto y su idioma.
+
+		Flexbox y otros metodos:
+
+			Float y cleaner:
+			Si el contenedor de un float se convierte flex, no se aplicarán estás propiedades.
+			
+			Grid:
+			Si un elemento flexible se convierte en un elemento de cuadrícula, se ignorarán las propiedades flexibles que se hayan asignado a los elementos secundarios.
+			O reemplazar un cuadrícula con flex, para navegadores antiguos.		
+
+			Propiedad display: contents
+			Si un elemento flexible tiene dos elementos anidados, que normalmente no participarían en el diseño flexible.
+			Elimina el diseño o estilo aplicado a a los subitems y tambien el estilo de bloque por fuera que le da el contenedor.
+
+
 
 
 
