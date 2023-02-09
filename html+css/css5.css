@@ -351,7 +351,6 @@
 			    margin-left: auto;
 			}
 		
-
 		Gaps: espacios entre los elementos
 
 			.box {
@@ -364,6 +363,142 @@
 			.box > * {
 			  flex: 1;
 			}
+		
+		Orden de los elementos:
+		Podemos cambiar el orden de los elementos con flex-direction: row/column-reverse y la propiedad order.
+		Pero trae problemas de accesibilidad, el orden leido por el navegador es el del código fuente.
+		Solo estamos cambiando el orden visual.
+			
+			propiedad order:
+			Puede tomar elementos individuales y cambiarlos de lugar. 
+			Diseñada distribuir los elementos en grupos ordinales.
+			A los elementos se les asigna un número entero que representa su grupo, los valores más bajos van primero. Mas de un elemento puede tener el mismo numero de orden (se colocan seguidos, de menor a mayor orden del código fuente).
+			Por defecto tienen un valor 0, los que tengan un numero mayor, aparecerán despues de estos.				
+			Podemos usar negativos para dejar elementos primeros y a los demás no le asignamos ningun orden.
+
+				externo: 
+					
+					<div class="box">
+            			<div><a href="#">1</a></div>
+            			<div><a href="#">2</a></div>
+            			<div><a href="#">3</a></div>
+            		</div>
+					
+					.box {
+			          display: flex;
+			          flex-direction: row;
+			        }
+
+			        .box :nth-child(1) { order: 2; }
+			        .box :nth-child(2) { order: 3; }
+			        .box :nth-child(3) { order: 1; }
+				
+					negativo:
+
+						box {
+				          display: flex;
+				          flex-wrap: wrap;
+				          flex-direction: row;
+				        }
+
+				         <div class="active"><a href="#">3</a></div>
+				        .active {
+				            order: -1;
+				            flex: 1 0 100%;
+				        }
+
+				interno:
+				Puede ocurrir que el orden logico y de lectura (al mismo tiempo) de los elementos flexibles estén separados del orden visual.
+				Unos cuadros que tengan de notificaciones/noticias con un diseño que muestre una fecha, un encabezado y luego un contenido.
+				La fecha será un elemento flexible, con valor de order negativo, subimos la fecha por encima del encabezado.
+					
+					<div class="wrapper">
+			        	<div class="card">
+			            	<h3>News item title</h3>
+			            	<div class="date">1 Nov 2017</div>
+			            	<p>This is the content of my news item. Very newsworthy.</p>
+			        	</div>
+					</div>
+					
+					.card {
+            			display: flex;
+            			flex-direction: column;
+        			}
+
+        			.date {
+                		order: -1;
+                		text-align: right;
+            		}
+		
+		La mejor practica es mantener el orden logico, de lectura y tabulación. Tampoco se recomienda usar orden en elementos que se puedan navegar usando el teclado, como son los links.
+
+		Tamaño de los elementos flexibles:
+		Se relacionan con el tamaño natural de los artículos flexibles antes de que crezca o se encoja, y con el concepto de espacio libre.
+			
+			Espacio disponible en el contenedor:
+			El navegador necesita saber el tamaño de los elementos. 
+			
+			Elementos sin ancho ni alto definido:
+
+				min-content:
+				Su contenido minimo y tamaño de caja será la palabra más larga.	El contenido no se desbordará.
+
+					{width: min-content;}
+
+				max-content:
+				El contenido se muestra en una sola línea y es probable que se desborde si el contenedor no tiene el ancho suficiente.
+					
+					{width: max-content;}
+
+			Espacio libre:
+			Tamaño total elementos - contendor = espacio positivo o negativo
+
+				Positivo:
+				Cuando hay más espacio del necesario para mostrar todos los elementos flexibles dentro del contenedor.
+
+			 	Negativo:
+				Tamaño natural de los elementos suma más que el espacio disponible/tamaño del contenedor flex. Los elementos desbordan.
+			
+			*Para determinar el tamaño de los items flex debemos darnos cuenta si hay espacio positivo para distribuir o negativo para quitar.
+
+			Tamaño por flex-direction: 
+			Determinará el eje principal y si debemos calcular ancho/alto elementos con ancho/alto contenedor.
+			
+				row: viene por su ancho.
+				column: viene por su alto.
+			
+			Propiedades flex:
+				
+				grow:
+				Espacio positivo obtenido.
+				Crecimiento del elemento en relación con el resto,  cuando se distribuya el espacio libre positivo.
+				Si todos tienen el mismo de distribuye uniformemente, pero se puede dar distinto.
+
+					Combinar con basis:
+
+					Ej: flex: 1 1 auto
+					Si los elementos no tienen tamaño determinado y basis en auto, toma el tamaño por defecto el tamaño de contenido (el ancho es la palabra más larga y el alto se ajusta a la cantidad de palabras/contenido).
+					*Por max-content algun elemento puede quedar más grande, por más que todos tengan el mismo factor de crecimiento
+					
+					Ej: flex: 1 1 0
+					Con basis en 0 todos los elementos quedan con el mismo tamaño porque a todos le dimos un tamaño base 0, ignora su tamaño intrinseco y extrinseco.
+					Con grow 1 distribuirá proporcionalmente. 
+					
+					Ej: distintos valores de crecimiento desde basis 0
+					Uno puede llevarse el doble o el triple del espacio disponible
+					
+						*calculo del navegador:
+						suma los factores de crecimiento, después divide la cantidad total de espacio libre positivo en el contenedor flexible por ese número.
+						A este resultado lo divide por la cantidad de elemento. 
+						Así obtiene su parte cada elemento.
+
+				shrink:
+				Espacio negativo eliminado.
+
+				basis:
+				Tamaño antes de aplicar grow y shrink.
+			
+				
 
 
 	|| GRID
