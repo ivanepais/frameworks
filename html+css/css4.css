@@ -42,7 +42,7 @@
 			}
 		No necesitamos media queries para hacerla responsiva gradualmente.
 
-		responsive text to width item:
+		Texto responsivo al ancho:
 
 			.item {
 				width: fit-content;  //soporte con problemas
@@ -101,10 +101,14 @@
 				  word-break: break-all;
 				}
 
-		responsive width to content/text:
+		ancho responsivo al contenido/texto:
 
 			.item {
-				width: max-content;
+				width: max-content; // todo el contenido determina el ancho.
+			}
+
+			.item {
+				width: min-content; // la palabra más larga determina ancho de la caja.
 			}
 
 		etiqueta meta:

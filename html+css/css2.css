@@ -336,6 +336,7 @@
 
 	
 	|| Determinar el tamaño de los elementos
+		El tamaño por defecto de una caja es el tamaño de contenido: el ancho será la palabra más larga y el alto se ajusta a la cantidad de palabras/contenido.
 		
 		Tamaño natural o intrínseco:
 		Tienen un tamaño por defecto antes de que los redefinamos. Por ejemplo: una imagen tiene un ancho y un alto cuando se crea, esto es intrínseco. Si no cambiamos esos dos valores se mostrará con su tamaño natural. 
