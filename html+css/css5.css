@@ -468,17 +468,62 @@
 				column: viene por su alto.
 			
 			Propiedades flex:
-				
+
+				basis:
+				Especifica el tamaño inicial del elemento flexible antes de distribuir espacio positivo.
+					
+					auto:
+					Valor por defecto/inicial.
+					Primero verifica el tamaño inicial de un elemento.
+
+						Tamaño inicial:
+						Puede tener un valor/tamaño absoluto como 200px o relativo como %, em o una palabra, etc.
+						Sería la base.
+
+						Si el elemento no tiene un tamaño definido, queda en auto.
+						FLEXBOX determina que será su max-content.
+						
+					Ej: elementos con tamaño definido y elementos con auto
+						Un elemento, que tiene un ancho explícito de 150px; su valor basis auto será 150px.
+						Otro sin tamaño explicito, no tiene ancho explicito; su valor basis auto es max-content.
+						En este ultimo no importa el largo de las palabras, todo el contenido se verá en una línea.
+							
+							.box {
+						       display: flex;
+						    }
+
+						    .box :first-child {
+						       width: 150px;
+						    }
+
+						    .box > * {
+						       flex: 0 0 auto;
+						    }
+					
+					valor content:
+					La base flexible se toma le tamaño del contenido, incluso si hay un ancho establecido en el elemento.
+					
+					valor 0: 
+					Ignora el tamaño del elemento ya sea auto (max-content o explicito). El espacio disponible del contenedor se repartirá proporcionalmente.
+
 				grow:
 				Espacio positivo obtenido.
 				Crecimiento del elemento en relación con el resto,  cuando se distribuya el espacio libre positivo.
 				Si todos tienen el mismo de distribuye uniformemente, pero se puede dar distinto.
 
 					Combinar con basis:
+						
+						    .box {
+						       display: flex;
+						    }
+
+						    .box > * {
+						       flex: 1 1 0;
+						    }
 
 					Ej: flex: 1 1 auto
 					Si los elementos no tienen tamaño determinado y basis en auto, toma el tamaño por defecto el tamaño de contenido (el ancho es la palabra más larga y el alto se ajusta a la cantidad de palabras/contenido).
-					*Por max-content algun elemento puede quedar más grande, por más que todos tengan el mismo factor de crecimiento
+					*Por la cantidad de contenido algun elemento puede quedar más grande, por más que todos tengan el mismo factor de crecimiento
 					
 					Ej: flex: 1 1 0
 					Con basis en 0 todos los elementos quedan con el mismo tamaño porque a todos le dimos un tamaño base 0, ignora su tamaño intrinseco y extrinseco.
@@ -494,11 +539,82 @@
 
 				shrink:
 				Espacio negativo eliminado.
+				Determina cuánto se encogerá el elemento flexible en relación con el resto, cuando se distribuye el espacio libre negativo.
+				El navegador calcula cuando descubre que el total de los elementos son más grandes que el contenedor.
+						
+					Ej: un valor en 0 hace que los elementos no se reduzcan, el valor en 1 posible su reducción; si todos tienen el mismo valor se verán proporcionados.
+						Vemos un ancho determinado y basis auto.
+						Tambien vemos que el contenedor flex no tiene ancho, ocupará el 100% ancho de su contenedor padre.
+						
+						No tiene min/max-content, ni width, etc.
 
-				basis:
-				Tamaño antes de aplicar grow y shrink.
-			
+						    .box {
+						       display: flex;
+						    }
+							
+							.box >*	{	
+								flex: 0 1 auto;        
+						 		width: 200px;
+							}
 				
+					Combinando con basis:					
+					Ej: 
+					Flex shrink evita que los elementos se reduzcan a 0.
+					Quedan con el tamaño de min-content (el ancho de la caja será la palabra más larga)
+					El item más grande toma más espacio pero los demas no desaparecen.
+					Podemos hacerlo proporcional usando basis 0.		
+
+						.box {
+						    width: 500px;
+						    display: flex;
+						}
+
+						.box > * {
+						    flex: 1 1 auto;
+						}
+					
+					Ej: diferentes valores de reducción
+					Podemos hacer que unos elementos se reduzcan más que otros.
+					
+						.one {
+					        flex: 1 1 auto;
+					    }
+
+					    .two {
+					        flex: 1 0 auto;
+					    }
+
+					    .three {
+					        flex: 2 4 auto;
+						}
+				
+				En resumen:
+				max-content lo vemos en basis, cuando el elemento no tiene tamaño definido.
+				min-content lo vemos en shrink, para que el tamaño no se reduzca a 0.	
+				
+				Por otro lado, tenemos que controlar el tamaño del contenedor y si los elementos tiene tamaño determinado o automatico.
+				
+				Tamaño de basis: 
+				Si está en auto pero el elemento tiene definido un tamaño explicito, toma como base el explicito.
+				Si está en auto o content y el elemento no tiene uno definico, se el tamaño será el contenido.
+				A basis le podemos dar una unidad de longitud o factor, si posee uno; será el tamaño del item.
+				Si basis está en 0, el tamaño del elemento no se tiene en cuenta al distribuir el espacio. 
+				
+				Crecimiento y decrecimiento:
+				Si hay espacio libre positivo (total tamaño de los elementos < contenedor), los items crecerán.
+				Si hay espacio libre negativo (todos los elementos > contenedor), los items se reducirán.
+				Flex-direction entra en juego para calcular anchos si es fila o altura si es columna.
+				
+				Justify-content:
+				Podemos aplicarla cuando hay espacio libre para distribuir los elementos, sin aplicar flex basis, grow, shrink. 
+				
+				Margin auto:
+				Para separar un grupo de elementos de otro.
+
+		Tamaño de los contenedores flexibles:
+		
+
+
 
 
 	|| GRID
