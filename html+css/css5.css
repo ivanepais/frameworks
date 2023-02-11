@@ -612,10 +612,184 @@
 				Para separar un grupo de elementos de otro.
 
 		Tamaño de los contenedores flexibles:
-		
+			
+			Elementos en multiples filas/columnas:
+			No sucede automaticamente porque el valor por defecto de la propiedad flex-wrap es nowrap.
+			Con el valor wrap de flex-wrap evitamos que los elementos desborden el contenedor y se acomoden en una línea nueva. 
+			Tambien podemos usar fle-flow.
 
+				{ flex-wrap: wrap; }
+					o 
+				{ flex-flow: row wrap; }
+				{ flex-flow: column wrap; }
 
+				Ej: filas
+				Vemos elementos con tamaño explicito aplicado desde flex-basis.
+				Pero un contenedor sin ancho. 
 
+					.box {
+					    display: flex;
+					    flex-wrap: wrap;
+					}
+
+					.box>* {
+					    flex: 1 1 160px;
+					}
+  
+				Ej: columnas
+
+					.box {
+			       		height: 300px;
+			        	display: flex;
+			        	flex-direction: column;
+			        	flex-wrap: wrap;
+			   		}
+
+			    	.box>* {
+			        	flex: 1 1 80px;
+			    	}
+
+			*Si sobra espacio en el contenedor, el ultimo elemento lo ocupará todo; quedando desproporcionado con respecto a los demas. 		
+			A menos que la cantidad de elementos coincida perfectamente con el tamaño del contenedor.
+				
+				Ej: cuadrícula
+
+				    .box {
+				       height: 350px;
+				       width: 300px;
+				       display: flex;
+				       flex-direction: column;
+				       flex-wrap: wrap;
+				    }
+
+				    .box>* {
+				        flex: 1 1 60px;
+				    }
+
+			*Si damos altura al contenedor y tamaño base a los elementos podemos crear cuadrículas con flex.
+			*Si damos ancho al contenedor, los elementos dejarán de ocupar todo el ancho de su contenedor padre.
+			
+			*Los valores column/row reverse solo cambian el inicio y fin: derecha a izquierda.
+				
+				Ej: reverse:
+
+					.box {
+				        display: flex;
+				        flex-wrap: wrap;
+				        flex-direction: row-reverse;
+				    }
+				    .box>* {
+				        flex: 1 1 160px;
+				    }
+			
+			*No se puede indicarle a un elemento que se alineen con otro en otra fila.
+			Cada línea actúa como un nuevo contenedor, por eso se llena cuando hay espacio disponible.
+			Esto se debe al proposito unidimensional de flexbox.
+				
+				Ej: grid, sobra espacio y el ultimo item no lo llena
+
+					.box {
+				        display: grid;
+				        grid-template-columns: repeat(auto-fill,minmax(160px, 1fr));
+				    }
+				
+				// a menos que borre un elemento.			
+			
+			*Si queremos distribución del espacio fila por fila, usamos flexbox. Si no, usamos Grid.
+
+			Cuadrículas con flex:
+			Se asigna anchos porcentuales a elementos flexible.
+			Controlamos la flexibilidad usando porcentajes.
+
+				.box {
+			        width: 500px;
+			        display: flex;
+			        flex-wrap: wrap;
+			    }
+			    
+			    .box>* {
+			        flex: 0 0 33.3333%;
+			    }
+				
+				o con espacios:
+				
+				.wrapper {
+			        border: 2px dotted rgb(96, 139, 168);
+			        width: 500px;
+			      }
+
+			    .box {
+			        display: flex;
+			        flex-wrap: wrap;
+			        gap: 10px;
+			    }
+
+			    .box>* {
+			        flex: 1 1 160px;
+			    }
+
+			Colapsar/esconder elementos: 
+			Usamos propiedad visibility:collapse; se puede combinar con Js al momento esconder y mostrar contenido.
+			Mantiene el diseño y los elementos en sus líneas, así no se representarán desprolijamente.
+
+				<div class="box">
+		          <div>One</div>
+		          <div>Two</div>
+		          <div class="hide">Three
+		              <br>has
+		              <br>extra
+		              <br>text
+		          </div>
+		        </div>
+
+				.box {
+	            	display: flex;
+	         	}
+
+	          	.box>* {
+	            	flex: 1 1 200px;
+	          	}
+	          
+	          	.hide {
+	            	visibility: collapse;
+	          	}
+			
+			Ej: elemento escondido con varias filas
+				Si al elemento escondido le sacamos la propiedad visibility, el diseño se rompe; se distribuye el espacio y los demás elementos cambian de tamaño, el contenedor puede cambiar de tamaño si no lo tiene definido.
+				
+				.box {
+		            display: flex;
+		            flex-wrap: wrap;
+		        }
+		        
+		        .box>* {
+		            flex: 1 1 auto;
+		        }
+		        
+		        .hide {
+		            visibility: collapse;
+		        }
+
+				<div class="box">
+	                <div>One</div>
+	                <div>Add more text to this box to make it grow</div>
+	        		<div class="hide">Three
+	              		<br>has
+	              		<br>extra
+	              		<br>text
+	         		 </div>
+	          		<div>Four</div>
+	          		<div>Five</div>
+	          		<div>Six</div>
+	          		<div>Seven</div>
+	          		<div>Eight</div>
+	          	</div>
+			
+			*Cuando se vuelve a mostrar el elemento causa problemas en el diseño, puede requerir un replanteamiento de la estructura, por ejemplo, colocar cada fila en un contenedor flexible separado para que no puedan cambiar filas.
+			
+			visibility: hidden y display none:
+			La diferencia con display: none es que este lo elimina del formateo de la página, en cambio el otro lo ocuta pero se puede usar.			
+			*Chrome y Safari tratan a collapse como hidden.
 
 	|| GRID
 
