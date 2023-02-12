@@ -975,8 +975,92 @@
 				</code>
 				
 				Ponemos un label o un icono a la izquierda, ahora el campo de entrada de datos flexible tiene menos espacio.
+			
+			Dar compatibilidad:
+			Para navegadores muy antiguos debemos incluir los prefijos en cada regla.
+
+				.wrapper {
+				  display: -webkit-box;
+				  display: -webkit-flex;
+				  display: -ms-flexbox;
+				  display: flex;
+				}
+
+			*autoprefixer es un sitio dónde podemos ver los prefijos que necesitamos para las versiones antiguas de los navegadores.
+			
+			fallbacks:
+			Flexbox ignorará las siguientes propiedades por eso podemos usarlas en los elementos flex para dar compatibilidad a navegadores antiguos que no admiten flex. 
+			Con ellas logramos diseños parecidos. Los navegadores modernos sobreescribirán las propiedades antiguos y aplicará las modernas.
+
+				float y clear: 
+				Cuando aplicamos flex a un flotante, estos dejan de tener efecto.
+				Se convierten en elementos flexibles y adquieren la misma proporción, algo que no pasa en float.
+
+					.box {
+					  display: flex;
+					}
+
+					.item {
+					  float: left;
+					  width: 150px;
+					  flex: 1;
+					}
+   
+				display inline-block:
+				Pasa lo mismo, si eliminamos la propiedad flex, vemos las diferencias. 
+				Presenta espacios en blanco.
+					
+					.box {
+					  display: flex;
+					}
+
+					.item {
+					  display: inline-block;
+					  width: 150px;
+					  flex: 1;
+					}					
+
+				display table-:
+				Funciona hasta I.E, crea elementos anomimos para representar un diseño de columnas y centrado.
+				Pero no se pueden diseñar. Si eliminamos la propiedad flex, vemos que se crean columnas parecidas.
+
+					.box {
+					  display: flex;
+					}
+
+					.item {
+					  display: table-cell;
+					  width: 150px;
+					  flex: 1;
+					}
+
+      			vertical-align:
+				Se puede usar en display: table-cell y display: inline-block.
+				Flexbox y los navegadores modernos sobreescribirán esta propiedad y podemos usar justify-content o align-content.
+
+					.box {
+					  display: flex;
+					}
+
+					.item {
+					  display: inline-block;
+					  vertical-align: top;
+					  width: 150px;
+					  flex: 1;
+					}
+
+				Queries:
+				Podemos detectar si hay compatibilidad con flex
+
+					@supports (display: flex) {
+					   //code for supporting browsers
+					}
 				
-				
+					o para los que admiten el prefijo antiguo de flexbox
+
+					@supports (display: flex) or (display: -webkit-box) {
+					   //code for supporting browsers 
+					}
 
 
 	|| GRID
