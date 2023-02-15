@@ -796,7 +796,50 @@
 
 			Navegación:
 
-				
+				// Dependiendo del HTML o del diseño, seleccionamos uno u otros elementos y agregamos otras capacidades.
+					Lo ideal es que cada selector tenga un nombre dado con una clase así es más facil el mantenimiento.	
+						
+						<nav>
+					 		<ul>
+					   			<li><a href="#">Page 1</a></li>
+					    		<li><a href="#">Page 2</a></li>
+							</ul>
+						</nav>
+
+						nav ul {
+						  display: flex;
+						  justify-content: space-between;
+						}
+
+						
+						o //Diferente espaciado en los elementos.
+
+						nav ul {
+						  display: flex;
+						}
+
+						nav li {
+						  flex: auto ;
+						}
+
+
+						o // Barra de navegación fija para pantallas grandes.
+
+						nav {
+						  position: sticky;
+						  top: 0;
+						  z-index: 99;
+						}
+
+				        nav ul {
+				          display: flex;
+				          flex-flow: row wrap;
+				          justify-content: space-between;
+				        }
+
+				        nav ul li {
+				          flex: 1fr;
+				        }		
 
 				Agrupar y empujar elementos a un lado:
 					
@@ -838,8 +881,6 @@
 					.push-right {
 					  margin-left: auto;
 					}
-
-
 			
 			Diseño de carta:
 
@@ -1064,29 +1105,190 @@
 
 
 	|| GRID
+		La cuadrícula se forma con un conjunto de líneas horizontales y verticales, los elementos se pueden colocar dentro de ellas.
+		Podemos hacerlas de tamaño fijo (px) para que los elemtos se adapten al diseño. 
+		O hacerlas flexibles (1fr) para que el diseño se adapte a los elementos.
+			
+			Contenedor:
+			Solo los hijos directos serán grid items. Display flex por si solo, creará varias una columna con todos los elementos dispuestos uno debajo de otro.		
+			Las pistas le dan forma final de cuadrícula, se crean con grid-templete-rows/columns.
+			Los elementos que no son o no pueden ser colocados en las pistas creadas por nosotros, se colocarán automaticamente en las pistas implicitas que creará el navegador.
+			El tamaño de las pistas explicitas serán los valores que esten en grid-templete-columns/rows.
+			El tamaño de las pistas implicitas será su contenido o usar grid-auto-rows/columns.
+				
+				.wrapper {
+				  display: grid;
+				  grid-template-columns: repeat(3, 1fr);
+				  grid-auto-rows: 200px;
+				}
 
-		Alineación:
-		El eje principal es la dirección en línea (texto) y el eje secundario es la dirección en bloque (cajas).
+			Las unidades flexibles se usan para que el diseño se adapte al ancho de la ventana del navegador, las pistas o elementos crecen y se reducen segun el espacio disponible.
+			Podemos dar diferentes valores para que una parte del diseño se vea más grande u ocupe más espacio disponible que otras partes del sitio. 
+			Tambien podemos mezclar los valores inflexibles/absolutos con los flexibles para elementos que tengan que ser mostrados completamente y para elementos que puedan reducirse.
+			Podemos usar las funciones minmax() para dar un tamaño flexible entre un mínimo y máximo. 
+				
+				.wrapper {
+				  display: grid;
+				  grid-template-columns: repeat(3, 1fr);
+				  grid-auto-rows: minmax(100px, auto);
+				}
+			
+			Las líneas de grid se definen después de las pistas (a su vez crean celdas), su numeración depende de la dirección de escritura.
+			Con grid-column o grid-row start/end, los números de las líneas serán los sus valores.
+			Para colocarlos en las áreas usamos grid-template-areas para crear el diagrama con los nombres de las areas que tenemos que configurar con la propiedad grid-area.
+			El diagrama de las areas debe ser rectángular
+			Podemos superponer los elementos usando las líneas o usando z-index.
+			
+				.box1 {
+				  grid-column-start: 1;
+				  grid-column-end: 4;
+				  grid-row-start: 1;
+				  grid-row-end: 3;
+				  z-index: 2;
+				}
 
+			Flexbox vs Grid:
+			Flex funciona desde el contenido que toma el espacio del contenedor, además de las capacidades de alineación y espaciado. 
+			Grid prioriza el diseño y a partir de este colocamos a los elementos. Si creamos pistas que se adaptan al contenido, los elementos se acomodan en línea nueva.
 
+			Alineación:
+			El eje principal es la dirección en línea (texto) y el eje secundario es la dirección en bloque (cajas).
+			Podemos usar algunas propiedades de box-aligment que valen tanto para flex y grid.
 
+				.wrapper {
+				  display: grid;
+				  grid-template-columns: repeat(3, 1fr);
+				  align-items: end;
+				  grid-auto-rows: 200px;
+				}
+				.box1 {
+				  align-self: stretch;
+				}
+				.box2 {
+				  align-self: start;
+				}
+			
+			Unidades flexibles:
+			La unidad fr, cuando se combina con la función minmax(), puede brindarnos un comportamiento muy similar a las propiedades flex en flexbox.
+			Hay una diferencia entre la forma en que los dos diseños funcionan de manera receptiva, como hay diferencia en la forma de diseño y representación.
+			Flexbox puede acomodar todos los elementos en una fila siempre que haya espacio.
+			Mientras que en Grid siempre van a estar las mismas pistas que definimos aunque más chicas o grandes.
 
+			Autocompletar y autoajustar cuadrícula:
+			Para las filas o columnas podemos usar el valor auto-fill y auto-fit para lograr un efecto responsivo como en flexbox en la función repeat.
+				
+				Ej: Con auto-fill creará tantas columnas de 200 px como entren en el contenedor.
+					
+					.wrapper {
+					  display: grid;
+					  grid-template-columns: repeat(auto-fill, 200px);
+					}
 
+					// Puede quedar espacio sin ocupar en el contenedor.
+				
+				Ej: Con auto-fit y minmax() repartirá el espacio del contenedor entre el mínimo y el máximo.
+					Tendremos filas y columnas variables y responsivas.
 
+					.wrapper {
+					  display: grid;
+					  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+					}
 
+					// Los elementos ocupan todo el espacio del contenedor.
 
+			Grid y position absolute:
+			Cuando un contenedor grid es bloque contenedor de un elemento posicionado
+			Para que el contenedor de grid se bloque contenedor de un elemento, debemos agregarle la propiedad position: relative.
+			Así es como funciona para cualquier otro elemento padre cuando necesitemos un elemento absoluto.
+			Ahora podemos mover el elemento en todo el area del bloque contenedor/cuadrícula.
+				
+				wrapper {
+				  display: grid;
+				  grid-template-columns: repeat(4, 1fr);
+				  grid-auto-rows: 200px;
+				  gap: 20px;
+				  position: relative;
+				}
 
+				.box3 {
+				  grid-column-start: 2;
+				  grid-column-end: 4;
+				  grid-row-start: 1;
+				  grid-row-end: 3;
+				  position: absolute;
+				  top: 40px;
+				  left: 40px;
+				}
 
+				// Estaba posicionado en esas líneas, salió del flujo y cierra ese lugar; se ubica a 40px desde top y left.		
+			
+			*Una cuadrícula que es padre de un elemento absoluto pero que no tiene position: relative no puede contener a ningun elemento.
+			El bloque contenedor pasa a ser la ventana gráfica si no hay otro.	
+			Si eliminamos position: relative del contenedor vemos este efecto.
+			
+			Grid item como contenedor de un elemento absoluto:
+				
+				<div class="wrapper">
+					<div class="box2">Two</div>
+				 	<div class="box3">
+				    	Three
+				 	
+				  		<div class="abspos"> 
+				 			subelement of three
+				    	</div>
 
+					</div>
+				</div>
+				
+				.wrapper {
+				  display: grid;
+				  grid-template-columns: repeat(4, 1fr);
+				  grid-auto-rows: 200px;
+				  gap: 20px;
+				}
 
+				.box3 {
+				  grid-column-start: 2;
+				  grid-column-end: 4;
+				  grid-row-start: 1;
+				  grid-row-end: 3;
+				  position: relative;
+				}
 
+				.abspos {
+				  position: absolute;
+				  top: 40px;
+				  left: 40px;
+				  background-color: rgba(255, 255, 255, 0.5);
+				  border: 1px solid rgba(0, 0, 0, 0.5);
+				  color: #000;
+				  padding: 10px;
+				}
+			
+			display: contents:
+			Los elementos secundarios de un item de cuadrícula no pertenecen a ella, su comportamiento es de elementos de bloque comunes.
+			Cuando activamos display: contents al elemento padre, los hijos se disponen en cuadrícula.
+				
+				<div class="wrapper">
+				  <div class="box box1">
+				    <div class="nested">a</div>
+				    <div class="nested">b</div>
+				    <div class="nested">c</div>
+				  </div>
+				</div>
+			
+				.wrapper {
+			  		display: grid;
+			  		grid-template-columns: repeat(3, 1fr);
+			  		grid-auto-rows: minmax(100px, auto);
+				}
 
-
-
-
-
-
-
+				.box1 {
+			  		grid-column-start: 1;
+			  		grid-column-end: 4;
+			  		display: contents;
+				}
+	
 
 
 
