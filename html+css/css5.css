@@ -1288,11 +1288,116 @@
 			  		grid-column-end: 4;
 			  		display: contents;
 				}
-	
+			
+			Colocación automatica:
+			Si no los colocamos en la cuadrícula de ninguna manera, se distribuirán de acuerdo con las reglas de colocación automática, un elemento en cada una de las celdas, uno despues de otro. 		
+			
+				.wrapper {
+				  display: grid;
+				  grid-template-columns: repeat(3, 1fr);
+				  grid-template-rows: repeat(3, 100px);
+				}
+				
+				// tenemos 3 columnas y 3 filas que forman 9 celdas para colocar elementos. 
+					Este diseño creo 4 líneas en cada dimension (horizontal y vertical).
+					Y tambien, si tenemos menos de 9 elementos sobrarán lugares. 
+			
+			Espacios vacios:
+			Es otra caracteristica de grid, podemos dejar espacios sin usar margenes.
+			Con la ubicación en línea tendríamos que evitar las líneas que definen el área que deseemos que este vacia.
+			Con grid-template-areas usamos un punto cuando hacemos el diagrama.
+			
+			Si un elemento ocupa todo una fila o columna no hace falta el valor de grid-column o grid-row end.
+				
+				.box1 {
+				  grid-column-start: 1;
+				  grid-row-start: 1;
+				  grid-row-end: 4;
+				}
+				
+				.box3 {
+				  grid-column-start: 2;
+				  grid-row-start: 1;
+				}
+				
+				o
+
+				.box1 {
+				  grid-column: 1;
+				  grid-row: 1 / 4;
+				}
+
+				.box3 {
+				  grid-column: 2;
+				  grid-row: 1;
+				}
+
+			Con el diagrama de grid-template-areas ponemos el nombre de las areas las veces que necesitamos.
+			
+			Con grid-area ademas de dar un nombre a los elementos, podemos ubicarlos en las líneas
+			Su orden:
+
+		    	grid-row-start
+    			grid-column-start
+    			grid-row-end
+    			grid-column-end
+			
+				.box1 {
+				  grid-area: 1 / 1 / 4 / 2;
+				}
+
+				.box3 {
+				  grid-area: 1 / 2 / 2 / 3;
+				}
+				
+				// El orden está inspirado en el flujo lógico: 
+					
+					block-start
+					inline-start
+					block-end
+					inline-end
+			
+			Líneas negativas/reversa:
+			En modo de escritura de izquierda a derecha, para columnas se empiezan a numerar desde la derecha, -1 es la primera, sigue -2, etc.
+			Para filas se enumeran desde abajo hacia arriba -1, -2.
+			Quiere decir que el posicionamiento en dirección/orden se cuenta de esa manera.
+				
+				.box4 {
+				  grid-column-start: -2;
+				  grid-column-end: -4;
+				  grid-row-start: -3;
+				  grid-row-end: -4;
+				}
+			
+			Podemos estirar un elemento a lo largo del contenedor:
+				
+				.item {
+				  grid-column: 1 / -1;
+				}
+
+			Espacios:
+			Las propiedades column-gap, row-gap y gap no agregan espacio, sino que lo toman.
+			Si las filas y columnas nos quedan más pequeñas de lo que deseamos, aumentamos su tamaño en grid-template-columns/rows
+				
+				.wrapper {
+				  display: grid;
+				  grid-template-columns: repeat(3, 1fr);
+				  grid-template-rows: repeat(3, 100px);
+				  column-gap: 20px;
+				  row-gap: 1em;
+				}
+			
+			Ubicación con el valor span:
+			Podemos especificar una línea de inicio y luego el número de pistas que desea que abarque el área.
+				
+				.box1 {
+				  grid-column: 1;
+				  grid-row: 1 / span 3;
+				}
+
+				// Ej: Si 4 filas, empieza desde uno y despues toma 3; expandiendose hasta el final.
+					En la columna no tenemos el valor final, toma toda la columa 1.
 
 
-
-
-
-
- */
+				
+ /*			
