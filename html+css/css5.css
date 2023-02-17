@@ -123,7 +123,7 @@
 
 				text-overflow: ""; impide que corte el texto en medio de una palabra.
 		
-		Modelo de formato visual:
+	|| Modelo de formato visual:
 		Describe como los navegadores leen el DOM (árbol del documento) y lo muestran para los medios visuales (continuous media) una página, audio, video; y medios páginados (paged media) como puede ser un pdf para imprimir, un libro, etc.
 		Los elementos del DOM o del documento (web, pdf, etc) tienen un orden de renderizado:
 
@@ -284,9 +284,9 @@
 		            display: contents;
 		        }
 
-		Alineaciones:
-		Dejan el espacio en el eje principal o secundario.
-		Segun el flex-direction, los ejes van cambian; el espacio estará en eje de bloque o en el eje de línea. 
+		|| Alineaciones:
+			Dejan el espacio en el eje principal o secundario.
+			Segun el flex-direction, los ejes van cambian; el espacio estará en eje de bloque o en el eje de línea. 
 			
 			Propiedades:
 
@@ -432,7 +432,7 @@
 		
 		La mejor practica es mantener el orden logico, de lectura y tabulación. Tampoco se recomienda usar orden en elementos que se puedan navegar usando el teclado, como son los links.
 
-		Tamaño de los elementos flexibles:
+	|| Tamaño de los elementos flexibles:
 		Se relacionan con el tamaño natural de los artículos flexibles antes de que crezca o se encoja, y con el concepto de espacio libre.
 			
 			Espacio disponible en el contenedor:
@@ -611,7 +611,7 @@
 				Margin auto:
 				Para separar un grupo de elementos de otro.
 
-		Tamaño de los contenedores flexibles:
+		|| Tamaño de los contenedores flexibles:
 			
 			Elementos en multiples filas/columnas:
 			No sucede automaticamente porque el valor por defecto de la propiedad flex-wrap es nowrap.
@@ -791,8 +791,8 @@
 			La diferencia con display: none es que este lo elimina del formateo de la página, en cambio el otro lo ocuta pero se puede usar.			
 			*Chrome y Safari tratan a collapse como hidden.
 
-		Usos tipico:
-		El fuerte de flexbox es su capacidad de alineación y su gran compatibilidad con navegadores antiguos y modernos.
+		|| Usos tipico:
+			El fuerte de flexbox es su capacidad de alineación y su gran compatibilidad con navegadores antiguos y modernos.
 
 			Navegación:
 
@@ -974,7 +974,7 @@
 						  flex: 1;
 						}
 
-			Controles de formularios:
+			 Controles de formularios:
 			Requieren muchos elementos de html, debemos alinearlos.
 					
 				<form class="example">
@@ -1017,7 +1017,7 @@
 				
 				Ponemos un label o un icono a la izquierda, ahora el campo de entrada de datos flexible tiene menos espacio.
 			
-			Dar compatibilidad:
+		|| Dar compatibilidad:
 			Para navegadores muy antiguos debemos incluir los prefijos en cada regla.
 
 				.wrapper {
@@ -1029,7 +1029,7 @@
 
 			*autoprefixer es un sitio dónde podemos ver los prefijos que necesitamos para las versiones antiguas de los navegadores.
 			
-			fallbacks:
+		    fallbacks:
 			Flexbox ignorará las siguientes propiedades por eso podemos usarlas en los elementos flex para dar compatibilidad a navegadores antiguos que no admiten flex. 
 			Con ellas logramos diseños parecidos. Los navegadores modernos sobreescribirán las propiedades antiguos y aplicará las modernas.
 
@@ -1109,7 +1109,7 @@
 		Podemos hacerlas de tamaño fijo (px) para que los elemtos se adapten al diseño. 
 		O hacerlas flexibles (1fr) para que el diseño se adapte a los elementos.
 			
-			Contenedor:
+		|| Contenedor:
 			Solo los hijos directos serán grid items. Display flex por si solo, creará varias una columna con todos los elementos dispuestos uno debajo de otro.		
 			Las pistas le dan forma final de cuadrícula, se crean con grid-templete-rows/columns.
 			Los elementos que no son o no pueden ser colocados en las pistas creadas por nosotros, se colocarán automaticamente en las pistas implicitas que creará el navegador.
@@ -1147,7 +1147,7 @@
 				  z-index: 2;
 				}
 
-			Flexbox vs Grid:
+		|| Flexbox vs Grid:
 			Flex funciona desde el contenido que toma el espacio del contenedor, además de las capacidades de alineación y espaciado. 
 			Grid prioriza el diseño y a partir de este colocamos a los elementos. Si creamos pistas que se adaptan al contenido, los elementos se acomodan en línea nueva.
 
@@ -1196,7 +1196,7 @@
 
 					// Los elementos ocupan todo el espacio del contenedor.
 
-			Grid y position absolute:
+		|| Grid y position absolute:
 			Cuando un contenedor grid es bloque contenedor de un elemento posicionado
 			Para que el contenedor de grid se bloque contenedor de un elemento, debemos agregarle la propiedad position: relative.
 			Así es como funciona para cualquier otro elemento padre cuando necesitemos un elemento absoluto.
@@ -1265,7 +1265,7 @@
 				  padding: 10px;
 				}
 			
-			display: contents:
+		|| display: contents:
 			Los elementos secundarios de un item de cuadrícula no pertenecen a ella, su comportamiento es de elementos de bloque comunes.
 			Cuando activamos display: contents al elemento padre, los hijos se disponen en cuadrícula.
 				
@@ -1289,7 +1289,7 @@
 			  		display: contents;
 				}
 			
-			Colocación automatica:
+		|| Colocación automatica:
 			Si no los colocamos en la cuadrícula de ninguna manera, se distribuirán de acuerdo con las reglas de colocación automática, un elemento en cada una de las celdas, uno despues de otro. 		
 			
 				.wrapper {
@@ -1302,7 +1302,7 @@
 					Este diseño creo 4 líneas en cada dimension (horizontal y vertical).
 					Y tambien, si tenemos menos de 9 elementos sobrarán lugares. 
 			
-			Espacios vacios:
+		|| Espacios vacios:
 			Es otra caracteristica de grid, podemos dejar espacios sin usar margenes.
 			Con la ubicación en línea tendríamos que evitar las líneas que definen el área que deseemos que este vacia.
 			Con grid-template-areas usamos un punto cuando hacemos el diagrama.
@@ -1357,7 +1357,7 @@
 					block-end
 					inline-end
 			
-			Líneas negativas/reversa:
+		|| Líneas negativas/reversa:
 			En modo de escritura de izquierda a derecha, para columnas se empiezan a numerar desde la derecha, -1 es la primera, sigue -2, etc.
 			Para filas se enumeran desde abajo hacia arriba -1, -2.
 			Quiere decir que el posicionamiento en dirección/orden se cuenta de esa manera.
@@ -1375,7 +1375,7 @@
 				  grid-column: 1 / -1;
 				}
 
-			Espacios:
+		|| Espacios:
 			Las propiedades column-gap, row-gap y gap no agregan espacio, sino que lo toman.
 			Si las filas y columnas nos quedan más pequeñas de lo que deseamos, aumentamos su tamaño en grid-template-columns/rows
 				
@@ -1387,7 +1387,7 @@
 				  row-gap: 1em;
 				}
 			
-			Ubicación con el valor span:
+		|| Ubicación con el valor span:
 			Podemos especificar una línea de inicio y luego el número de pistas que desea que abarque el área.
 				
 				.box1 {
@@ -1397,7 +1397,128 @@
 
 				// Ej: Si 4 filas, empieza desde uno y despues toma 3; expandiendose hasta el final.
 					En la columna no tenemos el valor final, toma toda la columa 1.
+		
+		|| Nombrar un área
+			Con grid-area le damos un nombre y con grid-template-area le damos ubicación, haciendo una especie de diagrama con los nombres.
+			Las áreas principales de una página puede ser:
 
+		     	un encabezado
+		    	un pie de página
+		    	una barra lateral
+		     	el contenido principal
 
+		    Podemos dejar una celda vacia usando un punto en el diseño de grid-template-areas	
+			Cada fila de grid-template-areas se crea con comillas dobles al inicio y al final.
+			En al ultima fila colocar punto y coma para cerrar la propiedad.
+			Siempre que haya un espacio entre varios puntos, formará las celdas.
+			Para ordenar el diseño (solo en la propiedad) ubicamos los nombre en línea.
+			Para expandir elementos en las celdas, usamos varias veces su nombre; la forma debe ser rectángular. Así creamos areas más grandes.
+
+				.wrapper {
+				  display: grid;
+				  grid-template-columns: repeat(9, 1fr);
+				  grid-auto-rows: minmax(100px, auto);
+				  grid-template-areas:
+				    "hd hd hd hd   hd   hd   hd   hd   hd"
+				    "sd sd sd main main main main main main"
+				    ".  .  .  ft   ft   ft   ft   ft   ft";
+				}
 				
- /*			
+				<div class="wrapper">
+				  <div class="header">Header</div>
+				  <div class="sidebar">Sidebar</div>
+				  <div class="content">Content</div>
+				  <div class="footer">Footer</div>
+				</div>
+			
+		|| Redifinir todo el diseño con queries
+			Empezamos con un diseño de columna flexible pero muy grande, hasta los 500px del segundo punto de interrupción.
+			Despues pasamos a un diseño de menos filas pero más ancho para que entre todo el contenido.
+
+				.wrapper {
+				  display: grid;
+				  grid-auto-rows: minmax(100px, auto);
+				  grid-template-columns: 1fr;
+				  grid-template-areas:
+				    "hd"
+				    "main"
+				    "sd"
+				    "ft";
+				}
+
+				@media (min-width: 500px) {
+				  .wrapper {
+				    grid-template-columns: repeat(9, 1fr);
+				    grid-template-areas:
+				      "hd hd hd hd   hd   hd   hd   hd   hd"
+				      "sd sd sd main main main main main main"
+				      "sd sd sd  ft  ft   ft   ft   ft   ft";
+				  }
+				}
+
+				@media (min-width: 700px) {
+				  .wrapper {
+				    grid-template-areas:
+				      "hd hd hd   hd   hd   hd   hd   hd hd"
+				      "sd sd main main main main main ft ft";
+				  }
+				}
+		
+		|| Componentes ui:
+			Grid puede ser util para crear elementos pequeños.
+
+			media object:
+			Se compone de un elementos multimedia (img, video, svg, etc) y de texto.
+			Podemos crear dos columnas de tamaño fijo, variable, combinado, uno responsivo y otro no
+				
+				* {
+				  box-sizing: border-box;
+				}
+
+				.media {
+				  border: 2px solid #f76707;
+				  border-radius: 5px;
+				  background-color: #fff4e6;
+				  max-width: 400px;
+				  display: grid;
+				  grid-template-columns: 1fr 3fr;
+				  grid-template-areas: "img content";
+				  margin-bottom: 1em;
+				}
+
+				.media .image {
+				  grid-area: img;
+				  background-color: #ffd8a8;
+				}
+
+				.media .text {
+				  grid-area: content;
+				  padding: 10px;
+				}
+
+				// al reves:
+
+				.media.flipped {
+				  grid-template-columns: 3fr 1fr;
+				  grid-template-areas: "content img";
+				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
