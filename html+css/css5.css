@@ -2025,7 +2025,120 @@
 				  grid-area: a;
 				  margin-left: auto;
 				}	
-
+			
+			// En resumen es una ubicación/separación vertical y horizontal de los elementos o pistas. 
+			   Lo vemos en las líneas de fila (block/align) y columna (inline/justify).
 			// Siempre se debe tener en cuenta los modos de escritura.
-	
+		
+		
+		|| Valores lógicos y writing-mode en Grid:
+			
+			Posicionamiento físico: 
+			Corresponde a la izquierda y derecha, arriba y abajo.
+			Son fijas, la izquierda siempre va a estar a la izquierda, etc.
+			Si posicionamos un item vemos que se coloca desde estos lugares.
+
+				.item {
+				  position: absolute;
+				  top: 20px;
+				  left: 30px;
+				}
+
+				// a 20px desde arriba de la caja/ancestro/viewport y a 30px desde la izquierda.
+			
+			Posicionamiento lógico:
+			No se guía por un lugar físico, se adaptan a la ubicación del contenido. 
+			Se usan ubicaciones como start, center, end, etc.
+
+			writing-mode:
+			Se puede usar para fines creativos o para adaptar el contenido otro lenguaje.
+    			
+    			valores:
+    			horizontal-tb, vertical-rl, vertical-lr, sideways-rl, sideways-lr.
+			
+				en grid:
+				cambiar el writing-mode cambia los ejes.
+
+					Ej:
+					hay tres pistas recorriendo el eje del bloque. En el modo de escritura predeterminado, la cuadrícula coloca automáticamente los elementos comenzando en la parte superior izquierda, moviéndose hacia la derecha, llenando las tres celdas en el eje en línea. 
+					Luego pasa a la siguiente línea, crea una nueva pista de Fila y completa más elementos.
+						
+						.wrapper {
+						  display: grid;
+						  grid-template-columns: repeat(3, 100px);
+						  grid-template-rows: repeat(2, 100px);
+						  gap: 10px;
+						}
+
+					Ej: si seteamos writing-mode en el contenedor, lo vuelca verticalmente.
+
+						.wrapper {
+						  writing-mode: vertical-lr;
+						  display: grid;
+						  grid-template-columns: repeat(3, 100px);
+						  grid-template-rows: repeat(2, 100px);
+						  gap: 10px;
+						}
+						
+						// Ahora el eje de bloque corre horizontalmente y el eje en línea corre verticalmente.
+			
+			Valores lógicos en la alineación:
+			Funcionan igual que en el modo predeterminado.
+
+				Ej:
+					.item1 {
+				  	  grid-column: 1 / 4;
+				  	  align-self: start;
+					}
+					
+					.item3 {
+					  grid-column: 3;
+					  grid-row: 2 / 4;
+					  align-self: end;
+					  justify-self: end;
+					}
+				
+				Ej: Alineación en línea
+					Sin importar el modo de escritura o dirección de texto la línea 1 será la primera y la línea -1 será la última.			
+
+			Orden de grid-area:
+			Va en el contrario sentido de las agujas del reloj.
+
+			    grid-row-start
+			    grid-column-start
+			    grid-row-end
+			    grid-column-end
+			
+			Mezclar direcciones de texto:
+			Por ejemplo, podemos poner una barra de navegación a la izquierda de la pantalla, o un titulo orientado de arriba hacia abajo.
+				
+				.wrapper {
+				  display: grid;
+				  grid-gap: 20px;
+				  grid-template-columns: 1fr auto;
+				  font: 1em Helvetica, Arial, sans-serif;
+				}
+				.wrapper nav {
+				  writing-mode: vertical-lr;
+				}
+				.wrapper ul {
+				  list-style: none;
+				  margin: 0;
+				  padding: 1em;
+				  display: flex;
+				  justify-content: space-between;
+				}
+				.wrapper a {
+				  text-decoration: none;
+				}
+
+			Propiedades Lógicas vs físicas:
+			Position sigue dependiendo de los lugares fisicos, al igual que cuando aplicamos margenes automaticos porque dependen de la izquierda y derecha.
+			Por otro lado podemos usar equivalentes lógicos para reemplazar los valores y propiedades físicas.
+			Tambien hay que verificar la compatibilidad de los navegadores para las nuevas propiedades lógicas.
+
+
+
+
+
 /*				
