@@ -94,21 +94,33 @@
 			display: grid
 			grid-template-rows
 			grid-template-columns
+			grid-template-areas
 			grid-column-gap
 			grid-row-gap
 			gap
 			grid-auto-rows      //tamaño implícito
 			grid-auto-columns
-		
+			align-items: para eje bloque.
+				Alinéa a todos los elementos. Despues podemos usar align-self para alinar algun caso especial.
+				Para el contenedor.
+			jusitify-items: eje en línea.
+				Alinea todos los elementos.
+
+				// El valor predeterminado es stretch (estirar), excepto para elementos con una relación de aspecto intrínseca. 
+					Esto significa que, de forma predeterminada, los elementos cubrirán su área de cuadrícula.
+					Si usamos align o justify-items todos cambian y ninguno llena el espacio.
+				
+				// Con justify/align-self veremos que los elementos ocupan/empiezan en una fracción del espacio horizontal.
+
 		Propiedades para los elementos:
 			grid-column-start/end
 			grid-row-start/end
 			grid-column
 			grid-row        //ubicación 
 			grid-area
-			grid-template-areas
-			grid-template-rows
-			grid-template-columns
+			align-self:
+				Alinéa elementos individualmente en el eje de bloque.
+			justify-self
 
 		Repetir cuadrícula y fila o columna implicita:
 		El primer valor será para la cantidad y el segundo valor será para el tamaño, separados por una coma.
