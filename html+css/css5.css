@@ -1907,15 +1907,125 @@
 					// veremos que los elementos ocupan/empiezan en una fracción del espacio horizontal.
 
 				Abreviadas:
-				Son place-self para y place-items para 
+				Son place-items para justify/align-items y place-self para justify/items-self.
 
+				centrar item:
 
+					.wrapper {
+					  display: grid;
+					  grid-template-columns: repeat(4, 1fr);
+					  gap: 10px;
+					  grid-auto-rows: 200px;
+					  grid-template-areas:
+					    ". a a ."
+					    ". a a .";
+					}
+					.item1 {
+					  grid-area: a;
+					  align-self: center;
+					  justify-self: center;
+					}
+			
+		|| Alinear pistas 	
+			Las filas y columas deben ser más pequeñas que todo el contenedor.
+			
+			En el eje de bloque:
+			Usamos align-content.
 
+			Eje en línea:
+			Usamos justify-content. 
 
+			Abreviatura:
+			Es place-content.
 
+			Valores:
+			normal, start, end center, stretch, space-around, space-between, space-evenly, baseline, first baseline, last baseline.
+				
+				Predeterminado:
+				Es el valor start, empiezan en la esquina superior izquierda.
 
+				Ej: alinear contenido en eje de bloque, tenemos un contenedor con 500 x 500px
+					Usamos align-content.
+					Las columnas ocupan 300px en total.
+					
+					.wrapper {
+					  display: grid;
+					  grid-template-columns: repeat(3, 100px);
+					  grid-template-rows: repeat(3, 100px);
+					  height: 500px;
+					  width: 500px;
+					  gap: 10px;
+					  grid-template-areas:
+					    "a a b"
+					    "a a b"
+					    "c d d";
 
+					    Si agregamos alineación:
 
+					  	// align-content: end; todos se mueven al final del eje de bloque.
+						
+						// align-content: space-between; separa las pistas en este eje.
+					}
 
+					.item1 {
+					  grid-area: a;
+					}
+					.item2 {
+					  grid-area: b;
+					}
+					.item3 {
+					  grid-area: c;
+					}
+					.item4 {
+					  grid-area: d;
+					}
+				
+				// Los elementos se agrandan tomando más espacio del contenedor. Hay que tener en cuenta que al usar espacios los elementos deben compensar eso, agrandandose o asegurandose que el contenido se ajuste al espacio estricto.
 
+				Ej: alinear contenido en eje de línea, tenemos un contenedor con 500 x 500px
+					Usamos justify-content 
+					Podemos usarlo junto con align-content si las pistas miden menos que el contenedor podemos du
+						
+					.wrapper {
+					  display: grid;
+					  grid-template-columns: repeat(3, 100px);
+					  grid-template-rows: repeat(3, 100px);
+					  height: 500px;
+					  width: 500px;
+					  gap: 10px;
+					  grid-template-areas:
+					    "a a b"
+					    "a a b"
+					    "c d d";
+					  align-content: space-between;
+					  justify-content: space-around;
+					}
+
+		|| Alinear elementos con auto margin:
+			Funciona dentro de su área. Establecemos margen automatico derecho e izquierdo, absorberá todo el espacio disponible.
+			Empuja el bloque hacia el centro mientras ambos márgenes intentan ocupar todo el espacio.
+
+				Ej: 
+				Artículo 1 tiene un margen izquierdo de auto, el contenido ahora se empuja hacia el lado derecho.
+				Ta que el margen automático ocupa el espacio restante, después de que se haya asignado el espacio para el contenido de ese elemento.
+					
+				.wrapper {
+				  display: grid;
+				  grid-template-columns: repeat(3, 100px);
+				  grid-template-rows: repeat(3, 100px);
+				  height: 500px;
+				  width: 500px;
+				  gap: 10px;
+				  grid-template-areas:
+				    "a a b"
+				    "a a b"
+				    "c d d";
+				}
+				.item1 {
+				  grid-area: a;
+				  margin-left: auto;
+				}	
+
+			// Siempre se debe tener en cuenta los modos de escritura.
+	
 /*				
