@@ -1801,9 +1801,121 @@
 						  </dl>
 						</div>
 
+		|| Box alignment en grid
+			Detalla la alineación para los metodos de diseño, en este caso, para grid.
+
+			Dos ejes:
+
+				de bloque:
+				Determina como se disponen los elementos en bloque del diseño normal/bloque.
+				Flujen uno debajo de otro.
+				El eje es vertical.
+
+				de línea:
+				Los elementos en línea van en dirección del texto o contenido, funciona dentro del diseño de bloque.
+				Este eje es horizontal.
+			
+			Podemos alinear los elemenentos dentro del área/celdas de la cuadrícula.
+
+			Alinear items en el eje de bloque:
+			Usamos las propiedades align-items o align-self.
+
+				align-items:
+				Alinea a todos los elementos. Despues podemos usar align-self para alinar algun caso especial.
+				Se usa en el contenedor.
+
+					auto, normal, start, end, center, stretch, baseline, first baseline, last baseline.
+						
+						.wrapper {
+						  display: grid;
+						  grid-template-columns: repeat(8, 1fr);
+						  gap: 10px;
+						  grid-auto-rows: 100px;
+						  grid-template-areas:
+						    "a a a a b b b b"
+						    "a a a a b b b b"
+						    "c c c c d d d d"
+						    "c c c c d d d d";
+						  align-items: start;
+						}
+						.item1 {
+						  grid-area: a;
+						}
+						.item2 {
+						  grid-area: b;
+						}
+
+					// Así como está, la altura del elemento depende del contenido
+
+				align-self:
+				Alinea un solo elemento.
+					
+					.item2 {
+					  grid-area: b;
+					  align-self: start;
+					}
+
+				    .item3 {
+					  grid-area: c;
+					  align-self: end;
+					}
+
+					// veremos que los elementos ocupan/empiezan en una fracción del espacio vertical.
+				
+					// El valor por defecto de aling-self es stretch, menos para los elementos con una relación de aspecto intrínseca,
+					    Para estos elementos debemos usar: align-self y justify-self: start; porque puede no estar implementado en el navegador. 
+						Así no se distorcionaría la imagen, etc.
+
+			Alinear elementos en eje de línea:
+			Usamos las propiedades justify-items y justify-self.
+				
+				valores:
+
+					auto, normal, start, end, center, stretch, baseline, first baseline, last baseline
+					El valor predeterminado es stretch (estirar), excepto para elementos con una relación de aspecto intrínseca. 
+					Esto significa que, de forma predeterminada, los elementos cubrirán su área de cuadrícula.
+					
+					Lo veremos en el primer elemento, como sucedio en align-self, en align-items (todos los elemetos fueron cambiado) por eso no ocuparón todo el espacio.
+
+				justify-items:
+				Cambia la alineación de todos los elementos en el eje línea.
+
+				justify-self:
+				Cambia individualmente.
+
+				// estas dos propiedades no estan en flexbox porque tiene un solo eje.		
+					
+					.wrapper {
+					  display: grid;
+					  grid-template-columns: repeat(8, 1fr);
+					  gap: 10px;
+					  grid-auto-rows: 100px;
+					  grid-template-areas:
+					    "a a a a b b b b"
+					    "a a a a b b b b"
+					    "c c c c d d d d"
+					    "c c c c d d d d";
+					}
+					.item1 {
+					  grid-area: a;
+					}
+					.item2 {
+					  grid-area: b;
+					  justify-self: start;
+					}
+
+					// veremos que los elementos ocupan/empiezan en una fracción del espacio horizontal.
+
+				Abreviadas:
+				Son place-self para y place-items para 
 
 
 
 
 
-/*
+
+
+
+
+
+/*				
