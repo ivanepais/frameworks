@@ -2291,6 +2291,193 @@
 						    margin: 0;
 						  }
 						}
+		
+		|| Diseños comunes:
+			Los sitios web son una variación de un diseño con un contenido central, barras laterales, un encabezado y un pie de página y un espacio para la publicidad. 
+			En un diseño responsivo, primero se pone todos los elementos en una columna y luego se va agrandando el diseño a dos y tres columnas para adaptarlo a diferentes tamaños de pantalla.
+				
+				Ej: usando solo grid
+
+					.wrapper {
+					  display: grid;
+					  gap: 20px;
+					  grid-template-areas:
+					    "header"
+					    "nav"
+					    "content"
+					    "sidebar"
+					    "ad"
+					    "footer";
+					}
+
+					@media (min-width: 500px) {
+					  .wrapper {
+					    grid-template-columns: 1fr 3fr;
+					    grid-template-areas:
+					      "header  header"
+					      "nav     nav"
+					      "sidebar content"
+					      "ad      footer";
+					  }
+					  nav ul {
+					    display: flex;
+					    justify-content: space-between;
+					  }
+					}
+
+					@media (min-width: 700px) {
+					  .wrapper {
+					    grid-template-columns: 1fr 4fr 1fr;
+					    grid-template-areas:
+					      "header header  header"
+					      "nav    content sidebar"
+					      "nav    content ad"
+					      "footer footer  footer";
+					  }
+					  nav ul {
+					    flex-direction: column;
+					  }
+					}
+					
+					// El espacio disponible en el contenedor se divide en 6 y se asigna en proporción a nuestras tres pistas: una parte para cada columna lateral y 4 partes para el centro.
+						Las columnas responsivas tienen asignado 1fr para la barra navegación vertical y otro para el aside y 4fr para el contenido principal.
+						Para el
+
+			Diseño de 12 columnas:
+			Será un diseño particular: Tendremos 12 columnas y las líneas de la cuadrícula tendrán todas el mismo nombre.
+			En Los puntos de interrupcion (query) serán posicionados los elementos según el ancho de pantalla así se usarán las líneas necesarias.
+			Primero comenzamos con las dimensiones de pantalla para dispositivos moviles.
+			Despues pasamos al diseño de dos columnas y vamos expandiendo los elementos por las línenas.
+			Para el diseño de tres columnas, ponemos la barra de navegación verticalmente y después expandimos el footer.			
+				
+				.wrapper {
+				  display: grid;
+				  grid-template-columns: repeat(12, [col-start] 1fr);
+				  gap: 20px;
+				}
+
+				.wrapper > * {
+				  grid-column: col-start / span 12;
+				}
+
+				@media (min-width: 500px) {
+				  .side {
+				    grid-column: col-start / span 3;
+				    grid-row: 3;
+				  }
+				  .ad {
+				    grid-column: col-start / span 3;
+				    grid-row: 4;
+				  }
+				  .content,
+				  .main-footer {
+				    grid-column: col-start 4 / span 9;
+				  }
+				  nav ul {
+				    display: flex;
+				    justify-content: space-between;
+				  }
+				}
+
+				@media (min-width: 700px) {
+				  .main-nav {
+				    grid-column: col-start / span 2;
+				    grid-row: 2 / 4;
+				  }
+
+				  .content {
+				    grid-column: col-start 3 / span 8;
+				    grid-row: 2 / 4;
+				  }
+
+				  .side {
+				    grid-column: col-start 11 / span 2;
+				    grid-row: 2;
+				  }
+
+				  .ad {
+				    grid-column: col-start 11 / span 2;
+				    grid-row: 3;
+				  }
+
+				  .main-footer {
+				    grid-column: col-start / span 12;
+				  }
+
+				  nav ul {
+				    flex-direction: column;
+				  }
+				}
+		
+		|| Lista de productos con cartas:
+			Podemos crear listas de elementos nativamente con grid, sin queries.
+			Principalmente usamos grid y algo de flexbox para corregir el diseño de las cartas.
+			Tendremos columnas flexibles (agrandan y reducen) con un piso de 200px, que reparte el espacio proporcionalmente logrado con la funcion minmax().
+			Por minmax() y el valor autofill logramos que el numero de columnas aumenten o disminuyan a medida que el contenedor pueda expandirse o reducirse por la ventana gráfica.
+			Con esto no necesitamos de queries para agregar columnas.
+			Para corregir el diseño por dentro, usamos flex en columna y automargen que empujará el pie de página o banner de la carta.
+			*Cuando tenemos que o distribuir elementos en una solo dirección usamos flexbox.
+
+				<ul class="listing">
+				  <li>
+				    <h2>Item One</h2>
+				    <div class="body">
+				      <p>The content of this listing item goes here.</p>
+				    </div>
+
+				    <div class="cta">
+				      <a href="">Call to action!</a>
+				    </div>
+				  </li>
+				</ul>
+
+				.listing {
+				  list-style: none;
+				  margin: 2em;
+				  display: grid;
+				  gap: 20px;
+				  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+				}
+
+				.listing li {
+				  border: 1px solid #ffe066;
+				  border-radius: 5px;
+				  display: flex;
+				  flex-direction: column;
+				}
+
+				.listing .cta {
+				  margin-top: auto;
+				  border-top: 1px solid #ffe066;
+				  padding: 10px;
+				  text-align: center;
+				}
+
+				.listing .body {
+				  padding: 10px;
+				}
+
+		 	Si tenemos cartas muy grandes dado su contenido, no quedan bien cuando son muy altas.
+		 	Para que abarquen más columnas y no sean tan altas, regla grid-column-end con un valor de span 2. Ahora, cuando grid encuentre este elemento, le asignará dos pistas.  
+			Además podemos hacer que el contenedor llene espacios en blanco con grid-auto-flow: dense.
+			*Esto ultimo solo está permitido para elementos que no necesiten un orden lógico.
+			Puede ayudarlo a manejar el contenido que genera un CMS.
+
+				.listing {
+				  list-style: none;
+				  margin: 2em;
+				  display: grid;
+				  gap: 20px;
+				  grid-auto-flow: dense;
+				  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+				}
+				.listing .wide {
+				  grid-column-end: span 2;
+				}
+
+	|| Subgrid:
+
+		
 
 
 
@@ -2298,6 +2485,5 @@
 
 
 
-
-
+	
 /*				
